@@ -1,0 +1,38 @@
+{
+  "plugins": [
+    "@babel/plugin-external-helpers",
+    [
+      "@babel/plugin-proposal-decorators", {
+      "legacy": true
+    }
+    ],
+    ["@babel/plugin-proposal-class-properties", {
+      "loose": true
+    }],
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-transform-regenerator",
+    ["@babel/plugin-transform-runtime", {
+      "loose": true,
+      "corejs": 2,
+      "regenerator": true
+    }],
+    "@babel/plugin-proposal-export-namespace-from"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env", {
+      "loose": true,
+      "modules": false,
+      "useBuiltIns": "entry",
+      "corejs": 2,
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+          "> 1%",
+          "ie >= 11"
+        ]
+      }
+    }],
+    "@babel/preset-react"
+  ]
+}
