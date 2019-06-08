@@ -1,3 +1,4 @@
+import path from 'path';
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
@@ -15,36 +16,34 @@ import pkg from './package.json';
 /* For resolving from base paths */
 const includePathOptions = {
   include: {},
-  paths: ['src', 'src/components/', 'src/assets/', 'src/styles'],
+  paths: ['src', 'src/assets', 'src/styles'],
   external: [],
   extensions: ['.js', '.svg', '.styl']
 };
 
 export default [
   {
-    input: "src/index.js",
+    input: "src/components/index.js",
     // input: "src/components/**/*.js",
     output: [
       {
         file: 'dist/' + pkg.main.replace(/\.js$/, `.min.js`),
-        format: 'cjs',
-        sourcemap: true
-      },
-      {
-        file: 'dist/' + pkg.module.replace(/\.js$/, `.min.js`),
-        format: 'es',
+        format: 'esm',
         sourcemap: true
       }
     ],
     plugins: [
       includePaths(includePathOptions),
       multiEntry(),
-      babel({
-        exclude: 'node_modules/**', // only transpile our source code
-        runtimeHelpers: true
-      }),
       svgr(),
-      stylus(),
+      stylus({
+        include: ['src/components/**/*.styl', 'src/styles/**/*.styl'],
+        compiler: {
+          globals: {
+            $vars: path.resolve('src/styles/_vars.styl')
+          }
+        }
+      }),
       postcss({
         include: 'src/components/**/*.css',
         modules: false,
@@ -56,8 +55,12 @@ export default [
         extract: true,
         sourceMap: true,
       }),
-      // resolve(), // so Rollup can find imported library
-      // commonjs(), // so Rollup can convert `imported library to an ES module
+      babel({
+        exclude: 'node_modules/**', // only transpile our source code
+        runtimeHelpers: true
+      }),
+      resolve(), // so Rollup can find imported library
+      commonjs(), // so Rollup can convert `imported library to an ES module
     ],
     external: [
       ...Object.keys(pkg.peerDependencies || {})

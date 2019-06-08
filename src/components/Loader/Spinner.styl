@@ -1,0 +1,27 @@
+@import $vars
+
+.Spinner
+  height: 20px
+  width: 20px
+  border-radius: 50%
+  animation: spin 0.8s infinite linear
+  display: none
+  opacity: 0
+  border: 2px solid $white
+  border-top-color: transparent
+  vertical-align: middle
+  transition: 0.3s 0.05s
+  transform: none
+
+  &--primary
+    border-color: $c-primary
+    border-top-color: transparent
+
+  &--show
+    display: inline-block
+    opacity: 1
+
+
+@keyframes spin
+  100%
+    transform: rotate(360deg)

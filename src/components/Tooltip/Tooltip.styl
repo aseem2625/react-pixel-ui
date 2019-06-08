@@ -1,0 +1,49 @@
+.Tooltip
+  position: relative
+
+  .Tooltip-trigger
+    cursor: pointer
+    user-select: none
+    display: inline-block
+
+    &:hover
+      & + .Tooltip-text
+        opacity: 1
+        transform: translateY(calc(-100% - 5px))
+        transition-timing-function: cubic-bezier(.165,.84,.44,1)
+
+  .Tooltip-text
+    opacity: 0
+    position: absolute
+    left: -10px
+    right: -10px
+    top: 0
+    background-color: #d6facf
+    border-radius: 4px
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025)
+    transition-property: transform, opacity
+    transition-duration: .15s
+    -webkit-transition-timing-function: ease-in-out
+    transition-timing-function: ease-in-out
+    transform: translateY(-100%) scale(.75) // fallback
+    transform: translateY(calc(-100% + 10px)) scale(.75)
+    transform-origin: 20px calc(100% + 12px)
+    color: #025450
+    padding: 15px 20px
+    font-size: 13px
+    font-weight: 500
+    line-height: 1.5em
+    pointer-events: none
+
+
+    &::before
+      content: ''
+      position: absolute
+      bottom: -6px
+      left: 15px
+      width: 12px
+      height: 12px
+      transform: rotate(45deg)
+      border-radius: 0 0 4px 0
+      background-color: inherit
+      box-shadow: 3px 3px 5px rgba(82,95,127,.04)

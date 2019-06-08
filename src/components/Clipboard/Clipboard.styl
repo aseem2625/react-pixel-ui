@@ -1,0 +1,20 @@
+.Clipboard--withTooltip
+  .Field--Textarea
+    width: 0
+    height: 0
+    position: absolute
+    left: -9999px
+
+  &.Clipboard--copied
+    .Tooltip-text
+      background: #55D4A1
+
+
+.Clipboard--withButton
+  .Field--Textarea, .Btn
+    display: inline-block
+    vertical-align: top
+
+  &.Clipboard--copied
+    .Btn--Clipboard-copyButton
+      background: #55D4A1

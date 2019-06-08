@@ -1,0 +1,52 @@
+@import $vars
+
+//https://www.youtube.com/watch?v=f3LER1fVm-8
+
+.NotificationsContainer
+  position: fixed
+  bottom: 36px
+  left: 40px
+  z-index: $highestZIndex
+
+  > div
+    &:not(:last-of-type)
+      margin-bottom: 16px
+
+  .isHidden
+    display: none
+
+
+.Notification
+  position: relative
+  width: 480px
+  padding: 12px 32px 12px 12px
+  font-size: 16px
+  text-align: center
+  border-radius: 3px
+  transform: translateX(-30%)
+  animation: fadeInSlideRightAppear 180ms ease-out 0s 1 normal forwards
+  transition: 0.15s
+
+  background: $white
+  color: black
+  box-shadow: 1px 1px 8px rgba(0,0,0,0.08)
+
+  .Notification-content
+    line-height: 20px
+
+  .Notification-cross
+    position: absolute
+    right: 8px
+    top: 10px
+    padding: 0 4px
+    font-size: 20px
+    cursor: pointer
+
+
+@keyframes fadeInSlideRightAppear
+  0%
+    opacity: 0.5
+
+  100%
+    opacity: 1
+    transform: translateX(0)

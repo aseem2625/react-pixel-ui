@@ -1,0 +1,30 @@
+@import $vars
+
+.BackDrop
+  position: relative
+
+  &::before
+    content: ''
+    background: rgba(0,0,0,0.65)
+    position: fixed
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    pointer-events: none
+    opacity: 0
+    transition: 0.15s all
+
+  .BackDrop-content
+    position: relative
+
+  &--show
+    z-index: ($highestZIndex - 1)
+
+    &::before
+      pointer-events: all
+      opacity: 1
+
+
+.freeze
+  overflow: hidden

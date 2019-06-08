@@ -1,0 +1,68 @@
+.FieldWrapper--Checkbox
+  display: block
+
+.Field--Checkbox
+  label.Field-el
+    cursor: pointer
+    padding: 0
+    border: none
+
+  .Checkbox-label, .Checkbox-mark
+    display: inline-block
+    vertical-align: middle
+
+  .Checkbox-mark
+    position: relative
+    width: 20px
+    height: 20px
+    border-radius: 2px
+    border: 1px solid black
+    margin-right: 4px
+    background-color: #fff
+
+    &:after
+      content: ''
+      display: block
+      transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
+
+.Field--Checkbox:not(.Field--Checkbox--Switch)
+  .Checkbox-mark
+    &:after
+      width: 6px
+      height: 11px
+      border: solid #fff
+      border-width: 0 2px 2px 0
+      opacity: 0
+      transform: rotate(45deg) scale(1.5)
+      margin: 2px 0 0 6px
+
+  input:checked + .Checkbox-mark
+    background-color: blue
+
+    &:after
+      transform: rotate(45deg) scale(1)
+      opacity: 1
+
+
+.Field--Checkbox--Switch
+  .Checkbox-mark
+    width: 40px
+    border-radius: 20px
+    border: 1px solid black
+    transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
+
+    &:after
+      position: absolute
+      width: 18px
+      height: 18px
+      left: 1px
+      border-radius: 50%
+      background-color: #fff
+      border: 1px solid #f1f1f1
+      box-shadow: 1px 0 7px rgba(0,0,0,0.08)
+
+  input:checked + .Checkbox-mark
+    background-color: blue
+
+    &:after
+      transform: translateX(100%)

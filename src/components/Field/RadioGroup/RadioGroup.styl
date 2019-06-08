@@ -1,0 +1,41 @@
+.FieldWrapper--RadioGroup
+  display: block
+
+.Field--RadioGroup
+  .Field-el
+    padding: 0
+    border: none
+
+    label
+      cursor: pointer
+      line-height: initial
+
+  .Radio-label, .Radio-mark
+    display: inline-block
+    vertical-align: middle
+
+  .Radio-mark
+    position: relative
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    border: 1px solid black
+    margin-right: 4px
+    text-align: center
+
+    &::before
+      content: ''
+      position: relative
+      display: inline-block
+      vertical-align: middle
+      width: 50%
+      height: 50%
+      border-radius: 50%
+      background: blue
+      opacity: 0
+      transform: scale(0.5)
+      transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1)
+
+  input:checked + .Radio-mark::before
+    opacity: 1
+    transform: scale(1)
