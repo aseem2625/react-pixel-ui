@@ -16,7 +16,7 @@ export class NotificationsContainer extends Stack {
     _notificationsStackInstance = this;
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     _notificationsStackInstance = null;
   }
 

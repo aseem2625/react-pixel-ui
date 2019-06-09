@@ -21,7 +21,7 @@ export class PopupsContainer extends Stack {
     _popupsStackInstance = this;
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     _popupsStackInstance = null;
   }
 

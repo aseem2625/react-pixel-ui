@@ -15,9 +15,9 @@ export {
 export TagsList from './Tag/TagsList';
 export Tag from './Tag/Tag';
 
-export openToast from './Stack/Toast/Toast';
-export openNotification from './Stack/Notification/Notification';
-export openPopup from './Stack/Popup/Popup';
+export openToast, { ToastsContainer} from './Stack/Toast/Toast';
+export openNotification, { NotificationsContainer } from './Stack/Notification/Notification';
+export openPopup, { PopupsContainer } from './Stack/Popup/Popup';
 export openConfirmPopup from './Stack/Popup/ConfirmPopup';
 
 export BackDrop from './BackDrop/BackDrop';

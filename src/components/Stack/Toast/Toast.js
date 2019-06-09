@@ -17,7 +17,7 @@ export class ToastsContainer extends Stack {
     _toastsStackInstance = this;
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     _toastsStackInstance = null;
   }
 
