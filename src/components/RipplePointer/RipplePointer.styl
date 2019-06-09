@@ -3,10 +3,8 @@
 //https://www.chromaticqa.com/
 .RipplePointer
   position: relative
-  pointer-events: none
   width: 56px
   height: 56px
-
   &::before, &::after
     content: ''
     display: block
@@ -20,6 +18,7 @@
     opacity: 0
     animation: 1.6s cubic-bezier(0, 0, 0.46, 1) 0s infinite
     transform: scale(0)
+    pointer-events: none
 
   &::before
     z-index: 1
@@ -41,6 +40,12 @@
     opacity: 0.9
     background: $white
     z-index: 3
+    pointer-events: none
+
+  &.RipplePointer--clickable
+    .RipplePointer-epicenter
+      cursor: pointer
+      pointer-events: all
 
   &--primary
     &::after, &::before

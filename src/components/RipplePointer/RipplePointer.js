@@ -9,7 +9,8 @@ const RipplePointer = ({ isPrimary = false, className, onClick, ...restProps }) 
     className={classList(
       'RipplePointer',
       isPrimary && 'RipplePointer--primary',
-      prefixToClasses('RipplePointer--', className)
+      prefixToClasses('RipplePointer--', className),
+      onClick && 'RipplePointer--clickable'
     )}
   >
     <span className="RipplePointer-epicenter" onClick={onClick} />
