@@ -66,7 +66,7 @@ export default class AsyncButton extends React.PureComponent {
         <span className="Btn-mainText">{children}</span>
         {pendingText && <span className="Btn-pendingText">{pendingText}</span>}
         {showSpinner && (
-          <Spinner show={isPending} isPrimary={!restProps.isPrimary} />
+          <Spinner show={isPending} isPrimary={!restProps.isPrimary || restProps.isLink} />
         )}
       </Button>
     );

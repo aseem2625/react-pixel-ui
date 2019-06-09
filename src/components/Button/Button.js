@@ -23,9 +23,9 @@ export default class Button extends React.PureComponent {
     const classes = classList(
       'Btn',
       className && prefixToClasses('Btn--', className),
-      isRound && 'Btn--round',
+      !isLink && isRound && 'Btn--round',
       isLink && 'Btn--link',
-      isPrimary && 'Btn--primary'
+      !isLink && isPrimary && 'Btn--primary'
     );
 
     return (
