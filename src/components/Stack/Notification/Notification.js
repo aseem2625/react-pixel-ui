@@ -40,9 +40,9 @@ export class NotificationsContainer extends Stack {
               <StackItem
                 stackItemType={this.stackType}
                 id={n.id}
-                className={n.type}
                 showCross={n.showCross}
                 removeItemFromStack={this.removeItemFromStack}
+                className={n.className}
               >
                 {n.content}
               </StackItem>
