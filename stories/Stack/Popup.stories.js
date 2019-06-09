@@ -19,7 +19,7 @@ storiesOf('Components/Stack', module)
           {/* All modals share common instance. PopupsContainer to be present at top level of React app */}
           <PopupsContainer />
 
-          {/* Opening a modal */}
+          {/* Open a modal */}
           <Button
             onClick={_ =>
               openPopup({
