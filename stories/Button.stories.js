@@ -1,38 +1,48 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+
+
+import { mockAPI } from "js-awesome-utils";
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
-import { Button } from '../dist/index.min';
+import { Button, AsyncButton } from '../dist/index.min';
+
+const stories = storiesOf('Components/Button', module);
+stories.addDecorator(withKnobs);
 
 
-storiesOf('Components/Button', module)
+stories
   .add(
-    'Default Button',
-    () => <Button>Default Button</Button>
+    'Button',
+    () => (
+      <Button
+        isPrimary={boolean("Primary", false)}
+        isRound={boolean("Round", false)}
+        isLink={boolean("Link", false)}
+        disabled={boolean("Disabled", false)}
+        className={text("Classes", 'class1 class2')}
+        onClick={action('Button clicked')}
+      >
+        Button
+      </Button>
+    )
   )
   .add(
-    'Primary Button',
-    () => <Button isPrimary>Primary Button</Button>
-  )
-  .add(
-    'Round Button',
-    () => <Button isRound>Round Button</Button>
-  )
-  .add(
-    'Primary Round Button',
-    () => <Button isPrimary isRound>Round Button</Button>
-  )
-  .add(
-    'Disabled Button',
-    () => <Button disabled>Disabled Button</Button>
-  )
-  .add(
-    'Link Button',
-    () => <Button isLink>Link Button</Button>
-  )
-  .add(
-    'Custom classes on Button',
-    () => <Button className="class1 class2">Custom class Button</Button>
+    'AsyncButton',
+    () => (
+      <AsyncButton
+        isPrimary={boolean("Primary", false)}
+        isRound={boolean("Round", false)}
+        isLink={boolean("Link", false)}
+        disabled={boolean("Disabled", false)}
+        className={text("Classes", 'class1 class2')}
+        pendingText={text("Pending Text", 'Pending..')}
+        onClick={mockAPI}
+        showSpinner={boolean("Show Spinner", false)}
+      >
+        AsyncButton
+      </AsyncButton>
+    )
   );
