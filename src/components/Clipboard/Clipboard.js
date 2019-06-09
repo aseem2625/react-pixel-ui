@@ -77,7 +77,7 @@ function Clipboard(type) {
           <TextareaElement
             setElRef={this.setRef}
             className="Clipboard-input"
-            defaultValue={toCopy}
+            value={toCopy}
             readOnly
           />
 
