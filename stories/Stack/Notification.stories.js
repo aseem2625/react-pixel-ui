@@ -9,7 +9,7 @@ storiesOf('Components/Stack', module)
   .add(
     'Notification',
     () => {
-      const enableAutoRemove = boolean("Enable esc press", true),
+      const enableAutoRemove = boolean("Enable auto remove", true),
         showCross = boolean("Show cross", false),
         duration = number("Duration in ms", 3000),
         className = text("Classes", 'class1 class2');
@@ -19,7 +19,7 @@ storiesOf('Components/Stack', module)
           {/* All modals share common instance. NotificationsContainer to be present at top level of React app */}
           <NotificationsContainer />
 
-          {/* Open a notification */}
+          {/* Open notifications */}
           <Button
             onClick={_ =>
               openNotification({
