@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean } from '@storybook/addon-knobs';
+import {boolean, text} from '@storybook/addon-knobs';
 
 import { Popover, Button } from '../dist/index.min';
 
@@ -10,7 +10,8 @@ storiesOf('Components', module)
   .add(
     'Popover',
     () => {
-      const triggerOnHover = boolean('Trigger on hover', true );
+      const triggerOnHover = boolean('Trigger on hover', true ),
+        className=text('Classes', 'class1 class2');
 
       return(
         <Popover
@@ -21,6 +22,7 @@ storiesOf('Components', module)
             </div>
           )}
           triggerOnHover={triggerOnHover}
+          className={className}
         >
           {triggerOnHover ? 'Hover Me' : 'Click Me'}
         </Popover>

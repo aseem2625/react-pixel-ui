@@ -14,6 +14,7 @@ storiesOf('Components/Clipboard', module)
         toCopy={text('To copy', 'Some Text for ClipboardWithButton')}
         buttonCopyText={text('Button text before copy', 'Copy some url')}
         buttonCopiedText={text('Button text on copy', 'Copied')}
+        className={text('Classes', 'class1 class2')}
       />
     )
   );

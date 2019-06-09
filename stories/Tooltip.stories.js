@@ -10,7 +10,10 @@ storiesOf('Components', module)
   .add(
     'Tooltip',
     () => (
-      <Tooltip tooltipText={text('Tooltip Text', 'Some tooltip content')}>
+      <Tooltip
+        tooltipText={text('Tooltip Text', 'Some tooltip content')}
+        className={text('Classes', 'class1 class2')}
+      >
         Hover/Tap Me!
       </Tooltip>
     )
