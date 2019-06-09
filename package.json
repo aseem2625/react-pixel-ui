@@ -1,11 +1,11 @@
 {
   "name": "react-pixel-ui",
   "version": "1.0.0",
-  "description": "Nice collection of UI Components in React",
+  "description": "Beautiful UI Components built in React",
   "main": "index.js",
   "module": "index.js",
   "author": "https:github.com/aseem2625",
-  "license": "MIT",
+  "license": "CC BY-NC-ND 4.0",
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1",
