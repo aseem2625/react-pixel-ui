@@ -43,3 +43,4 @@ export SmoothScrollLink from './SmoothScrollLink/SmoothScrollLink';
 export OutsideClickLayer from './xtra/OutsideClickLayer';
 export EscPressLayer from './xtra/EscPressLayer';
 export AutoRemoveLayer from './xtra/AutoRemoveLayer';
+export ErrorBoundary from './xtra/ErrorBoundary';
