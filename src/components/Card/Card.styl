@@ -3,11 +3,13 @@
 .Card
   background-color: $white
   border-radius: 8px
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)
   padding: 20px
 
+  &--shadow
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)
+
   &--animate
-    animation: fadeInUpAppear 180ms ease-out 0s 1 normal forwards
+    animation: fadeInUpAppear .24s cubic-bezier(0, 0, 0.22, 0.95) forwards
 
 
 @keyframes fadeInUpAppear

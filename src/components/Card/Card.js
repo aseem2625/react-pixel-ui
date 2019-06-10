@@ -5,12 +5,13 @@ import './Card.styl';
 
 export default class Card extends React.PureComponent {
   render() {
-    const { className, animate, children } = this.props;
+    const { className, animate, hasShadow, children } = this.props;
     return (
       <div
         className={classList(
           'Card',
           animate && 'Card--animate',
+          hasShadow && 'Card--shadow',
           prefixToClasses('Card--', className)
         )}
       >
