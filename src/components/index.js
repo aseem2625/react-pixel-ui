@@ -1,3 +1,5 @@
+import '../styles/index.styl';
+
 export Button from './Button/Button';
 export AsyncButton from './Button/AsyncButton';
 
@@ -37,3 +39,7 @@ export RadioGroup from './Field/RadioGroup/RadioGroup';
 export Checkbox from './Field/Checkbox/Checkbox';
 
 export SmoothScrollLink from './SmoothScrollLink/SmoothScrollLink';
+
+export OutsideClickLayer from './xtra/OutsideClickLayer';
+export EscPressLayer from './xtra/EscPressLayer';
+export AutoRemoveLayer from './xtra/AutoRemoveLayer';

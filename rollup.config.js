@@ -45,7 +45,7 @@ export default [
         }
       }),
       postcss({
-        include: 'src/components/**/*.css',
+        include: ['src/components/**/*.css', 'src/styles/**/*.css'],
         modules: false,
         plugins: [
           autoprefixer,
