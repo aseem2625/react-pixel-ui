@@ -30,17 +30,26 @@
     z-index: 2
 
   .RipplePointer-epicenter
-    position: absolute
     display: block
-    height: 16px
-    width: 16px
-    border-radius: 50%
-    left: -8px
-    top: -8px
-    opacity: 0.9
-    background: $white
-    z-index: 3
+    height: 24px
+    width: 24px
+    position: absolute
     pointer-events: none
+    left: -12px
+    top: -12px
+    z-index: 3
+
+    &::after
+      content: ''
+      display: block
+      height: 16px
+      position: absolute
+      width: 16px
+      left: 4px
+      top: 4px
+      border-radius: 50%
+      opacity: 0.9
+      background-color: $white
 
   &.RipplePointer--clickable
     .RipplePointer-epicenter
@@ -51,7 +60,7 @@
     &::after, &::before
       background: $c-primary
 
-    .RipplePointer-epicenter
+    .RipplePointer-epicenter &::after
       background-color: $c-primary
 
 @keyframes ripple-before
