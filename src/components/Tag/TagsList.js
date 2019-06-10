@@ -1,17 +1,14 @@
 import React from 'react';
-import Tag from './Tag';
 import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './TagsList.styl';
 
-export default function TagsList({ className, tagsList }) {
+export default function TagsList({ className, children }) {
   return (
     <div
-      className={classList('TagsList', prefixToClasses('TagList--', className))}
+      className={classList('TagsList', prefixToClasses('TagsList--', className))}
     >
-      {tagsList.map((t, ix) => (
-        <Tag key={ix}>{t}</Tag>
-      ))}
+      {children}
     </div>
   );
 }
