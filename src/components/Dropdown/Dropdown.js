@@ -5,38 +5,52 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 import './Dropdown.styl';
 
 export default class Dropdown extends React.PureComponent {
-  state = this.initState();
+  state = { show : this.props.show || false };
 
-  initState() {
-    const { options, defaultValue, show = false } = this.props;
+  toggleDropdown = forceSet => {
+    const toShow = typeof forceSet !== 'undefined' ? forceSet : !this.state.show;
 
-    return {
-      options,
-      value: defaultValue || options[0],
-      show,
-    };
-  }
-
-  toggleDropdownOptions = _ => {
     this.setState({
-      show: !this.state.show,
+      show: toShow,
+    }, () => {
+      if (toShow) {
+        const el = this.dropdownBody;
+        const renderWidthWithFixed =  el && el.getBoundingClientRect().width;
+
+        el.style.width = renderWidthWithFixed + 'px';
+        el.style.position = 'absolute';
+        el.style.opacity = 1;
+
+      }
     });
   };
 
-  handleSelectOption = option => {
-    this.setState({ value: option, show: false });
+  closeDropdown = _ => {
+    this.toggleDropdown(false);
   };
+
+  startHoverIntent = _ => {
+    if (!this.state.show) {
+      this.intentTimer = setTimeout(this.toggleDropdown, 80); // User has to hover atleast for 80ms to open dropdown
+    }
+  };
+
+  endHoverIntent = _ => {
+    clearTimeout(this.intentTimer);
+  };
+
+  setTriggerRef = e => (this.dropdownTrigger = e);
+  setBodyRef = e => (this.dropdownBody = e);
 
   render() {
     const {
+      showOnHover,
       className,
-      customOptionComponent,
-      customSelectedComponent,
-      beforeComponent,
-      afterComponent,
-      disabled,
+      trigger,
+      beforeOptions,
+      afterOptions,
     } = this.props;
-    const { value, show } = this.state;
+    const { show } = this.state;
 
     return (
       <OutsideClickLayer
@@ -51,60 +65,42 @@ export default class Dropdown extends React.PureComponent {
           )}
         >
           <div
+            ref={this.setTriggerRef}
             className="Dropdown-trigger"
-            onClick={disabled ? undefined : this.toggleDropdownOptions}
+            onClick={showOnHover ? undefined : this.toggleDropdown}
+            onMouseOver={showOnHover ? this.startHoverIntent : undefined}
+            onMouseOut={showOnHover ? this.endHoverIntent : undefined}
           >
-            <div className="Dropdown-selected">
-              {customSelectedComponent ? customSelectedComponent(value) : value}
-            </div>
+            {typeof trigger === 'function' ? trigger() : trigger}
           </div>
-          <DropdownOptions
-            options={this.state.options}
-            customOptionComponent={customOptionComponent}
-            beforeComponent={beforeComponent}
-            afterComponent={afterComponent}
-            value={value}
-            handleSelectOption={this.handleSelectOption}
-          />
+
+          {
+            this.state.show && (
+              <div ref={this.setBodyRef} className="Dropdown-body">
+                <div className="Dropdown-options">
+                  {
+                    !!beforeOptions && (
+                      <div class="Dropdown-options-before">
+                        {typeof beforeOptions === 'function' ? beforeOptions(this.closeDropdown) : beforeOptions}
+                      </div>
+                    )
+                  }
+
+                  {this.props.children(this.closeDropdown)}
+
+                  {
+                    !!afterOptions && (
+                      <div className="Dropdown-options-after">
+                        {typeof afterOptions === 'function' ? afterOptions(this.closeDropdown) : afterOptions}
+                      </div>
+                    )
+                  }
+                </div>
+              </div>
+            )
+          }
         </div>
       </OutsideClickLayer>
-    );
-  }
-}
-
-/*
- * TODO:
- * 1. Add arrow keys suppport
- * 2. Grouped Options
- * */
-
-class DropdownOptions extends React.PureComponent {
-  render() {
-    const {
-      options,
-      value,
-      handleSelectOption,
-      customOptionComponent,
-      beforeComponent,
-      afterComponent,
-    } = this.props;
-
-    return (
-      <div className="Dropdown-options">
-        <ul>
-          {beforeComponent && <li>{beforeComponent}</li>}
-          {options.map((o, ix) => (
-            <li
-              key={ix}
-              onClick={value === o ? undefined : _ => handleSelectOption(o)}
-              className={classList(value === o && 'Dropdown-option--highlight')}
-            >
-              {customOptionComponent ? customOptionComponent(o) : o}
-            </li>
-          ))}
-          {afterComponent && <li>{afterComponent}</li>}
-        </ul>
-      </div>
     );
   }
 }

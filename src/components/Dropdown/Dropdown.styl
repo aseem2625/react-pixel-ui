@@ -9,67 +9,78 @@
   border: 1px solid black
 
   .Dropdown-trigger
+    position: relative
     cursor: pointer
     z-index: 1
     padding: 0 12px
 
-  //.Dropdown-selected
-
-  .Dropdown-options
-    min-width: 240px
-    position: absolute
-    top: 36px
-    left: 0
-    transform-origin: top center
-    opacity: 0
-    border: 1px solid black
-    z-index: 2
-    background-color: $white
-    pointer-events: none
-
-    &::before
-      content: ''
-      position: absolute
-      top: -9px
-      left: 20px
-      z-index: -1
-      width: 0
-      height: 0
-      border-left: 10px solid transparent
-      border-right: 10px solid transparent
-      border-bottom: 12px solid #ccc
-
+    // Add extra block to give more height to trigger after onMouseOver to avoid onMouseOut between trigger and body
     &::after
       content: ''
       position: absolute
-      top: -8px
-      left: 22px
+      left: 0
+      height: 12px
+      width: 100%
+      z-index: -1
+      display: none
+
+  .Dropdown-body
+    position: fixed
+    transform-origin: top center
+    top: 36px
+    left: 0
+    min-width: 180px
+    max-width: 360px
+    border: 1px solid #ccc
+    will-change: transform
+    opacity: 0
+
+    &::before, &::after
+      content: ''
+      position: absolute
       width: 0
       height: 0
-      border-left: 8px solid transparent
-      border-right: 8px solid transparent
-      border-bottom: 10px solid #fff
+
+    &::before
+      top: -9px
+      left: 20px
+      border-left: 10px solid transparent
+      border-right: 10px solid transparent
+      border-bottom: 12px solid #ccc
       z-index: -1
 
-    ul
-      li
-        padding: 0 12px
-        height: 32px
-        line-height: 30px
-        cursor: pointer
-        background-color: $white
+    &::after
+      top: -8px
+      left: 24px
+      border-left: 6px solid transparent
+      border-right: 6px solid transparent
+      border-bottom: 8px solid #fff
+      z-index: 1
 
-        &:not(:last-of-type)
-          border-bottom: 1px solid black
+  .Dropdown-options
+    max-height: 320px
+    overflow-y: auto
 
-        &:hover
-          background-color: gray
+    > *
+      display: block
+      width: 100%
+      padding: 4px 12px
+      line-height: 24px
+      background: $white
+      border: none
+
+      &:not(:last-child)
+        border-bottom: 1px solid #dddddd
+
+    > *:not(.Dropdown-options-before):not(.Dropdown-options-after)
+      text-align: left
+      cursor: pointer
+      outline: none
+
+
+      &:hover
+        background-color: #efefef
 
   &--show
-    .Dropdown-options
-      opacity: 1
-      pointer-events: all
-
-
-  .Dropdown-option--highlight
-    background-color: #fff1b4
+    .Dropdown-trigger::after
+      display: block
