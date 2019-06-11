@@ -8,6 +8,7 @@ export default class Dropdown extends React.PureComponent {
   state = { show : this.props.show || false };
 
   toggleDropdown = forceSet => {
+    console.log('...here....1..');
     const toShow = typeof forceSet !== 'undefined' ? forceSet : !this.state.show;
 
     this.setState({
@@ -26,17 +27,8 @@ export default class Dropdown extends React.PureComponent {
   };
 
   closeDropdown = _ => {
+    console.log('...here....2..');
     this.toggleDropdown(false);
-  };
-
-  startHoverIntent = _ => {
-    if (!this.state.show) {
-      this.intentTimer = setTimeout(this.toggleDropdown, 80); // User has to hover atleast for 80ms to open dropdown
-    }
-  };
-
-  endHoverIntent = _ => {
-    clearTimeout(this.intentTimer);
   };
 
   setTriggerRef = e => (this.dropdownTrigger = e);
@@ -55,7 +47,7 @@ export default class Dropdown extends React.PureComponent {
     return (
       <OutsideClickLayer
         onOutsideClick={_ => this.setState({ show: false })}
-        enabled
+        enabled={!showOnHover}
       >
         <div
           className={classList(
@@ -63,13 +55,13 @@ export default class Dropdown extends React.PureComponent {
             show && 'Dropdown--show',
             prefixToClasses('Dropdown--', className)
           )}
+          onMouseEnter={showOnHover ? this.toggleDropdown : undefined}
+          onMouseLeave={showOnHover ? this.closeDropdown : undefined}
         >
           <div
             ref={this.setTriggerRef}
             className="Dropdown-trigger"
             onClick={showOnHover ? undefined : this.toggleDropdown}
-            onMouseOver={showOnHover ? this.startHoverIntent : undefined}
-            onMouseOut={showOnHover ? this.endHoverIntent : undefined}
           >
             {typeof trigger === 'function' ? trigger() : trigger}
           </div>
