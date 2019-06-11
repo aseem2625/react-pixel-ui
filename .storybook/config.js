@@ -5,6 +5,7 @@ import { withA11y } from "@storybook/addon-a11y";
 import { withConsole } from "@storybook/addon-console";
 
 import '../dist/index.min.css';
+import './index.css';
 
 
 addDecorator(centered);
