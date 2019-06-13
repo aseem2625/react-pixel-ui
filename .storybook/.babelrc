@@ -26,14 +26,7 @@
       "loose": true,
       "modules": false,
       "useBuiltIns": "usage",
-      "corejs": 2,
-      "targets": {
-        "browsers": [
-          "last 2 versions",
-          "> 1%",
-          "ie >= 11"
-        ]
-      }
+      "corejs": 2
     }],
     "@babel/preset-react"
   ]

@@ -45,6 +45,10 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-external-helpers": "^6.22.0",
     "cssnano": "^4.1.10",
+    "directory-named-webpack-plugin": "^4.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -55,7 +59,9 @@
     "rollup-plugin-multi-entry": "^2.1.0",
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-stylus-compiler": "^1.0.1"
+    "rollup-plugin-stylus-compiler": "^1.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
   },
   "peerDependencies": {
     "@babel/core": "^7.4.3",
