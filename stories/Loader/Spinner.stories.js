@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 
-import { Spinner } from '../../dist/index.min';
+import { Spinner } from 'components/index';
 
 storiesOf('Components/Loader', module)
   .add(

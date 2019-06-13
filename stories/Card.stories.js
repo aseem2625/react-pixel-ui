@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 
-import { Card } from '../dist/index.min';
+import { Card } from 'components/index';
 
 
 storiesOf('Components', module)

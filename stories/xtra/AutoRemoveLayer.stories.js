@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, number } from '@storybook/addon-knobs';
 
-import { AutoRemoveLayer } from '../../dist/index.min';
+import { AutoRemoveLayer } from 'components/index';
 
 storiesOf('Components/Utilities', module)
   .add(

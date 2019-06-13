@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import { TagsList, Tag } from '../../dist/index.min';
+import { TagsList, Tag } from 'components/index';
 
 
 storiesOf('Components/Tag', module)

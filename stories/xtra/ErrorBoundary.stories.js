@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { ErrorBoundary } from '../../dist/index.min';
+import { ErrorBoundary } from 'components/index';
 
 
 storiesOf('Components/Utilities', module)

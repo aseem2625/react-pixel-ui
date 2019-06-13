@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, text, number, select } from '@storybook/addon-knobs';
 
-import { ToastsContainer, openToast, Button} from '../../dist/index.min';
+import { ToastsContainer, openToast, Button} from 'components/index';
 
 storiesOf('Components/Stack', module)
   .add(

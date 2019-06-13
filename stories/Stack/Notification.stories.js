@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, text, number } from '@storybook/addon-knobs';
 
-import { NotificationsContainer, openNotification, Button} from '../../dist/index.min';
+import { NotificationsContainer, openNotification, Button} from 'components/index';
 
 storiesOf('Components/Stack', module)
   .add(

@@ -5,7 +5,7 @@ import { text, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { mockAPI } from "js-awesome-utils";
-import { AsyncButton } from '../../dist/index.min';
+import { AsyncButton } from 'components/index';
 
 
 storiesOf('Components/Button', module)

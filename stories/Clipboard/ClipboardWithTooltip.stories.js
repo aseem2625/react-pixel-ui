@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import { ClipboardWithTooltip, Icon } from '../../dist/index.min';
+import { ClipboardWithTooltip, Icon } from 'components/index';
 
 
 storiesOf('Components/Clipboard', module)

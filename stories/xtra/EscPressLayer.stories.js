@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 
-import { EscPressLayer, Button } from '../../dist/index.min';
+import { EscPressLayer, Button } from 'components/index';
 
 
 storiesOf('Components/Utilities', module)

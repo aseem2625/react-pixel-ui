@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import { Tooltip } from '../dist/index.min';
+import { Tooltip } from 'components/index';
 
 
 storiesOf('Components', module)

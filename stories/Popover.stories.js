@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {boolean, text} from '@storybook/addon-knobs';
 
-import { Popover, Button } from '../dist/index.min';
+import { Popover, Button } from 'components/index';
 
 
 storiesOf('Components', module)

@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 
-import { OutsideClickLayer, Button } from '../../dist/index.min';
+import { OutsideClickLayer, Button } from 'components/index';
 
 
 storiesOf('Components/Utilities', module)

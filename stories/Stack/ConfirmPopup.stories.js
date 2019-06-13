@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import { PopupsContainer, openConfirmPopup, AsyncButton} from '../../dist/index.min';
+import { PopupsContainer, openConfirmPopup, AsyncButton} from 'components/index';
 import { mockAPI } from 'js-awesome-utils';
 
 storiesOf('Components/Stack', module)

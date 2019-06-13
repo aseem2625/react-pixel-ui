@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { RipplePointer } from '../dist/index.min';
+import { RipplePointer } from 'components/index';
 
 
 storiesOf('Components', module)
