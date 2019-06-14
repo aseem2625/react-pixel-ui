@@ -6,7 +6,7 @@ import './RadioGroup.styl';
 
 /*
  *
- * TODO: Handle disabled, required, etc.
+ * TODO: Handle required, etc.
  * */
 export class RadioGroupElement extends React.PureComponent {
   constructor(props) {
@@ -27,7 +27,7 @@ export class RadioGroupElement extends React.PureComponent {
   }
 
   render() {
-    const { name, className, options } = this.props;
+    const { name, className, options, disabled } = this.props;
     const { value } = this.state;
 
     return (
@@ -37,7 +37,7 @@ export class RadioGroupElement extends React.PureComponent {
           className: classList('RadioGroup', className),
         })}
       >
-        <input name={name} value={value} hidden readOnly />
+        <input name={name} value={value} hidden readOnly disabled={disabled} />
         {options.map((o, i) => (
           <Radio
             key={o.value}
@@ -45,6 +45,7 @@ export class RadioGroupElement extends React.PureComponent {
             isChecked={value === o.value}
             onChange={this.onChange}
             className="Field-el"
+            disabled={disabled}
           >
             <o.label />
           </Radio>
@@ -129,16 +130,14 @@ class Radio extends React.PureComponent {
   }
 
   render() {
-    const { isChecked } = this.props;
+    const { isChecked, disabled } = this.props;
 
     return (
-      <div className="Field-el">
-        <label onClick={this.toggleSelect}>
-          <input type="checkbox" checked={isChecked} hidden readOnly />
-          <span className="Radio-mark" />
-          <span className="Radio-label">{this.props.children}</span>
-        </label>
-      </div>
+      <label className="Field-el" onClick={disabled ? undefined : this.toggleSelect}>
+        <input type="checkbox" checked={isChecked} hidden readOnly disabled={disabled}/>
+        <span className="Radio-mark" />
+        <span className="Radio-label">{this.props.children}</span>
+      </label>
     );
   }
 }
