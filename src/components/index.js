@@ -34,9 +34,9 @@ export Banner from './Banner/Banner';
 
 export Form from './Form/Form';
 export Textarea, { TextareaElement } from './Field/Textarea/Textarea';
-export Input from './Field/Input/Input';
-export RadioGroup from './Field/RadioGroup/RadioGroup';
-export Checkbox from './Field/Checkbox/Checkbox';
+export Input, { InputElement } from './Field/Input/Input';
+export RadioGroup, { RadioGroupElement } from './Field/RadioGroup/RadioGroup';
+export Checkbox, { CheckboxElement } from './Field/Checkbox/Checkbox';
 
 export SmoothScrollLink from './SmoothScrollLink/SmoothScrollLink';
 
