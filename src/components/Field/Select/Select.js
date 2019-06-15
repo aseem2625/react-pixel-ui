@@ -1,9 +1,10 @@
 import React from 'react';
 import { getFieldClasses, addWrapperToField } from '../Field';
-import { classList } from 'js-awesome-utils';
+import { classList, debounce } from 'js-awesome-utils';
 
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
 import Dropdown, { DropdownOptions } from 'components/Dropdown/Dropdown';
+import { InputElement } from 'components/Field/Input/Input';
 
 import './Select.styl';
 
@@ -24,8 +25,12 @@ export class SelectElement extends Dropdown {
     }
 
     this.state.selectedOption = selectedOption;
+    this.state.options = props.options;
 
     this.onSelect = this._onSelect.bind(this);
+
+    this.searchInOptions = this._searchInOptions.bind(this);
+    this.filterOptions = debounce(this._filterOptions, 100);
   }
 
   _onSelect(option) {
@@ -35,11 +40,36 @@ export class SelectElement extends Dropdown {
     });
   }
 
+  _searchInOptions(e) {
+    const search = e.target.value;
+
+    this.filterOptions(search);
+  }
+
+  _filterOptions(search) {
+    let options = this.props.options;
+    const searchKeys = this.props.searchKeys || ['name'];
+
+    if (search) {
+      options = options.filter(o => {
+        for (let k of searchKeys) {
+          if (o.hasOwnProperty(k) && o[k].indexOf(search) > -1) {
+            return true;
+          }
+        }
+      });
+    }
+
+    this.setState({
+      options
+    });
+  }
+
   setRef = e => (this.optionsBody = e);
 
   render() {
-    const { name, className, options, disabled } = this.props;
-    const { selectedOption, show } = this.state;
+    const { name, className, disabled, beforeOptions, afterOptions, enableSearch } = this.props;
+    const { options, selectedOption, show } = this.state;
 
     return (
       <OutsideClickLayer
@@ -71,6 +101,8 @@ export class SelectElement extends Dropdown {
               <DropdownOptions
                 elRef={this.setRef}
                 closeDropdown={this.closeDropdown}
+                beforeOptions={enableSearch ? <InputElement onChange={this.searchInOptions} /> : beforeOptions}
+                afterOptions={afterOptions}
               >
                 <Options
                   options={options}
