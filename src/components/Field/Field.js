@@ -87,7 +87,7 @@ export function addWrapperToField(_FieldComponent, _fieldType) {
         isFocused: false,
       };
 
-      this.onChange = debounce(this._onChange.bind(this), 50);
+      this.onChange = this._onChange.bind(this);
       this.onFocus = this._onFocus.bind(this);
       this.onBlur = this._onBlur.bind(this);
     }
@@ -103,6 +103,7 @@ export function addWrapperToField(_FieldComponent, _fieldType) {
       }
     }
 
+    // TODO: Debounce
     evalValidity() {
       // TODO: evaluation logic
       let error = '';
