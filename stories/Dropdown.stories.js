@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
 
-import { Dropdown } from 'components/index';
+import { Dropdown, DropdownItem } from 'components/index';
 
 
 storiesOf('Components/Dropdown', module)
@@ -19,9 +19,9 @@ storiesOf('Components/Dropdown', module)
           {
             (close) => (
               <>
-                <div>div element</div>
-                <span onClick={close}> span element (click to close)</span>
-                <button>button element</button>
+                <DropdownItem>element</DropdownItem>
+                <DropdownItem onClick={close}> some element (click to close)</DropdownItem>
+                <DropdownItem><button>button element</button></DropdownItem>
               </>
             )
           }
@@ -42,9 +42,9 @@ storiesOf('Components/Dropdown', module)
           {
             (close) => (
               <>
-                <div>div element</div>
-                <span onClick={close}> span element (click to close)</span>
-                <button>button element</button>
+                <DropdownItem>element</DropdownItem>
+                <DropdownItem onClick={close}> some element (click to close)</DropdownItem>
+                <DropdownItem><button>button element</button></DropdownItem>
               </>
             )
           }
@@ -65,9 +65,9 @@ storiesOf('Components/Dropdown', module)
           {
             (close) => (
               <>
-                <div>div element</div>
-                <span onClick={close}> span element (click to close)</span>
-                <button>button element</button>
+                <DropdownItem>element</DropdownItem>
+                <DropdownItem onClick={close}> some element (click to close)</DropdownItem>
+                <DropdownItem><button>button element</button></DropdownItem>
               </>
             )
           }
