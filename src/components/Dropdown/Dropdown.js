@@ -98,32 +98,33 @@ export default class Dropdown extends React.PureComponent {
 }
 
 export class DropdownOptions extends React.PureComponent {
-
   render() {
     const { beforeOptions, afterOptions, children, elRef, closeDropdown } = this.props;
 
     return (
       <div ref={elRef} className="DropdownBody">
+        {
+          !!beforeOptions && (
+            <div className="DropdownOptions-before">
+              {typeof beforeOptions === 'function' ? beforeOptions(closeDropdown) : beforeOptions}
+            </div>
+          )
+        }
         <div className="DropdownOptions">
-          {
-            !!beforeOptions && (
-              <div className="DropdownOptions-before">
-                {typeof beforeOptions === 'function' ? beforeOptions(closeDropdown) : beforeOptions}
-              </div>
-            )
-          }
-
           {typeof children === 'function' ? children(closeDropdown) : children}
-
-          {
-            !!afterOptions && (
-              <div className="DropdownOptions-after">
-                {typeof afterOptions === 'function' ? afterOptions(closeDropdown) : afterOptions}
-              </div>
-            )
-          }
         </div>
+        {
+          !!afterOptions && (
+            <div className="DropdownOptions-after">
+              {typeof afterOptions === 'function' ? afterOptions(closeDropdown) : afterOptions}
+            </div>
+          )
+        }
       </div>
     );
   }
 }
+
+export const DropdownItem = ({ children, className, ...restProps }) => (
+  <div className={classList('DropdownItem', className)} {...restProps}>{children}</div>
+);

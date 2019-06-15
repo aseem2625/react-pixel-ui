@@ -27,7 +27,7 @@ export BackDrop from './BackDrop/BackDrop';
 export Spinner from './Loader/Spinner';
 export GhostLoader from './Loader/GhostLoader';
 
-export Dropdown from './Dropdown/Dropdown';
+export Dropdown, { DropdownItem } from './Dropdown/Dropdown';
 
 export Card from './Card/Card';
 export Banner from './Banner/Banner';
