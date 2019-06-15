@@ -37,6 +37,7 @@ export Textarea, { TextareaElement } from './Field/Textarea/Textarea';
 export Input, { InputElement } from './Field/Input/Input';
 export RadioGroup, { RadioGroupElement } from './Field/RadioGroup/RadioGroup';
 export Checkbox, { CheckboxElement } from './Field/Checkbox/Checkbox';
+export Select, { SelectElement } from './Field/Select/Select';
 
 export SmoothScrollLink from './SmoothScrollLink/SmoothScrollLink';
 
