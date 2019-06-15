@@ -29,7 +29,19 @@
       transition: 0.12s cubic-bezier(0.15, 0.86, 1, 1)
       will-change: transform
 
+  .Select-Option-label
+    padding: 4px 12px
+    position: sticky
+    top: 0
+    background: #e9e9e9
+    line-height: 16px
+
   &.Field--Select--show
     .Select-trigger::after
       transform: rotate(-180deg)
 
+  .DropdownItem
+    cursor: pointer
+
+    &:hover
+      background-color: #efefef

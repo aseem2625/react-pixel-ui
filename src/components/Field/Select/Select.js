@@ -3,15 +3,14 @@ import { getFieldClasses, addWrapperToField } from '../Field';
 import { classList, debounce } from 'js-awesome-utils';
 
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
-import Dropdown, { DropdownOptions } from 'components/Dropdown/Dropdown';
+import Dropdown, { DropdownOptions, DropdownItem } from 'components/Dropdown/Dropdown';
 import { InputElement } from 'components/Field/Input/Input';
 
 import './Select.styl';
 
 
 /*
-* Handle nested options, required, etc.
-* Add toggle arrow
+* Handle required, etc.
 * */
 export class SelectElement extends Dropdown {
   constructor(props) {
@@ -147,23 +146,46 @@ class Options extends React.PureComponent {
 
   handleSelect = this._handleSelect.bind(this);
 
+  getOption(key, o, highlightOption) {
+    return (
+      <DropdownItem
+        key={key}
+        className={
+          classList(
+            'Select-Option',
+            highlightOption === o && 'Select-Option--highlight'
+          )}
+        onClick={_ => this.handleSelect(o)}
+      >
+        {o.name}
+      </DropdownItem>
+    );
+  }
+
   render() {
     const { options, highlightOption } = this.props;
 
     return (
-      options.map((o, ix) => (
-        <div
-          key={ix}
-          className={
-            classList(
-              'Select-Option',
-              highlightOption === o && 'Select-Option--highlight'
-            )}
-          onClick={_ => this.handleSelect(o)}
-        >
-          {o.name}
-        </div>
-      ))
+      options.map((o, ix) => {
+        const isNested = o.options && (o.options instanceof Array);
+
+        let opt;
+
+        if (isNested) {
+          opt = (
+            <div className="Select-Option-group">
+              <div className="Select-Option-label">{o.label}</div>
+              {o.options.map((oy, iy) => (
+                this.getOption('' + ix + iy, oy, highlightOption)
+              ))}
+            </div>
+          )
+        } else {
+          opt = this.getOption(ix, o, highlightOption);
+        }
+
+        return opt
+      })
     );
   }
 }
