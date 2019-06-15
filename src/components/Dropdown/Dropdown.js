@@ -20,14 +20,24 @@ export default class Dropdown extends React.PureComponent {
       show: toShow,
     }, () => {
       if (toShow) {
-        const el = this.optionsBody;
-        const renderWidthWithFixed =  el && el.getBoundingClientRect().width;
-
-        el.style.width = renderWidthWithFixed + 'px';
-        el.style.position = 'absolute';
-        el.style.opacity = 1;
+        this.rePositionBody();
       }
     });
+  }
+
+  componentDidMount() {
+    if(this.state.show) {
+      this.rePositionBody();
+    }
+  }
+
+  rePositionBody() {
+    const el = this.optionsBody;
+    const renderWidthWithFixed =  el && el.getBoundingClientRect().width;
+
+    el.style.width = renderWidthWithFixed + 'px';
+    el.style.position = 'absolute';
+    el.style.opacity = 1;
   }
 
   _closeDropdown() {
