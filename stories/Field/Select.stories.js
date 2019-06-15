@@ -46,7 +46,9 @@ storiesOf('Components/Field/Select', module)
         defaultValue={object('Default value', countries[2])}
         options={object('Options', countries)}
         disabled={boolean('Disabled', false)}
-        show={boolean('Show', false)}
+        show={boolean('Show', true)}
+        enableSearch={boolean('Enable search', false)}
+        searchKeys={['name', 'continent']}
       />
     )
   )
@@ -60,6 +62,8 @@ storiesOf('Components/Field/Select', module)
         options={object('Options', countries)}
         disabled={boolean('Disabled', false)}
         show={boolean('Show', true)}
+        enableSearch={boolean('Enable search', true)}
+        searchKeys={['name', 'continent']}
       />
     )
   );
