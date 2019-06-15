@@ -5,34 +5,36 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 import './Dropdown.styl';
 
 export default class Dropdown extends React.PureComponent {
-  state = { show : this.props.show || false };
+  constructor(props) {
+    super(props);
+    this.state = { show : props.show || false };
 
-  toggleDropdown = forceSet => {
-    console.log('...here....1..');
+    this.toggleDropdown = this._toggleDropdown.bind(this);
+    this.closeDropdown = this._closeDropdown.bind(this);
+  }
+
+  _toggleDropdown(forceSet) {
     const toShow = typeof forceSet !== 'undefined' ? forceSet : !this.state.show;
 
     this.setState({
       show: toShow,
     }, () => {
       if (toShow) {
-        const el = this.dropdownBody;
+        const el = this.optionsBody;
         const renderWidthWithFixed =  el && el.getBoundingClientRect().width;
 
         el.style.width = renderWidthWithFixed + 'px';
         el.style.position = 'absolute';
         el.style.opacity = 1;
-
       }
     });
-  };
+  }
 
-  closeDropdown = _ => {
-    console.log('...here....2..');
+  _closeDropdown() {
     this.toggleDropdown(false);
-  };
+  }
 
-  setTriggerRef = e => (this.dropdownTrigger = e);
-  setBodyRef = e => (this.dropdownBody = e);
+  setBodyRef = e => (this.optionsBody = e);
 
   render() {
     const {
@@ -41,6 +43,7 @@ export default class Dropdown extends React.PureComponent {
       trigger,
       beforeOptions,
       afterOptions,
+      children
     } = this.props;
     const { show } = this.state;
 
@@ -68,31 +71,49 @@ export default class Dropdown extends React.PureComponent {
 
           {
             this.state.show && (
-              <div ref={this.setBodyRef} className="Dropdown-body">
-                <div className="Dropdown-options">
-                  {
-                    !!beforeOptions && (
-                      <div class="Dropdown-options-before">
-                        {typeof beforeOptions === 'function' ? beforeOptions(this.closeDropdown) : beforeOptions}
-                      </div>
-                    )
-                  }
-
-                  {this.props.children(this.closeDropdown)}
-
-                  {
-                    !!afterOptions && (
-                      <div className="Dropdown-options-after">
-                        {typeof afterOptions === 'function' ? afterOptions(this.closeDropdown) : afterOptions}
-                      </div>
-                    )
-                  }
-                </div>
-              </div>
+              <DropdownOptions
+                elRef={this.setBodyRef}
+                beforeOptions={beforeOptions}
+                afterOptions={afterOptions}
+                closeDropdown={this.closeDropdown}
+              >
+                {children}
+              </DropdownOptions>
             )
           }
         </div>
       </OutsideClickLayer>
+    );
+  }
+}
+
+export class DropdownOptions extends React.PureComponent {
+
+  render() {
+    const { beforeOptions, afterOptions, children, elRef, closeDropdown } = this.props;
+
+    return (
+      <div ref={elRef} className="DropdownBody">
+        <div className="DropdownOptions">
+          {
+            !!beforeOptions && (
+              <div className="DropdownOptions-before">
+                {typeof beforeOptions === 'function' ? beforeOptions(closeDropdown) : beforeOptions}
+              </div>
+            )
+          }
+
+          {typeof children === 'function' ? children(closeDropdown) : children}
+
+          {
+            !!afterOptions && (
+              <div className="DropdownOptions-after">
+                {typeof afterOptions === 'function' ? afterOptions(closeDropdown) : afterOptions}
+              </div>
+            )
+          }
+        </div>
+      </div>
     );
   }
 }

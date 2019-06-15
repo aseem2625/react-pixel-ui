@@ -24,63 +24,63 @@
       z-index: -1
       display: none
 
-  .Dropdown-body
-    position: fixed
-    transform-origin: top center
-    top: 36px
-    left: 0
-    min-width: 180px
-    max-width: 360px
-    border: 1px solid #ccc
-    will-change: transform
-    opacity: 0
-
-    &::before, &::after
-      content: ''
-      position: absolute
-      width: 0
-      height: 0
-
-    &::before
-      top: -9px
-      left: 20px
-      border-left: 10px solid transparent
-      border-right: 10px solid transparent
-      border-bottom: 12px solid #ccc
-      z-index: -1
-
-    &::after
-      top: -8px
-      left: 24px
-      border-left: 6px solid transparent
-      border-right: 6px solid transparent
-      border-bottom: 8px solid #fff
-      z-index: 1
-
-  .Dropdown-options
-    max-height: 320px
-    overflow-y: auto
-
-    > *
-      display: block
-      width: 100%
-      padding: 4px 12px
-      line-height: 24px
-      background: $white
-      border: none
-
-      &:not(:last-child)
-        border-bottom: 1px solid #dddddd
-
-    > *:not(.Dropdown-options-before):not(.Dropdown-options-after)
-      text-align: left
-      cursor: pointer
-      outline: none
-
-
-      &:hover
-        background-color: #efefef
-
   &--show
     .Dropdown-trigger::after
       display: block
+
+.DropdownBody
+  position: fixed
+  transform-origin: top center
+  top: 36px
+  left: 0
+  min-width: 180px
+  max-width: 360px
+  border: 1px solid #ccc
+  will-change: transform
+  opacity: 0
+
+  &::before, &::after
+    content: ''
+    position: absolute
+    width: 0
+    height: 0
+
+  &::before
+    top: -9px
+    left: 20px
+    border-left: 10px solid transparent
+    border-right: 10px solid transparent
+    border-bottom: 12px solid #ccc
+    z-index: -1
+
+  &::after
+    top: -8px
+    left: 24px
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-bottom: 8px solid #fff
+    z-index: 1
+
+.DropdownOptions
+  max-height: 320px
+  overflow-y: auto
+
+  > *
+    display: block
+    width: 100%
+    padding: 4px 12px
+    line-height: 24px
+    background: $white
+    border: none
+
+    &:not(:last-child)
+      border-bottom: 1px solid #dddddd
+
+  > *:not(.DropdownOptions-before):not(.DropdownOptions-after)
+    text-align: left
+    cursor: pointer
+    outline: none
+
+
+    &:hover
+      background-color: #efefef
