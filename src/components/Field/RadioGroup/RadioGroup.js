@@ -37,7 +37,7 @@ export class RadioGroupElement extends React.PureComponent {
           className: classList('RadioGroup', className),
         })}
       >
-        <input name={name} value={value} hidden readOnly disabled={disabled} />
+        <input name={name} value={value} hidden readOnly />
         {options.map((o, i) => (
           <Radio
             key={o.value}
