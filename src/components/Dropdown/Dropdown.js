@@ -14,7 +14,7 @@ export default class Dropdown extends React.PureComponent {
   }
 
   _toggleDropdown(forceSet) {
-    const toShow = typeof forceSet !== 'undefined' ? forceSet : !this.state.show;
+    const toShow = typeof forceSet === 'boolean' ? forceSet : !this.state.show;
 
     this.setState({
       show: toShow,
