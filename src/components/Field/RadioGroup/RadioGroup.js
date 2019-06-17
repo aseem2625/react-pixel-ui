@@ -47,7 +47,7 @@ export class RadioGroupElement extends React.PureComponent {
             className="Field-el"
             disabled={disabled}
           >
-            <o.label />
+            {typeof o.label === 'function' ? o.label() :  o.label}
           </Radio>
         ))}
       </div>
