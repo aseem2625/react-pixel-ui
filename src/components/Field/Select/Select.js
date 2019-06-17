@@ -24,7 +24,9 @@ export class SelectElement extends Dropdown {
     }
 
     this.state.selectedOption = selectedOption;
-    this.state.options = props.options;
+    this._options = JSON.stringify(props.options); // One time, so no significant performance issues.
+
+    this.state.options = JSON.parse(this._options);
 
     this.onSelect = this._onSelect.bind(this);
 
@@ -46,14 +48,38 @@ export class SelectElement extends Dropdown {
   }
 
   _filterOptions(search) {
-    let options = this.props.options;
-    const searchKeys = this.props.searchKeys || ['name'];
+    let options = JSON.parse(this._options);
 
     if (search) {
+      const searchKeys = this.props.searchKeys || ['name'];
+      search = search.toLowerCase();
+
       options = options.filter(o => {
         for (let k of searchKeys) {
-          if (o.hasOwnProperty(k) && o[k].indexOf(search) > -1) {
-            return true;
+          const isNested = o.options && (o.options instanceof Array);
+
+          if (isNested) {
+            if (!o.options.length) {
+              return false;
+            }
+
+            const subOptions = o.options.filter(so => {
+              if (so.hasOwnProperty(k) && so[k].toLowerCase().indexOf(search) > -1) {
+                return true;
+              }
+            });
+
+            if (subOptions.length) {
+               o.options = subOptions;
+               return true;
+            }
+
+            return false;
+
+          } else {
+            if (o.hasOwnProperty(k) && o[k].toLowerCase().indexOf(search) > -1) {
+              return true;
+            }
           }
         }
       });
@@ -100,7 +126,7 @@ export class SelectElement extends Dropdown {
               <DropdownOptions
                 elRef={this.setRef}
                 closeDropdown={this.closeDropdown}
-                beforeOptions={enableSearch ? <InputElement onChange={this.searchInOptions} /> : beforeOptions}
+                beforeOptions={enableSearch ? <InputElement onChange={this.searchInOptions} autoFocus /> : beforeOptions}
                 afterOptions={afterOptions}
               >
                 <Options
@@ -172,8 +198,12 @@ class Options extends React.PureComponent {
         let opt;
 
         if (isNested) {
+          if (!o.options.length) {
+            return;
+          }
+
           opt = (
-            <div className="Select-Option-group">
+            <div className="Select-Option-group" key={o.label}>
               <div className="Select-Option-label">{o.label}</div>
               {o.options.map((oy, iy) => (
                 this.getOption('' + ix + iy, oy, highlightOption)
