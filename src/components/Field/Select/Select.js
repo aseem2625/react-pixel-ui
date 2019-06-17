@@ -10,21 +10,16 @@ import './Select.styl';
 
 
 /*
-* Handle required, etc.
+* Handle placeholder required, etc.
 * */
 export class SelectElement extends Dropdown {
   constructor(props) {
     super(props);
 
-    let selectedOption = props.defaultValue; // pass defaultValue = null, if nothing to be selected
+    let selectedOption = this.getOptionFromValue(props.defaultValue); // defaultValue = null / invalid, nothing to be selected
 
-    // Check if defaultValue present or if it's one of the options available in props.options
-    if (!selectedOption || props.options.indexOf(selectedOption) == -1) {
-      selectedOption = props.options[0]
-    }
-
-    this.state.selectedOption = selectedOption;
     this._options = JSON.stringify(props.options); // One time, so no significant performance issues.
+    this.state.selectedOption = selectedOption;
 
     this.state.options = JSON.parse(this._options);
 
@@ -32,6 +27,28 @@ export class SelectElement extends Dropdown {
 
     this.searchInOptions = this._searchInOptions.bind(this);
     this.filterOptions = debounce(this._filterOptions, 100);
+  }
+
+  getOptionFromValue(val) {
+    let option = null;
+
+    for(let o of this.props.options) {
+      const isNested = o.options && (o.options instanceof Array);
+
+      if (isNested) {
+        for(let so of o.options) {
+          if (so.value === val) {
+            option = so;
+            break;
+          }
+        }
+      } else if (o.value === val) {
+        option = o;
+        break;
+      }
+    }
+
+    return option;
   }
 
   _onSelect(option) {
@@ -109,7 +126,7 @@ export class SelectElement extends Dropdown {
         >
           <input
             name={name}
-            value={selectedOption ? (selectedOption.value || selectedOption.name) : ''}
+            value={selectedOption ? selectedOption.value : ''}
             hidden
             readOnly
           />
@@ -118,7 +135,7 @@ export class SelectElement extends Dropdown {
             className="Field-el Select-trigger"
             onClick={disabled ? undefined: this.toggleDropdown}
           >
-            <SelectedOption option={selectedOption} />
+            {selectedOption && <SelectedOption option={selectedOption} />}
           </div>
 
           {
