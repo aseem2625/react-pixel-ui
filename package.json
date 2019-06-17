@@ -11,7 +11,7 @@
     "watch": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o docs"
   },
   "dependencies": {
     "js-awesome-utils": "git+https://github.com/aseem2625/js-awesome-utils.git#4c1af75"
