@@ -35,6 +35,9 @@ const countries = [
 
 const nestedCountries = [
   {
+    name: 'Uncategorized Item',
+  },
+  {
     label: 'America',
     options: [
       {
