@@ -9,3 +9,6 @@ export const BasicMeta = ({ meta }) => (
     <link rel="canonical" href={meta.page_url} />
   </Helmet>
 );
+
+
+export default BasicMeta;

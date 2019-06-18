@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 // Can be generic share image / brand image.
-import defaultImage from 'img/car.jpg';
+import defaultImage from 'assets/svg/like.svg';
 
 export const SocialMeta = ({ meta }) => (
   <Helmet>
@@ -13,7 +13,7 @@ export const SocialMeta = ({ meta }) => (
     {meta.description && (
       <meta property="og:description" content={meta.description} />
     )}
-    <meta property="og:site_name" content="website_name" />
+    <meta property="og:site_name" content={meta.website_name} />
     <meta property="og:image:width" content="500" />
     <meta property="og:image:height" content="500" />
 
@@ -25,10 +25,12 @@ export const SocialMeta = ({ meta }) => (
       <meta name="twitter:description" content={meta.description} />
     )}
 
-    <meta name="twitter:site" content="@twitter_handle" />
-    <meta name="twitter:creator" content="@twitter_handle" />
+    <meta name="twitter:site" content={meta.twitter_handle} />
+    <meta name="twitter:creator" content={meta.twitter_handle} />
 
     {/* Twitter Summary card images must be at least 120x120px*/}
     <meta name="twitter:image" content={meta.image || defaultImage} />
   </Helmet>
 );
+
+export default SocialMeta;
