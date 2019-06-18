@@ -52,6 +52,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-svg-loader": "^3.0.3",
     "rollup": "^1.13.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.0.0",
@@ -61,7 +62,9 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-stylus-compiler": "^1.0.1",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "svgo": "^1.2.2",
+    "svgo-loader": "^2.2.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.4.3",

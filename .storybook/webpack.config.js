@@ -3,6 +3,7 @@ const path = require('path');
 
 const paths = {
   source: path.join(__dirname, '../src'),
+  svg: path.join(__dirname, '../src/assets/svg')
 };
 
 module.exports = ({ config, mode }) => {
@@ -66,8 +67,31 @@ module.exports = ({ config, mode }) => {
                 },
               },
             },
+          ]
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+            {
+              loader: 'react-svg-loader',
+              options: {
+                svgo: {
+                  plugins: [
+                    {
+                      removeTitle: true,
+                    }, {
+                      removeViewBox: false
+                    }
+                  ],
+                  floatPrecision: 3,
+                },
+              },
+            },
           ],
-          enforce: 'pre',
+          include: paths.svg,
         },
       ],
     },
