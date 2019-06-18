@@ -20,5 +20,13 @@
 8. Tour
 9. Stepper
 
+10. Carousel (siema / glider https://nickpiscitelli.github.io/Glider.js/)
+11. Tabs
+12. Image component (to lazy load images and load blurred image)
+13. Sticky elements
+14. Add validators and formatters from svelte forms code
+15. Make showing error in form fields, same as svelte form code
+
+
 #### Others
 1. Better UI for components
