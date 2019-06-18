@@ -6,9 +6,7 @@
 5. consistent naming, like hasShadow -> showShadow, in Card.
 
 #### Stories
-1. Meta
-2. Icon. (Also, uncomment Icon in HelpText)
-3. SmoothScrollLink
+1. SmoothScrollLink
 
 
 #### Components
