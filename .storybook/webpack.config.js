@@ -3,7 +3,8 @@ const path = require('path');
 
 const paths = {
   source: path.join(__dirname, '../src'),
-  svg: path.join(__dirname, '../src/assets/svg')
+  svg: path.join(__dirname, '../src/assets/svg'),
+  images: path.join(__dirname, '../src/assets/img')
 };
 
 module.exports = ({ config, mode }) => {
@@ -93,6 +94,15 @@ module.exports = ({ config, mode }) => {
           ],
           include: paths.svg,
         },
+        {
+          test: /\.(png|jpg)$/,
+          include: paths.images,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        }
       ],
     },
   };

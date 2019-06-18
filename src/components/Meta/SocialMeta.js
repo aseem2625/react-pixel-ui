@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-// Can be generic share image / brand image.
-import defaultImage from 'assets/svg/like.svg';
+
+let defaultImage;
 
 export const SocialMeta = ({ meta }) => (
   <Helmet>
@@ -33,4 +33,8 @@ export const SocialMeta = ({ meta }) => (
   </Helmet>
 );
 
-export default SocialMeta;
+export default _defaultImage => {
+    defaultImage = _defaultImage;
+
+    return SocialMeta;
+};
