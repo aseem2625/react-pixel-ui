@@ -9,7 +9,6 @@ import stylus from 'rollup-plugin-stylus-compiler';
 import postcss from 'rollup-plugin-postcss';
 import svgr from '@svgr/rollup';
 import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 
 import pkg from './package.json';
 
@@ -49,9 +48,7 @@ export default [
         modules: false,
         plugins: [
           autoprefixer,
-          cssnano
         ],
-        minimize: true,
         extract: true,
         sourceMap: true,
       }),
