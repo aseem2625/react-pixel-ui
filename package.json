@@ -70,6 +70,7 @@
     "@babel/core": "^7.4.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "js-awesome-utils": "git+https://github.com/aseem2625/js-awesome-utils.git#4c1af75"
   }
 }
