@@ -4,8 +4,7 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 import './Icon.styl';
 
 const Icon = ({ name, className = '', isLarge = false }) => {
-  const iconPath = `svg/${name}.svg`;
-  const Ico = require(iconPath).default;
+  const Ico = require(`assets/svg/${name}.svg`).default;
 
   return (
     <span
