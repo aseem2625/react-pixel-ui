@@ -27,7 +27,12 @@ export class PopupsContainer extends Stack {
 
   render() {
     return (
-      <BackDrop className="Popup" show={this.state.stack.length}>
+      <BackDrop
+        className="Popup"
+        show={this.state.stack.length}
+        onShow={this.props.onShow}
+        onHide={this.props.onHide}
+      >
         {this.state.stack.map((p, ix) => {
           const isEnabledOutsideClick = p.enableOutsideClick || false; // By default it's false
           const isEnabledEscPress = p.enableEscPress || false; // By default it's false

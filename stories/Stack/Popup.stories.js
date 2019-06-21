@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
+import { freezeRoot, unfreezeRoot } from '../_story-helpers/utils';
 
 import { PopupsContainer, openPopup, Button} from 'components/index';
 
@@ -17,7 +18,10 @@ storiesOf('Components/Stack', module)
       return (
         <div>
           {/* All modals share common instance. PopupsContainer to be present at top level of React app */}
-          <PopupsContainer />
+          <PopupsContainer
+            onShow={freezeRoot}
+            onHide={unfreezeRoot}
+          />
 
           {/* Open a modal */}
           <Button
@@ -53,11 +57,11 @@ class Modal1 extends React.PureComponent {
         <br />
         {data}
         <br />
-        <Button isPrimary onClick={close}>
+        <Button className="primary" onClick={close}>
           Close Popup
         </Button>
         <Button
-          isPrimary
+          className="primary"
           onClick={_ =>
             openPopup({
               title: 'Dummy Modal2',
@@ -83,7 +87,7 @@ class Modal2 extends React.PureComponent {
     return (
       <div>
         <br />
-        <Button isPrimary onClick={close}>
+        <Button className="primary" onClick={close}>
           Close Modal
         </Button>
       </div>
