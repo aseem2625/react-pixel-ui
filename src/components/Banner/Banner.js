@@ -3,12 +3,12 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './Banner.styl';
 
-export const Banner = ({ className, type, children }) => (
+export const Banner = ({ children, className, uiClass }) => (
   <div
     className={classList(
       'Banner',
-      type && `Banner--${type}`,
-      prefixToClasses('Banner--', className)
+      prefixToClasses('Banner--', className),
+      uiClass
     )}
   >
     {children}
