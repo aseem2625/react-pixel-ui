@@ -33,8 +33,13 @@ export default class AutoRemoveLayer extends React.PureComponent {
   handleRemove = this._handleRemove.bind(this);
 
   render() {
+    const styles = {};
+    if (this.state.hide) {
+      styles.display = 'none'
+    }
+
     return (
-      <div className={classList(this.state.hide && `isHidden`)}>
+      <div style={styles}>
         {this.props.children}
       </div>
     );
