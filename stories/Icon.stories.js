@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean } from '@storybook/addon-knobs';
+import { select, text } from '@storybook/addon-knobs';
 import Icon from 'components/Icon/Icon';
 
 
@@ -12,14 +12,15 @@ storiesOf('Components', module)
   .add(
     'Icon',
     () => {
-      const isLarge = boolean('Large size', false);
+      const uiClass = select('uiClass', ['ui-svg-size-sm', 'ui-svg-size-md', 'ui-svg-size-lg']),
+        className = text('className', 'class1 class2');
 
       return (
         <div>
-          <Icon name="dislike" isLarge={isLarge} />
-          <Icon name="like" isLarge={isLarge} />
-          <Icon name="views" isLarge={isLarge} />
-          <Icon name="info" isLarge={isLarge} />
+          <Icon name="dislike" className={className} uiClass={uiClass} />
+          <Icon name="like" className={className} uiClass={uiClass} />
+          <Icon name="views" className={className} uiClass={uiClass} />
+          <Icon name="info" className={className} uiClass={uiClass} />
         </div>
       );
     }
