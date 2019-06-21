@@ -30,5 +30,5 @@ configure(loadStories, module);
 * NOTE: Writing import for styl at end of this file ensures the 1st point.
 *
 * */
-import './custom.styl';
+import './theme/custom.styl';
 import 'styles/ui.styl';
