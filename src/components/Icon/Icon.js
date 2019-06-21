@@ -3,7 +3,7 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './Icon.styl';
 
-const Icon = ({ name, className = '', isLarge = false }) => {
+const Icon = ({ name, className, uiClass }) => {
   const Ico = require(`assets/svg/${name}.svg`).default;
 
   return (
@@ -11,8 +11,8 @@ const Icon = ({ name, className = '', isLarge = false }) => {
       className={classList(
         'Icon',
         'Icon--' + name,
-        isLarge && 'Icon--large',
-        prefixToClasses('Icon--', className)
+        prefixToClasses('Icon--', className),
+        uiClass
       )}
     >
       <Ico />
