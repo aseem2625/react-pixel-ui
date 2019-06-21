@@ -38,7 +38,7 @@ class ConfirmPopup extends React.PureComponent {
   onAffirm = this._onAffirm.bind(this);
 
   render() {
-    const { description, affirmLabel, cancelLabel, className } = this.props;
+    const { className, description, affirmLabel, cancelLabel, affirmButtonClass, cancelButtonClass } = this.props;
 
     return (
       <React.Fragment>
@@ -50,8 +50,8 @@ class ConfirmPopup extends React.PureComponent {
           </div>
         )}
         <div className={prefixToClasses('Popup--', className + '-actions')}>
-          <Button onClick={this.onCancel}>{cancelLabel}</Button>
-          <Button isPrimary onClick={this.onAffirm}>
+          <Button className={cancelButtonClass} onClick={this.onCancel}>{cancelLabel}</Button>
+          <Button className={affirmButtonClass} onClick={this.onAffirm}>
             {affirmLabel}
           </Button>
         </div>
@@ -77,6 +77,8 @@ export default function openConfirmPopup({
   onAffirm,
   onCancel,
   className,
+  affirmButtonClass,
+  cancelButtonClass,
   ...restProps
 }) {
   const cls = 'Confirm';
@@ -95,6 +97,8 @@ export default function openConfirmPopup({
             cancelLabel={cancelLabel}
             onAffirm={onAffirm}
             onCancel={onCancel}
+            affirmButtonClass={affirmButtonClass}
+            cancelButtonClass={cancelButtonClass}
             resolve={res}
             reject={rej}
           />
