@@ -2,9 +2,11 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
+import { freezeRoot, unfreezeRoot } from '../_story-helpers/utils';
 
 import { PopupsContainer, openConfirmPopup, AsyncButton} from 'components/index';
 import { mockAPI } from 'js-awesome-utils';
+// import Spinner from "../../src/components/Loader/Spinner";
 
 storiesOf('Components/Stack', module)
   .add(
@@ -17,9 +19,9 @@ storiesOf('Components/Stack', module)
         cancelLabel = text("Cancel Label", 'Cancel Me'),
         affirmLabel = text("Affirm Label", 'Some Promise Button'),
         onAffirm = mockAPI,
-        onCancel = _ => console.log('Close Confirm');
-
-
+        onCancel = _ => console.log('Close Confirm'),
+        affirmButtonClass = 'primary',
+        cancelButtonClass = '';
 
       const handleConfirm = _ => {
         return openConfirmPopup({
@@ -29,18 +31,24 @@ storiesOf('Components/Stack', module)
           cancelLabel,
           affirmLabel,
           onAffirm,
-          onCancel
+          onCancel,
+          affirmButtonClass,
+          cancelButtonClass
         });
       };
 
       return (
         <div>
           {/* All modals share common instance. PopupsContainer to be present at top level of React app */}
-          <PopupsContainer />
+          <PopupsContainer
+            onShow={freezeRoot}
+            onHide={unfreezeRoot}
+          />
 
           {/* Open a confirmation modal */}
           <AsyncButton onClick={handleConfirm} pendingText="Pending...">
             Confirm Modal
+            {/*{isPending => <Spinner show={isPending} />}*/}
           </AsyncButton>
         </div>
       );
