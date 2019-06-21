@@ -51,18 +51,24 @@ export default class AsyncButton extends React.PureComponent {
     const { isPending } = this.state;
     let btnContent = [];
 
-    children.forEach(c => {
-      if (c && typeof c === 'function') {
-        btnContent.push(<React.Fragment key="Spinner">{c(isPending)}</React.Fragment>);
-      } else {
-        if (!isPending || pendingText)
-        btnContent.push(
-          <span key="text" className="Btn-text">
-            {isPending ? pendingText : c}
-          </span>
-        );
-      }
-    });
+    console.log('....', children);
+
+    if (children instanceof Array) {
+      children.forEach(c => {
+        if (c && typeof c === 'function') {
+          btnContent.push(<React.Fragment key="Spinner">{c(isPending)}</React.Fragment>);
+        } else {
+          if (!isPending || pendingText)
+          btnContent.push(
+            <span key="text" className="Btn-text">
+              {isPending ? pendingText : c}
+            </span>
+          );
+        }
+      });
+    } else {
+      btnContent = children;
+    }
 
     return (
       <Button
