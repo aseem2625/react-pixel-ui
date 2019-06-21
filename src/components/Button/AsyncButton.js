@@ -2,7 +2,6 @@ import React from 'react';
 import { prevent } from 'helpers/utils';
 import { classList } from 'js-awesome-utils';
 import Button from 'components/Button/Button';
-import Spinner from '../Loader/Spinner';
 
 /*
 * Async Button to show spinner if onClick returns promise
@@ -42,7 +41,6 @@ export default class AsyncButton extends React.PureComponent {
     const {
       pendingText,
       onClick,
-      showSpinner = true,
       children,
       className,
       disabled,
@@ -51,6 +49,20 @@ export default class AsyncButton extends React.PureComponent {
     } = this.props;
 
     const { isPending } = this.state;
+    let btnContent = [];
+
+    children.forEach(c => {
+      if (c && typeof c === 'function') {
+        btnContent.push(<React.Fragment key="Spinner">{c(isPending)}</React.Fragment>);
+      } else {
+        if (!isPending || pendingText)
+        btnContent.push(
+          <span key="text" className="Btn-text">
+            {isPending ? pendingText : c}
+          </span>
+        );
+      }
+    });
 
     return (
       <Button
@@ -63,11 +75,7 @@ export default class AsyncButton extends React.PureComponent {
         onClick={onClick && !disabled ? this.onClick : void 0}
         disabled={isPending || disabled}
       >
-        <span className="Btn-mainText">{children}</span>
-        {pendingText && <span className="Btn-pendingText">{pendingText}</span>}
-        {showSpinner && (
-          <Spinner show={isPending} isPrimary={!restProps.isPrimary || restProps.isLink} />
-        )}
+        {btnContent}
       </Button>
     );
   }

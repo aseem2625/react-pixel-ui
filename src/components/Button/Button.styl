@@ -1,35 +1,27 @@
 @import $vars
 
 .Btn
-  background: #fbfbfb
-  color: #414141
+  position: relative
   padding: 8px 20px
   line-height: 16px
+  color: $black
   border-radius: 2px
+  font-size: 16px
   border: none
   outline: none
   transition: 0.15s
   transform-origin: center
   cursor: pointer
-  font-size: 16px
-  box-shadow: inset 0 -2px 0 rgba(34,45,57,.15)
-
-  &:not(:disabled)
-    &:hover
-      background-color: #ececec
-
-    &:active
-      background-color: #dcdcdc
 
   &:disabled
     cursor: not-allowed !important
     opacity: 0.5
 
-  &--link
+  &.Btn--link
     padding: 8px 0
     background-color: transparent
     box-shadow: none
-    color: #000
+    color: $black
 
     &:not(:disabled)
       &:hover
@@ -39,41 +31,36 @@
       &:active
         background-color: inherit
         text-decoration: underline
-
-  &--primary
-    background-color: $c-primary
-    color: $white
-
-    &:not(:disabled)
-      &:hover
-        background-color: $c-primary-light
-
-      &:active
-        background-color: $c-primary-dark
-
-  &--round
-    border-radius: 24px
-
 
 .Btn--AsyncBtn
-  .Btn-pendingText
-    transition: 0.3s 0.05s
+  .Btn-text, .Spinner
+    vertical-align: middle
+
+  .Btn-text
+    display: inline-block
+
+  .Spinner
+    position: absolute
     display: none
-    opacity: 0
 
-    & + .Spinner
-      margin-left: 8px
+  .Btn-text
+    transition: 0.12s padding
 
-  .Btn-mainText
-    transition: 0.3s 0.05s
+  .Spinner
+    left: 16px
 
-  &--isPending
+  span + .Spinner
+    left: unset
+    right: 16px
+
+  &.Btn--AsyncBtn--isPending
     height: 34px
 
-    .Btn-pendingText
-      display: unset
-      opacity: 1
+    .Spinner
+      display: inline-block
 
-    .Btn-mainText
-      display: none
-      opacity: 0
+    .Btn-text
+      padding: 0 28px 0 0
+
+    .Spinner + .Btn-text
+      padding: 0 0 0 28px
