@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean, text } from '@storybook/addon-knobs';
+import { text, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import DummyContainer from './_story-helpers/DummyContainer'
 
 import { RipplePointer } from 'components/index';
 
@@ -11,18 +12,19 @@ storiesOf('Components', module)
   .add(
     'RipplePointer',
     () => {
-      const isPrimary = boolean('Primary Ripple', false),
-      className = text('Classes', 'class1 class2');
+      const className = text('className', 'primary'),
+        uiClass = text('uiClass', ''),
+        style = object('style', { left: 50, top: 32 });
 
       return (
-        <div style={{ height: 100, width: 100, background: `${isPrimary ? '#fff' : '#000'}` }}>
+        <DummyContainer darkBG={className.split(' ').indexOf('primary') === -1 }>
           <RipplePointer
-            isPrimary={isPrimary}
             className={className}
+            uiClass={uiClass}
+            style={style}
             onClick={action('RipplePointer clicked!')}
-            style={{ left: 50, top: 50 }}
           />
-        </div>
+        </DummyContainer>
       );
     }
   );

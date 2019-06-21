@@ -70,3 +70,18 @@
 .Card
   &--round
     border-radius: 24px
+
+
+
+/***********************/
+/* RipplePointer override */
+/***********************/
+
+.RipplePointer
+  &--primary
+    &::after, &::before
+      background-color: $c-primary
+
+    .RipplePointer-epicenter::after
+      background-color: $c-primary
+
