@@ -3,13 +3,13 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './RipplePointer.styl';
 
-const RipplePointer = ({ isPrimary = false, className, onClick, ...restProps }) => (
+const RipplePointer = ({ className, uiClass, onClick, ...restProps }) => (
   <div
     {...restProps}
     className={classList(
       'RipplePointer',
-      isPrimary && 'RipplePointer--primary',
       prefixToClasses('RipplePointer--', className),
+      uiClass,
       onClick && 'RipplePointer--clickable'
     )}
   >

@@ -2,9 +2,10 @@
 
 //https://www.chromaticqa.com/
 .RipplePointer
-  position: relative
+  position: absolute
   width: 56px
   height: 56px
+
   &::before, &::after
     content: ''
     display: block
@@ -55,13 +56,6 @@
     .RipplePointer-epicenter
       cursor: pointer
       pointer-events: all
-
-  &--primary
-    &::after, &::before
-      background: $c-primary
-
-    .RipplePointer-epicenter &::after
-      background-color: $c-primary
 
 @keyframes ripple-before
   0%
