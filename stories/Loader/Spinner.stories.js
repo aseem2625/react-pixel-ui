@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { boolean } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 
 import { Spinner } from 'components/index';
 
@@ -19,8 +19,9 @@ storiesOf('Components/Loader', module)
           }}
         >
           <Spinner
-            isPrimary={boolean("Primary", true)}
-            show={boolean("Show", true)}
+            show={boolean("show", true)}
+            className={text('className', 'primary')}
+            uiClass={text('uiClass', 'ui-class1 ui-class2')}
           >
             Button
           </Spinner>

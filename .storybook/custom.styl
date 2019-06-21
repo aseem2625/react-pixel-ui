@@ -1,3 +1,5 @@
+@import $vars
+
 /***********************/
 /* Sample stylesheet for defining project specific styles */
 /***********************/
@@ -13,6 +15,11 @@
 /***********************/
 /* Override styles from base.css */
 /***********************/
+
+.Spinner
+  &--primary
+    border-color: $c-primary
+    border-top-color: transparent
 
 .Tag
   background-color: #f3f3f3
