@@ -1,0 +1,67 @@
+@-webkit-keyframes fadeInUpAppear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, 3px);
+            transform: translate(-50%, 3px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
+}
+@keyframes fadeInUpAppear {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, 3px);
+            transform: translate(-50%, 3px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
+}
+/***********************/
+/* General */
+/***********************/
+.ui-hasShadow {
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.ui-block {
+  width: 100%;
+}
+/***********************/
+/* BG colors */
+/***********************/
+.ui-bg-white {
+  background-color: #fff;
+}
+/***********************/
+/* Text colors */
+/***********************/
+.ui-txt-white {
+  color: #fff;
+}
+/***********************/
+/* Font sizes */
+/***********************/
+.ui-size-lg {
+  font-size: 18px;
+}
+.ui-size-md {
+  font-size: 14px;
+}
+.ui-size-sm {
+  font-size: 11px;
+}
+/***********************/
+/* Animations */
+/***********************/
+.ui-fadeInUpAppear {
+  -webkit-animation: fadeInUpAppear 0.24s cubic-bezier(0, 0, 0.22, 0.95) forwards;
+          animation: fadeInUpAppear 0.24s cubic-bezier(0, 0, 0.22, 0.95) forwards;
+}
+
+/*# sourceMappingURL=ui.css.map */
