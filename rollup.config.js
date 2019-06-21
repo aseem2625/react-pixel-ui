@@ -20,13 +20,17 @@ const includePathOptions = {
   extensions: ['.js', '.svg', '.styl']
 };
 
+const outputDir = 'dist/';
+
 export default [
+  /* Rollup config for bundling React UI components */
+
   {
     input: "src/components/index.js",
     // input: "src/components/**/*.js",
     output: [
       {
-        file: 'dist/' + pkg.main.replace(/\.js$/, `.min.js`),
+        file: path.join(outputDir, pkg.main.replace(/\.js$/, `.min.js`)),
         format: 'esm',
         sourcemap: true
       }
@@ -49,7 +53,7 @@ export default [
         plugins: [
           autoprefixer,
         ],
-        extract: true,
+        extract: path.join(outputDir, 'base.css'),
         sourceMap: true,
       }),
       babel({
@@ -62,11 +66,29 @@ export default [
     external: [
       ...Object.keys(pkg.peerDependencies || {})
     ], // libraries used which are not to be imported with the bundle
-/*
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    }
-*/
-  }
+  },
+
+  /* Rollup config for building add-on ui css as utility */
+
+  {
+    input: 'src/styles/ui.styl',
+    output: {
+      file: path.join(outputDir, 'ui.css'),
+      format: 'es'
+    },
+    plugins: [
+      stylus({
+        include: ['src/styles/**/*.styl']
+      }),
+      postcss({
+        include: ['src/styles/**/*.css'],
+        modules: false,
+        plugins: [
+          autoprefixer,
+        ],
+        extract: true,
+        sourceMap: true,
+      }),
+    ]
+  },
 ];
