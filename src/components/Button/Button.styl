@@ -46,12 +46,13 @@
   .Btn-text
     transition: 0.2s padding cubic-bezier(0.2, 0.9, 1, 1)
 
-  .Spinner
-    left: 16px
+  &.Btn--AsyncBtn--withSpinner
+    .Spinner
+      left: 16px
 
-  span + .Spinner
-    left: unset
-    right: 16px
+    span + .Spinner
+      left: unset
+      right: 16px
 
   &.Btn--AsyncBtn--isPending
     height: 34px
@@ -59,8 +60,9 @@
     .Spinner
       display: inline-block
 
-    .Btn-text
-      padding: 0 28px 0 0
+    &.Btn--AsyncBtn--withSpinner
+      .Btn-text
+        padding: 0 28px 0 0
 
-    .Spinner + .Btn-text
-      padding: 0 0 0 28px
+      .Spinner + .Btn-text
+        padding: 0 0 0 28px
