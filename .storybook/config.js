@@ -4,9 +4,6 @@ import centered from "@storybook/addon-centered/react";
 import { withA11y } from "@storybook/addon-a11y";
 import { withConsole } from "@storybook/addon-console";
 
-import 'styles/index.styl';
-import './index.css';
-
 
 addDecorator(centered);
 addDecorator(withKnobs);
@@ -22,3 +19,16 @@ function loadStories() {
 }
 
 configure(loadStories, module);
+
+
+/*
+* Correct order for css is:
+* 1. CSS(base.css) which is bundled by react-pixel-ui for UI Components
+* 2. CSS for project specific overriding styles in base.css
+* 3. CSS(ui.css) for additional css utilities provided by react-pixel-ui
+*
+* NOTE: Writing import for styl at end of this file ensures the 1st point.
+*
+* */
+import './custom.styl';
+import 'styles/ui.styl';

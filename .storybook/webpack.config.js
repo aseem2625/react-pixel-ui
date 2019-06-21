@@ -1,5 +1,7 @@
-const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 const path = require('path');
+const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 const paths = {
   source: path.join(__dirname, '../src'),
@@ -25,13 +27,19 @@ module.exports = ({ config, mode }) => {
         new DirectoryNamedWebpackPlugin(true)
       ],
     },
+    plugins: [
+      ...config.plugins,
+      new MiniCssExtractPlugin({
+        filename: 'base.css'
+      })
+    ],
     module: {
       ...config.module,
       rules: [
         {
           test: /\.(styl|css)$/,
           use: [
-            'style-loader',
+            MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
