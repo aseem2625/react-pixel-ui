@@ -3,13 +3,13 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './Spinner.styl';
 
-const Spinner = ({ show = true, isPrimary, className }) => (
+const Spinner = ({ show = true, className, uiClass }) => (
   <span
     className={classList(
       'Spinner',
-      className && prefixToClasses('Spinner--', className),
       show && 'Spinner--show',
-      isPrimary && 'Spinner--primary'
+      className && prefixToClasses('Spinner--', className),
+      uiClass
     )}
   />
 );
