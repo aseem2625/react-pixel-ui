@@ -1,5 +1,3 @@
-import '../styles/index.styl';
-
 export Button from './Button/Button';
 export AsyncButton from './Button/AsyncButton';
 
