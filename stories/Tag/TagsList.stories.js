@@ -10,10 +10,12 @@ storiesOf('Components/Tag', module)
   .add(
     'TagsList',
     () => (
-      <TagsList className={text('Classes', 'class1 class2')}>
-        <Tag>Simple Tag </Tag>
-        <Tag>Simple very big text Tag</Tag>
-        <Tag className="green">Simple Tag </Tag>
-      </TagsList>
+      <div style={{width: 250, border: '1px solid black'}}>
+        <TagsList className={text('Classes', 'class1 class2')}>
+          <Tag showShadow>Simple Tag </Tag>
+          <Tag showShadow>Simple very big text Tag</Tag>
+          <Tag showShadow isRound>Simple Tag </Tag>
+        </TagsList>
+      </div>
     )
   );
