@@ -12,30 +12,31 @@ import './BackDrop.styl';
 export default class BackDrop extends React.PureComponent {
   componentDidMount() {
     if (this.props.show) {
-      this.freezeBG();
+      this.onShowBD();
     }
   }
 
   componentDidUpdate() {
     if (this.props.show) {
-      this.freezeBG();
+      this.onShowBD();
     } else {
-      this.unFreezeBG();
+      this.onHideBD();
     }
   }
 
-  freezeBG() {
-    document.body.classList.add('freeze');
-    document.getElementById('root').classList.add('freeze');
+  onShowBD() {
+    // via class, it gives control if you want to override styles for scroll-fix, eg: remove overflow: hidden to let it scroll
+    document.body.classList.add('scroll-fix');
+    this.props.onShow && this.props.onShow();
   }
 
-  unFreezeBG() {
-    document.body.classList.remove('freeze');
-    document.getElementById('root').classList.remove('freeze');
+  onHideBD() {
+    document.body.classList.remove('scroll-fix');
+    this.props.onHide && this.props.onHide();
   }
 
   componentWillUnmount() {
-    this.unFreezeBG();
+    this.onHideBD();
   }
 
   render() {
