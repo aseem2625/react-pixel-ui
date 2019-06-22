@@ -2,30 +2,28 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
+import DummyContainer from '../_story-helpers/DummyContainer'
 
 import { Spinner } from 'components/index';
 
 storiesOf('Components/Loader', module)
   .add(
     'Spinner',
-    () => (
-      <div>
-        <span
-          style={{
-            height: 40,
-            width: 40,
-            background: '#000',
-            display: 'inline-block',
-          }}
-        >
+    () => {
+      const className = text('className', 'primary'),
+        uiClass = text('uiClass', ''),
+        show = boolean("show", true);
+
+      return (
+        <DummyContainer darkBG={className.split(' ').indexOf('primary') === -1 }>
           <Spinner
-            show={boolean("show", true)}
-            className={text('className', 'primary')}
-            uiClass={text('uiClass', 'ui-class1 ui-class2')}
+            show={show}
+            className={className}
+            uiClass={uiClass}
           >
             Button
           </Spinner>
-        </span>
-      </div>
-    )
+        </DummyContainer>
+      );
+    }
   );
