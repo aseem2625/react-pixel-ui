@@ -1,13 +1,13 @@
+@import $vars
+
 .HelpText
-  font-size: 14px
-  color: gray
+  position: relative
+  width: 100%
+  line-height: 16px
 
-  &--large
-    font-size: 16px
+  > span
+    display: table-cell
+    vertical-align: top
 
-  .HelpText-content
-    vertical-align: middle
-
-  .Icon + .HelpText-content
-    margin-left: 4px
-
+  > *:not(:first-child)
+    padding-left: 8px

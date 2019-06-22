@@ -1,13 +1,17 @@
 import React from 'react';
-// import Icon from 'components/Icon/Icon';
 import { classList } from 'js-awesome-utils';
 
 import './HelpText.styl';
 
-const HelpText = ({ children, isLarge = false }) => (
-  <div className={classList('HelpText', isLarge && 'HelpText--large')}>
-     {/*<Icon name="info" isLarge={isLarge} />*/}
-    <span className="HelpText-content">{children}</span>
+
+export const HelpText = ({ children, uiClass }) => (
+  <div
+    className={classList(
+      'HelpText',
+      uiClass
+    )}
+  >
+    {children}
   </div>
 );
 
