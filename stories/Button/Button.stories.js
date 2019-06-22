@@ -12,7 +12,7 @@ storiesOf('Components/Button', module)
     'Button',
     () => (
       <Button
-        className={text("className", 'round')}
+        className={text("className", 'round primary')}
         uiClass={text('uiClass', 'ui-hasShadow ui-bg-white')}
         isLink={boolean("Link", false)}
         disabled={boolean("Disabled", false)}

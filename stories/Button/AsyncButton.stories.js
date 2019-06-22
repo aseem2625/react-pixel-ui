@@ -13,7 +13,7 @@ storiesOf('Components/Button', module)
     'AsyncButton',
     () => (
       <AsyncButton
-        className={text("className", 'round')}
+        className={text("className", 'round primary')}
         uiClass={text('uiClass', 'ui-hasShadow ui-bg-white')}
         isLink={boolean("isLink", false)}
         disabled={boolean("disabled", false)}
