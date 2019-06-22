@@ -52,8 +52,6 @@ export default class AsyncButton extends React.PureComponent {
     let btnContent = [],
       withSpinner = false;
 
-    console.log('....', children);
-
     if (children instanceof Array) {
 
       children.forEach(c => {
