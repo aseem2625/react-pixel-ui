@@ -11,8 +11,10 @@ storiesOf('Components', module)
     'Tooltip',
     () => (
       <Tooltip
-        tooltipText={text('Tooltip Text', 'Some tooltip content')}
-        className={text('Classes', 'class1 class2')}
+        className={text('className', 'class1 class2')}
+        uiClass={text('uiClass', '')}
+        tooltipContent={text('tooltipText', 'Some tooltip content')}
+        uiClassContent={text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white')}
       >
         Hover/Tap Me!
       </Tooltip>

@@ -95,3 +95,19 @@
 
 .HelpText
   color: $gray
+
+
+/***********************/
+/* Tooltip override */
+/***********************/
+
+.Tooltip
+  .Tooltip-trigger
+    &:hover
+      & + .Tooltip-content
+        transform: translate(-50%, -100%)
+
+.Tooltip-content
+  transform: translate(-50%, -100%) scale(0.98) // fallback
+  transform: translate(-50%, calc(-100% + 6px))  scale(0.9)
+
