@@ -18,7 +18,7 @@ export default class Popover extends React.Component {
         show: true,
       });
     } else {
-      const delay = this.props.delay || 250; // Delay = 250ms (default)
+      const delay = typeof this.props.delay !== 'undefined' ? this.props.delay : 250; // Delay = 250ms (default)
 
       this.inTransition = window.setTimeout(_ => {
         this.inTransition &&
