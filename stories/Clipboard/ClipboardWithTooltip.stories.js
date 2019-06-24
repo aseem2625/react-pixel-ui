@@ -3,7 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
-import { ClipboardWithTooltip, Icon } from 'components/index';
+import { ClipboardWithTooltip } from 'components/index';
+import Icon  from 'components/Icon/Icon';
 
 
 storiesOf('Components/Clipboard', module)
@@ -40,6 +41,8 @@ class SomeComponentWith_ClipboardWithTooltip extends React.Component {
 
     const temp_uiClassTooltipContent = cls.replace(/ui-bg-[\w]+/, 'ui-bg-green'); // Changing class on onCopy
 
+    // TODO: Change the tooltip content using onCopy only...
+
     return (
       <ClipboardWithTooltip
         toCopy={toCopy}
@@ -52,7 +55,7 @@ class SomeComponentWith_ClipboardWithTooltip extends React.Component {
         onCopy={this.onCopy}
         onCopyEnd={this.onCopyEnd} // You can also skip this fn. and instead control style using .Clipboard--copied
       >
-        Copy Icon
+        Copy <Icon name="copy" uiClass="ui-svg-size-md" />
       </ClipboardWithTooltip>
     )
   }
