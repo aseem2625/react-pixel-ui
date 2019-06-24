@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import {boolean, text} from '@storybook/addon-knobs';
+import {boolean, text, optionsKnob} from '@storybook/addon-knobs';
 
 import { Popover, Button } from 'components/index';
 
@@ -10,19 +10,27 @@ storiesOf('Components', module)
   .add(
     'Popover',
     () => {
-      const triggerOnHover = boolean('Trigger on hover', true ),
-        className=text('Classes', 'class1 class2');
+      const className = text('className', 'class1 class2'),
+        uiClass = text('uiClass', ''),
+        uiClassContent = text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white'),
+        triggerOnHover = boolean('triggerOnHover', true ),
+        delay = text('delay (Optional / provide only when triggerOnHover = true)', '250');
 
       return(
         <Popover
-          content={close => (
-            <div>
+          className={className}
+          uiClass={uiClass}
+          uiClassContent={uiClassContent}
+          popoverContent={close => (
+            <React.Fragment>
               Some actionable / Simple content goes here
-              <Button onClick={close}>Close Popover</Button>
-            </div>
+              <br />
+              <br />
+              <Button className="round" onClick={close}>Close Popover</Button>
+            </React.Fragment>
           )}
           triggerOnHover={triggerOnHover}
-          className={className}
+          delay={delay}
         >
           {triggerOnHover ? 'Hover Me' : 'Click Me'}
         </Popover>
