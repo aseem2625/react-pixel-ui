@@ -38,19 +38,25 @@ function Clipboard(type) {
       this.selectValue();
       document.execCommand('copy');
 
-      setTimeout(_ => {
-        this.setState({
-          isCopied: false,
-        });
-      }, 1500);
+      setTimeout(_ => this.onCopyEnd(), 1500);
 
       this.props.onCopy && this.props.onCopy();
     }
 
     _onMouseLeave() {
+      /*
+      * setTimeout with significant elapse time (to be more than animation/transition time, but lesser than speed to manually mouseOver again),
+      * This helps to avoid visible effect of transform changing to original CSS immediately.
+      * */
+      setTimeout(_ => this.onCopyEnd(), 400); // Duration must be less than 1500
+    }
+
+    onCopyEnd() {
       this.setState({
         isCopied: false,
       });
+
+      this.props.onCopyEnd && this.props.onCopyEnd();
     }
 
     setRef = e => (this.copierEl = e);
@@ -72,7 +78,7 @@ function Clipboard(type) {
             prefixToClasses('Clipboard--', className),
             isCopied && 'Clipboard--copied'
           )}
-          onClick={this.copyToClipboard}
+          onClick={this.state.isCopied ? undefined : this.copyToClipboard}
         >
           <TextareaElement
             setElRef={this.setRef}
@@ -84,7 +90,7 @@ function Clipboard(type) {
           <_WrappedComponent
             {...restProps}
             isCopied={isCopied}
-            onMouseLeave={this.onMouseLeave}
+            onMouseLeave={this.onMouseLeave} /* undefined when without Tooltip */
           />
         </span>
       );
@@ -125,13 +131,15 @@ export const ClipboardWithButton = Clipboard('withButton')(
 function _ClipboardWithTooltip({
   children,
   isCopied,
-  tooltipCopyText,
-  tooltipCopiedText = 'Copied!',
-  onMouseLeave,
+  tooltipContentBeforeCopy,
+  tooltipContentAfterCopy = 'Copied!',
+  uiClassTooltipContent,
+  onMouseLeave
 }) {
   return (
     <Tooltip
-      tooltipText={isCopied ? tooltipCopiedText : tooltipCopyText}
+      tooltipContent={isCopied ? tooltipContentAfterCopy : tooltipContentBeforeCopy}
+      uiClassContent={uiClassTooltipContent}
       onMouseLeave={onMouseLeave}
     >
       {children}
