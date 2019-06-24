@@ -1,6 +1,7 @@
 import React from 'react';
 import { classList, prefixToClasses } from 'js-awesome-utils';
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
+import SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
 
 import './Popover.styl';
 
@@ -9,7 +10,6 @@ import './Popover.styl';
  * */
 export default class Popover extends React.Component {
   state = {};
-  delay = 250; // Delay = 250ms (not taken from props to make consistent)
 
   _showPopover(e) {
     // No delay if the trigger is click
@@ -18,12 +18,14 @@ export default class Popover extends React.Component {
         show: true,
       });
     } else {
+      const delay = this.props.delay || 250; // Delay = 250ms (default)
+
       this.inTransition = window.setTimeout(_ => {
         this.inTransition &&
           this.setState({
             show: true,
           });
-      }, this.delay);
+      }, delay);
     }
   }
 
@@ -41,12 +43,15 @@ export default class Popover extends React.Component {
   hidePopover = this._hidePopover.bind(this);
   clearInterval = this._clearInterval.bind(this);
 
+  setRef = e => (this.popover = e);
+
   render() {
-    const { className, children, content, triggerOnHover = false } = this.props;
+    const { className, uiClassContent, children, popoverContent, triggerOnHover = false } = this.props;
 
     return (
       <OutsideClickLayer onOutsideClick={this.hidePopover} enabled>
         <div
+          ref={this.setRef}
           className={classList(
             'Popover',
             this.state.show && 'Popover--show',
@@ -54,7 +59,13 @@ export default class Popover extends React.Component {
           )}
         >
           {this.state.show && (
-            <span className="Popover-content">{content(this.hidePopover)}</span>
+            <SmartTipContent
+              parentEl={this.popover}
+              uiClass={uiClassContent}
+              className="Popover"
+            >
+              {popoverContent(this.hidePopover)}
+            </SmartTipContent>
           )}
 
           <span
