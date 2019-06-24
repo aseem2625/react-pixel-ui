@@ -108,10 +108,10 @@
   .Tooltip-trigger
     &:hover
       & + .SmartTipContent--Tooltip
-        transform: translate(-50%, -6px)
+        transform: translate(-50%, 0)
 
 .SmartTipContent--Tooltip
-  transform: translate(-50%, 0) scale(0.9)
+  transform: translate(-50%, 6px) scale(0.9)
 
 
 /***********************/
@@ -120,18 +120,20 @@
 
 
 .SmartTipContent--Popover
-  transform: translate(-50%, 0) scale(.9)
+  will-change: transform
+  transform-origin: center bottom
+  transform: translate(-50%, 6px) scale(.9)
   animation: .12s moveUp-1 cubic-bezier(0.12, 0.95, 1, 1) forwards
 
 
 @keyframes moveUp-1
   0%
     opacity: 0
-    transform: translate(-50%, 0) scale(.9)
+    transform: translate(-50%, 6px) scale(.9)
 
   100%
     opacity: 1
-    transform: translate(-50%, -6px)
+    transform: translate(-50%, 0)
 
 /***********************/
 /* SmartTipContent override */
