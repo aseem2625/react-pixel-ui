@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import {boolean, text, optionsKnob} from '@storybook/addon-knobs';
+import {boolean, text, number} from '@storybook/addon-knobs';
 
 import { Popover, Button } from 'components/index';
 
@@ -14,7 +14,7 @@ storiesOf('Components', module)
         uiClass = text('uiClass', ''),
         uiClassContent = text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white'),
         triggerOnHover = boolean('triggerOnHover', true ),
-        delay = text('delay (Optional / provide only when triggerOnHover = true)', '250');
+        delay = number('delay (Optional / provide only when triggerOnHover = true)', 250); // default value
 
       return(
         <Popover
