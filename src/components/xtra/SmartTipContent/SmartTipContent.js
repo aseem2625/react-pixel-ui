@@ -19,21 +19,33 @@ export default class SmartTipContent extends React.PureComponent {
 
   calcTrueWidth() {
     const smartTipContent = this.smartTipContent;
-    console.log(window.getComputedStyle(smartTipContent))//.getPropertyValue('transform'));
+    const computedStyle = window.getComputedStyle(smartTipContent);
+
+    let matrixVal = computedStyle.getPropertyValue('transform')
+      || computedStyle.getPropertyValue('-moz-transform')
+      || computedStyle.getPropertyValue('-webkit-transform')
+      || computedStyle.getPropertyValue('-ms-transform')
+      || computedStyle.getPropertyValue('-o-transform');
+
+    matrixVal = matrixVal
+      .split('(')[1]
+      .split(')')[0]
+      .split(',')
+      .map(parseFloat);
+
+    const widthScale = matrixVal[0] || 1;
 
     smartTipContent.style.position = 'fixed';
     smartTipContent.style.transform = 'scale(1)';
 
-    setTimeout(_ => {
+    // Calculate full width as per position: fixed
+    const renderWidthWithFixed =  smartTipContent.getBoundingClientRect().width;
 
-      // Calculate full width as per position: fixed
-      const renderWidthWithFixed =  smartTipContent.getBoundingClientRect().width;
-      smartTipContent.style.width = Math.ceil(renderWidthWithFixed) + 'px';
+    smartTipContent.style.width = Math.ceil(renderWidthWithFixed / widthScale) + 'px';
 
-      // Reset to original styles
-      smartTipContent.style.position = '';
-      smartTipContent.style.transform = '';
-    });
+    // Reset to original styles
+    smartTipContent.style.position = '';
+    smartTipContent.style.transform = '';
   }
 
   // Location aware positioning
