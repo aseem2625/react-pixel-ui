@@ -15,34 +15,21 @@
 .Notification
   position: relative
   width: 480px
-  padding: 12px 32px 12px 12px
-  font-size: 16px
-  text-align: center
+  padding: 12px
   border-radius: 3px
-  transform: translateX(-30%)
-  animation: fadeInSlideRightAppear 180ms ease-out 0s 1 normal forwards
-  transition: 0.15s
-
   background: $white
-  color: black
-  box-shadow: 1px 1px 8px rgba(0,0,0,0.08)
+  color: $black
+
+  &.Notification--hasCross
+    padding-right: 32px
 
   .Notification-content
     line-height: 20px
 
   .Notification-cross
     position: absolute
-    right: 8px
+    right: 6px
     top: 10px
     padding: 0 4px
     font-size: 20px
     cursor: pointer
-
-
-@keyframes fadeInSlideRightAppear
-  0%
-    opacity: 0.5
-
-  100%
-    opacity: 1
-    transform: translateX(0)
