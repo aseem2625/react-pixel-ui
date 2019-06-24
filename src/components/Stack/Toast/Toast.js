@@ -41,7 +41,8 @@ export class ToastsContainer extends Stack {
               <StackItem
                 stackItemType={this.stackType}
                 id={t.id}
-                className={t.type}
+                className={t.className}
+                uiClass={t.uiClass}
                 showCross={t.showCross}
                 removeItemFromStack={this.removeItemFromStack}
               >
@@ -55,6 +56,13 @@ export class ToastsContainer extends Stack {
   }
 }
 
-export default function openToast({ content, type, duration, showCross }) {
-  _toastsStackInstance.addItemInStack({ content, type, duration, showCross });
+export default function openToast({ className, uiClass, showCross, enableAutoRemove, duration, content }) {
+  _toastsStackInstance.addItemInStack({
+    className,
+    uiClass,
+    showCross,
+    enableAutoRemove,
+    duration,
+    content
+  });
 }

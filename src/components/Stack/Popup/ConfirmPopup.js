@@ -71,12 +71,14 @@ class ConfirmPopup extends React.PureComponent {
  *
  * */
 export default function openConfirmPopup({
+  className,
+  uiClass,
+  title,
   description,
   affirmLabel,
   cancelLabel,
   onAffirm,
   onCancel,
-  className,
   affirmButtonClass,
   cancelButtonClass,
   ...restProps
@@ -88,6 +90,8 @@ export default function openConfirmPopup({
       {
         ...restProps,
         className: classList(cls, className),
+        uiClass,
+        title,
         content: close => (
           <ConfirmPopup
             className={cls}

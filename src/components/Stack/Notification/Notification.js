@@ -43,6 +43,7 @@ export class NotificationsContainer extends Stack {
                 showCross={n.showCross}
                 removeItemFromStack={this.removeItemFromStack}
                 className={n.className}
+                uiClass={n.uiClass}
               >
                 {n.content}
               </StackItem>
@@ -54,6 +55,14 @@ export class NotificationsContainer extends Stack {
   }
 }
 
-export default function openNotification(props) {
-  _notificationsStackInstance.addItemInStack(props);
+
+export default function openNotification({ className, uiClass, showCross, duration, enableAutoRemove, content }) {
+  _notificationsStackInstance.addItemInStack({
+    className,
+    uiClass,
+    showCross,
+    duration,
+    enableAutoRemove,
+    content
+  });
 }

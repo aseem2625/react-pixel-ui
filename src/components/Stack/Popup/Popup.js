@@ -57,6 +57,7 @@ export class PopupsContainer extends Stack {
                   showCross={p.showCross}
                   removeItemFromStack={this.removeItemFromStack}
                   className={p.className}
+                  uiClass={p.uiClass}
                 >
                   {p.title && (
                     <div className={classList(`${this.stackType}--title`)}>
@@ -78,16 +79,15 @@ export class PopupsContainer extends Stack {
   }
 }
 
-/*
- * Props:
- *   title
- *   content
- *   className
- *   showCross
- *   enableEscPress
- *   enableOutsideClick
- *
- * */
-export default function openPopup(props) {
-  _popupsStackInstance.addItemInStack(props, true);
+export default function openPopup({ className, uiClass, title, content, showCross, enableEscPress, enableOutsideClick }) {
+  _popupsStackInstance.addItemInStack({
+      className,
+      uiClass,
+      title,
+      content,
+      showCross,
+      enableEscPress,
+      enableOutsideClick
+    },
+    true);
 }

@@ -61,6 +61,7 @@ export class StackItem extends React.PureComponent {
   render() {
     const {
       className,
+      uiClass,
       stackItemType = 'StackItem',
       showCross,
       children,
@@ -70,7 +71,8 @@ export class StackItem extends React.PureComponent {
       <div
         className={classList(
           stackItemType,
-          prefixToClasses(`${stackItemType}--`, className)
+          prefixToClasses(`${stackItemType}--`, className),
+          uiClass
         )}
       >
         <span className={`${stackItemType}-content`}>
