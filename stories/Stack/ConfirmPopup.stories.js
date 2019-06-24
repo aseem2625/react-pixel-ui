@@ -20,8 +20,8 @@ storiesOf('Components/Stack', module)
         affirmLabel = text("Affirm Label", 'Some Promise Button'),
         onAffirm = mockAPI,
         onCancel = _ => console.log('Close Confirm'),
-        affirmButtonClass = 'primary',
-        cancelButtonClass = '';
+        affirmButtonClass = text('affirmButtonClass', 'primary'),
+        cancelButtonClass = text('cancelButtonClass', '');
 
       const handleConfirm = _ => {
         return openConfirmPopup({
