@@ -10,10 +10,13 @@ storiesOf('Components/Stack', module)
   .add(
     'Popup',
     () => {
-      const enableOutsideClick = boolean("Enable outside click", true),
-      enableEscPress = boolean("Enable esc press", true),
-      className = text("Classes", 'class1 class2'),
-      showCross = boolean("Show cross", false);
+      const
+        className = text("className", 'class1 class2'),
+        uiClass = text("uiClass", ''),
+        title = text("title", 'Modal 1'),
+        showCross = boolean("showCross", false),
+        enableEscPress = boolean("enableEscPress", true),
+        enableOutsideClick = boolean("enableOutsideClick", true);
 
       return (
         <div>
@@ -27,14 +30,15 @@ storiesOf('Components/Stack', module)
           <Button
             onClick={_ =>
               openPopup({
-                title: 'Modal 1',
+                uiClass,
+                className,
+                title,
                 content: close => (
                   <Modal1 close={close} data="modal 1 props" />
                 ),
                 showCross,
-                enableOutsideClick,
                 enableEscPress,
-                className
+                enableOutsideClick,
               })
             }
           >

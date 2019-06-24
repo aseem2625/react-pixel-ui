@@ -10,12 +10,12 @@ storiesOf('Components/Stack', module)
     'Toast',
     () => {
       const
-        content = 'Add toast content', // Can be a function (close) => (<div>Add toast content</div>)
-        enableAutoRemove = boolean("Enable auto remove", true),
-        showCross = boolean("Show cross", false),
-        duration = number("Duration in ms", 3000),
-        className = text("Classes", 'class1 class2'),
-        type = select('Type', ['', 'success', 'error'], '');
+        className = text("className", 'class1 class2'),
+        uiClass = text("uiClass", 'class1 class2'),
+        showCross = boolean("showCross", false),
+        enableAutoRemove = boolean("enableAutoRemove", true),
+        duration = number("duration (in ms)", 3000), // default
+        content = 'Add toast content'; // Can be a function (close) => (<div>Add toast content</div>)
 
       return (
         <div>
@@ -31,7 +31,7 @@ storiesOf('Components/Stack', module)
                 enableAutoRemove,
                 duration,
                 className,
-                type,
+                uiClass,
               })
             }
           >

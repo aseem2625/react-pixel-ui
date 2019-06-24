@@ -9,10 +9,12 @@ storiesOf('Components/Stack', module)
   .add(
     'Notification',
     () => {
-      const enableAutoRemove = boolean("Enable auto remove", true),
-        showCross = boolean("Show cross", false),
-        duration = number("Duration in ms", 3000),
-        className = text("Classes", 'class1 class2');
+      const
+        className = text("className", 'class1 class2'),
+        uiClass = text('uiClass', ''),
+        showCross = boolean("showCross", false),
+        duration = number("duration (in ms)", 3000),
+        enableAutoRemove = boolean("enableAutoRemove", true);
 
       return (
         <div>
@@ -23,6 +25,8 @@ storiesOf('Components/Stack', module)
           <Button
             onClick={_ =>
               openNotification({
+                className,
+                uiClass,
                 content: close => (
                   <div>
                     Notification content{' '}
@@ -31,8 +35,7 @@ storiesOf('Components/Stack', module)
                 ),
                 showCross,
                 enableAutoRemove,
-                duration,
-                className
+                duration
               })
             }
           >

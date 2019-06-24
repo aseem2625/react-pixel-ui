@@ -13,11 +13,12 @@ storiesOf('Components/Stack', module)
     'ConfirmPopup',
     () => {
       const
-        title = text("Title", 'Confirm Me?'),
-        description = text("Description", 'Wow this is amazing'),
-        className = text("Classes", 'class1 class2'),
-        cancelLabel = text("Cancel Label", 'Cancel Me'),
-        affirmLabel = text("Affirm Label", 'Some Promise Button'),
+        className = text("className", 'class1 class2'),
+        uiClass = text("uiClass", ''),
+        title = text("title", 'Confirm Me?'),
+        description = text("description", 'Wow this is amazing'),
+        affirmLabel = text("affirmLabel", 'Some Promise Button'),
+        cancelLabel = text("cancelLabel", 'Cancel Me'),
         onAffirm = mockAPI,
         onCancel = _ => console.log('Close Confirm'),
         affirmButtonClass = text('affirmButtonClass', 'primary'),
@@ -25,9 +26,10 @@ storiesOf('Components/Stack', module)
 
       const handleConfirm = _ => {
         return openConfirmPopup({
-          title: '',
-          description,
+          uiClass,
           className,
+          title,
+          description,
           cancelLabel,
           affirmLabel,
           onAffirm,
