@@ -118,13 +118,40 @@
 
 .SmartTipContent--Popover
   transform: translate(-50%, 0) scale(.9)
-  animation: .12s moveUp cubic-bezier(0.12, 0.95, 1, 1) forwards
+  animation: .12s moveUp-1 cubic-bezier(0.12, 0.95, 1, 1) forwards
 
 
-@keyframes moveUp
+@keyframes moveUp-1
   0%
     opacity: 0
     transform: translate(-50%, 0) scale(.9)
+
+  100%
+    opacity: 1
+    transform: translate(-50%, -6px)
+
+/***********************/
+/* SmartTipContent override */
+/***********************/
+
+
+.SmartTipContent--Custom
+  padding: 12px
+  animation: 3s moveUp-2 cubic-bezier(0.12, 0.95, 1, 1) infinite
+
+
+@keyframes moveUp-2
+  0%
+    opacity: 0
+    transform: translate(-50%, 0) scale(.7)
+
+  4%
+    opacity: 0
+    transform: translate(-50%, 0) scale(.7)
+
+  20%
+    opacity: 1
+    transform: translate(-50%, -6px)
 
   100%
     opacity: 1
