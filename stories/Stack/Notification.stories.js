@@ -11,8 +11,8 @@ storiesOf('Components/Stack', module)
     () => {
       const
         className = text("className", 'class1 class2'),
-        uiClass = text('uiClass', ''),
-        showCross = boolean("showCross", false),
+        uiClass = text('uiClass', 'ui-hasShadow ui-bg-black ui-txt-white'),
+        showCross = boolean("showCross", false), // Pass this prop if enableAutoRemove isn't present
         duration = number("duration (in ms)", 3000),
         enableAutoRemove = boolean("enableAutoRemove", true);
 
@@ -28,10 +28,12 @@ storiesOf('Components/Stack', module)
                 className,
                 uiClass,
                 content: close => (
-                  <div>
-                    Notification content{' '}
-                    <button onClick={close}>Close notification</button>
-                  </div>
+                  <React.Fragment>
+                    props:content can be a fn. or simple text. Basic styles are pre-applied.
+                    <br />
+                    <br />
+                    <Button onClick={close}>Close notification</Button>
+                  </React.Fragment>
                 ),
                 showCross,
                 enableAutoRemove,

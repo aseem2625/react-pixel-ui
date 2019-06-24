@@ -72,6 +72,7 @@ export class StackItem extends React.PureComponent {
         className={classList(
           stackItemType,
           prefixToClasses(`${stackItemType}--`, className),
+          showCross && `${stackItemType}--hasCross`,
           uiClass
         )}
       >

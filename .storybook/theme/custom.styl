@@ -11,8 +11,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-
-/* Override styles from base.css */
+/*
+* Override styles from base.css
+* -- OR --
+* You can also pass className to a Component and apply custom styles to .Component--className
+*/
 
 /***********************/
 /* Btn override */
@@ -157,3 +160,20 @@
     opacity: 1
     transform: translate(-50%, -6px)
 
+
+/***********************/
+/* Notification override */
+/***********************/
+
+.Notification
+  transform: translateX(-30%)
+  animation: .18s fadeInSlideRightAppear cubic-bezier(0.12, 0.95, 1, 1) forwards
+  transition: 0.15s
+
+@keyframes fadeInSlideRightAppear
+  0%
+    opacity: 0.5
+
+  100%
+    opacity: 1
+    transform: translateX(0)
