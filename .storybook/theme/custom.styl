@@ -177,3 +177,21 @@
   100%
     opacity: 1
     transform: translateX(0)
+
+
+/***********************/
+/* Toast override */
+/***********************/
+
+.Toast
+  transform: translateY(-50%)
+  animation: .18s fadeInDownAppear cubic-bezier(0.12, 0.95, 1, 1) forwards
+  transition: 0.15s
+
+@keyframes fadeInDownAppear
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1
+    transform: translateY(0)

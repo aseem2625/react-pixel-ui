@@ -11,11 +11,11 @@ storiesOf('Components/Stack', module)
     () => {
       const
         className = text("className", 'class1 class2'),
-        uiClass = text("uiClass", 'class1 class2'),
-        showCross = boolean("showCross", false),
+        uiClass = text("uiClass", 'ui-hasShadow'),
+        showCross = boolean("showCross", false), // Pass this prop if enableAutoRemove isn't present
         enableAutoRemove = boolean("enableAutoRemove", true),
         duration = number("duration (in ms)", 3000), // default
-        content = 'Add toast content'; // Can be a function (close) => (<div>Add toast content</div>)
+        content = text('content', 'Add toast content'); // Can be a function (close) => (<div>Add toast content</div>)
 
       return (
         <div>

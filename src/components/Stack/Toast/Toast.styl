@@ -14,42 +14,22 @@
 .Toast
   position: relative
   width: 480px
-  padding: 12px 32px 12px 12px
-  font-size: 16px
-  text-align: center
+  padding: 12px
   border-radius: 3px
-  transform: translateY(-50%)
-  animation: fadeInDownAppear 180ms ease-out 0s 1 normal forwards
-  transition: 0.15s
-
+  text-align: center
   background: $white
-  color: black
-  box-shadow: 1px 1px 8px rgba(0,0,0,0.08)
+  color: $black
 
-  &--success
-    background: lightgreen
-    color: green
-
-  &--error
-    background: darkred
-    color: $white
+  &.Toast--hasCross
+    padding-right: 32px
 
   .Toast-content
     line-height: 20px
 
   .Toast-cross
     position: absolute
-    right: 8px
+    right: 6px
     top: 10px
     padding: 0 4px
     font-size: 20px
     cursor: pointer
-
-
-@keyframes fadeInDownAppear
-  0%
-    opacity: 0
-
-  100%
-    opacity: 1
-    transform: translateY(0)
