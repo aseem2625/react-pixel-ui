@@ -27,19 +27,23 @@ export default class SmartTipContent extends React.PureComponent {
       || computedStyle.getPropertyValue('-ms-transform')
       || computedStyle.getPropertyValue('-o-transform');
 
-    matrixVal = matrixVal
-      .split('(')[1]
-      .split(')')[0]
-      .split(',')
-      .map(parseFloat);
+    matrixVal = (matrixVal && matrixVal !== 'none') ?
+      matrixVal
+        .split('(')[1]
+        .split(')')[0]
+        .split(',')
+        .map(parseFloat)
+      :
+      null;
 
-    const widthScale = matrixVal[0] || 1;
+    const widthScale = matrixVal ? matrixVal[0] : 1;
 
+    smartTipContent.style.width = ''; // Reset width to re-calcuate
     smartTipContent.style.position = 'fixed';
     smartTipContent.style.transform = 'scale(1)';
 
     // Calculate full width as per position: fixed
-    const renderWidthWithFixed =  smartTipContent.getBoundingClientRect().width;
+    const renderWidthWithFixed = smartTipContent.getBoundingClientRect().width;
 
     smartTipContent.style.width = Math.ceil(renderWidthWithFixed / widthScale) + 'px';
 
