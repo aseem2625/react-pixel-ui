@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { Tooltip } from 'components/index';
 
@@ -15,6 +16,7 @@ storiesOf('Components', module)
         uiClass={text('uiClass', '')}
         tooltipContent={text('tooltipText', 'Some tooltip content')}
         uiClassContent={text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white')}
+        onMouseLeave={action('onMouseLeave captured!')}
       >
         Hover/Tap Me!
       </Tooltip>
