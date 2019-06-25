@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ErrorBoundary } from 'components/index';
 
 
-storiesOf('Components/Utilities', module)
+storiesOf('Utilities', module)
   .add(
     'ErrorBoundary',
     () => (

@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs';
 
 import { SmartTipContent } from 'components/index';
 
-storiesOf('Components/Utilities', module)
+storiesOf('Utilities', module)
   .add(
     'SmartTipContent',
     () => {

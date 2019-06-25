@@ -6,7 +6,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { OutsideClickLayer, Button } from 'components/index';
 
 
-storiesOf('Components/Utilities', module)
+storiesOf('Utilities', module)
   .add(
     'OutsideClickLayer',
     () => (

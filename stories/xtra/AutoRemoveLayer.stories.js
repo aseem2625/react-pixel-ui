@@ -5,7 +5,7 @@ import { boolean, number } from '@storybook/addon-knobs';
 
 import { AutoRemoveLayer } from 'components/index';
 
-storiesOf('Components/Utilities', module)
+storiesOf('Utilities', module)
   .add(
     'AutoRemoveLayer',
     () => {
