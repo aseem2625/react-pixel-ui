@@ -4,14 +4,18 @@
 .Field--Textarea
   .Field-el
     min-height: 34px
-    line-height: 30px
+    width: 100%
+    resize: vertical
 
   .Textarea-resizer
     width: 100%
     height: 34px
-    line-height: 30px
+    resize: none
+    line-height: inherit
     padding: 0 12px 0 8px // Extra 4px acts as lookahead to create new line
     overflow: hidden
-    left: 6px
+    left: 0
     visibility: hidden
     position: absolute
+    font-size: inherit
+    pointer-events: none

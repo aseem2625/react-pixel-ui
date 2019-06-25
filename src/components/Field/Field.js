@@ -32,6 +32,7 @@ export default class Field extends React.PureComponent {
       onChange,
       onFocus,
       onBlur,
+      fieldRef,
       elRef,
       ...restProps
     } = this.props;
@@ -39,7 +40,7 @@ export default class Field extends React.PureComponent {
     const InputTag = tag || 'input'; // tag = select, textarea, input
 
     return (
-      <div className={getFieldClasses(this.props)}>
+      <div className={getFieldClasses(this.props)} ref={fieldRef}>
         <InputTag
           {...restProps} // style, other Listeners
           className="Field-el"

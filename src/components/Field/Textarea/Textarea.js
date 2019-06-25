@@ -10,6 +10,7 @@ import { classList } from 'js-awesome-utils';
  * */
 export class TextareaElement extends React.PureComponent {
   componentDidMount() {
+    this.initialHeight = this.field && this.field.getBoundingClientRect().height;
     this.props.autoResize && this.autoAdjustHeight(this.el);
   }
 
@@ -22,7 +23,15 @@ export class TextareaElement extends React.PureComponent {
     const resizerEl = this.resizerEl;
 
     resizerEl.value = content;
-    const newHeight = resizerEl.scrollHeight;
+    let newHeight = resizerEl.scrollHeight;
+
+    if (this.initialHeight && newHeight > this.initialHeight) {
+      this.field.style['line-height'] = '28px';
+    } else {
+      this.field.style['line-height'] = ''; // Reset to original
+    }
+
+    newHeight = resizerEl.scrollHeight; // Recalculate newHeight as per new line-height
 
     target.style.height = newHeight + 'px';
   }
@@ -47,6 +56,7 @@ export class TextareaElement extends React.PureComponent {
   disableEnterPress = this._disableEnterPress.bind(this);
 
   setRef = e => (this.resizerEl = e);
+  setFieldRef = e => (this.field = e);
   setElRef = e => {
     this.el = this.props.setElRef ? this.props.setElRef(e) : e;
   };
@@ -67,6 +77,7 @@ export class TextareaElement extends React.PureComponent {
         tag="textarea"
         onInput={this.onInput}
         onKeyPress={disableEnterPress ? this.disableEnterPress : undefined}
+        fieldRef={this.setFieldRef}
         elRef={this.setElRef}
       >
         {autoResize && (
