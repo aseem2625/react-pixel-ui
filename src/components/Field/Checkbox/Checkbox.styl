@@ -13,12 +13,7 @@
 
   .Checkbox-mark
     position: relative
-    width: 20px
-    height: 20px
-    border-radius: 3px
     margin-right: 8px
-    border: 1px solid $gray
-    background-color: $white
 
     &:after
       content: ''
@@ -26,9 +21,15 @@
 
 .Field--Checkbox:not(.Field--Checkbox--Switch)
   .Checkbox-mark
+    width: 20px
+    height: 20px
+    border-radius: 3px
+    background-color: $white
+    border: 1px solid $gray
+
     &:after
-      width: 5px
-      height: 11px
+      width: 7px
+      height: 13px
       border: solid $white
       border-width: 0 2px 2px 0
       margin: 1px 0 0 6px
@@ -44,19 +45,20 @@
 
 .Field--Checkbox--Switch
   .Checkbox-mark
-    width: 40px
+    width: 36px
+    height: 16px
     border-radius: 20px
-    border: 1px solid $gray
+    background-color: #c5c5c5
+
 
     &:after
       position: absolute
-      width: 18px
-      height: 18px
-      top: -1px
-      left: -1px
+      width: 20px
+      height: 20px
+      top: -2px
+      left: -2px
       border-radius: 50%
       background-color: $white
-      border: 1px solid $gray
 
   input:checked + .Checkbox-mark
     background-color: $gray
