@@ -197,3 +197,18 @@
   100%
     opacity: 1
     transform: translateY(0)
+
+
+/***********************/
+/* Clipboard (ClipboardWithButton) override */
+/***********************/
+
+.Clipboard:not(.Clipboard--hideTextarea)
+  .Field--Textarea, .Btn
+    display: inline-block
+    vertical-align: top
+
+  &.Clipboard--copied
+    .Btn
+      background-color: #55D4A1
+
