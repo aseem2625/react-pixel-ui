@@ -33,7 +33,11 @@ export default class Clipboard extends React.PureComponent {
     this.selectValue();
     document.execCommand('copy');
 
-    setTimeout(_ => this.onCopyEnd(), 1500);
+    clearTimeout(this.timer);
+
+    this.timer = setTimeout(_ => {
+      this.onCopyEnd()
+    }, 1500);
 
     this.props.onCopy && this.props.onCopy();
   }
