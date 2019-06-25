@@ -4,7 +4,7 @@
 /* Sample stylesheet for defining project specific styles */
 /***********************/
 
-*
+*, *::before, *::after
   box-sizing: border-box;
   font-family: Lato;
   -webkit-font-smoothing: antialiased;
@@ -271,24 +271,28 @@
   .Checkbox-mark
     transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
 
-    &:after
-      transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
+    &::after
+      transition: inherit
 
 .Field--Checkbox:not(.Field--Checkbox--Switch)
   .Checkbox-mark
-    &:after
+    &::after
       transform: rotate(45deg) scale(1.5)
 
   input:checked + .Checkbox-mark
-    background-color: $green
-    &:after
+    background-color: $blue
+
+    &::after
       transform: rotate(45deg) scale(1)
 
 
 .Field--Checkbox--Switch
   .Checkbox-mark
-    &:after
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15)
+    &::after
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3)
 
   input:checked + .Checkbox-mark
-    background-color: $green
+    background-color: rgba(66, 133, 244, 0.5)
+
+    &::after
+      background-color: rgb(66, 133, 133244)
