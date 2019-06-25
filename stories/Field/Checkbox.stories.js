@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text, boolean, object } from '@storybook/addon-knobs';
 
-import { Checkbox, CheckboxElement } from 'components/index';
+import { Checkbox, CheckboxElement, HelpText } from 'components/index';
+import Icon from 'components/Icon/Icon';
 
 
 storiesOf('Components/Field/Checkbox', module)
@@ -11,12 +12,17 @@ storiesOf('Components/Field/Checkbox', module)
     'with FieldWrapper',
     () => (
       <Checkbox
-        name={text('Name', 'field_name')}
-        label={text('Label', 'Checkbox Element')}
-        description={text('Description', 'Some description for this input')}
-        defaultChecked={boolean('Default checked', true)}
-        disabled={boolean('Disabled', false)}
-        isSwitch={boolean('Switch', false)}
+        className={text('className', 'Custom')}
+        name={text('name', 'field_name')}
+        label={text('label', 'Checkbox Element Label')}
+        description={object(
+          'description',
+          <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
+        )}
+        defaultChecked={boolean('defaultChecked', true)}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', true)}
+        isSwitch={boolean('isSwitch', false)}
       >
         Checkbox
       </Checkbox>
@@ -26,10 +32,10 @@ storiesOf('Components/Field/Checkbox', module)
     'without FieldWrapper',
     () => (
       <CheckboxElement
-        name={text('Name', 'field_name')}
-        defaultChecked={boolean('Default checked', true)}
-        disabled={boolean('Disabled', false)}
-        isSwitch={boolean('Switch', false)}
+        name={text('name', 'field_name')}
+        defaultChecked={boolean('defaultChecked', true)}
+        disabled={boolean('disabled', false)}
+        isSwitch={boolean('isSwitch', false)}
       >
         Checkbox
       </CheckboxElement>

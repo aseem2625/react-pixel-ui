@@ -7,7 +7,6 @@
 *
   box-sizing: border-box;
   font-family: Lato;
-  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -231,3 +230,62 @@
     width: 50px
     height: 50px
     border-radius: 50%
+
+
+/***********************/
+/* FieldWrapper and Field override */
+/***********************/
+
+.FieldWrapper
+  font-size: 14px
+
+  .Field-label
+    font-weight: bold
+
+  .Field-content
+    width: 240px
+
+  .Field-el
+    font-size: 14px
+
+.FieldWrapper--Custom
+  .Field-label, .Field-content
+    display: inline-block
+    vertical-align: top
+
+  .Field-label
+    width: 132px
+    line-height: 20px
+
+  .Field-content
+    margin-left: 16px
+
+/***********************/
+/* Field-Checkbox override */
+/***********************/
+
+.Field--Checkbox
+  .Checkbox-mark
+    transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
+
+    &:after
+      transition: .2s cubic-bezier(0.08, 1.07, 1, 1)
+
+.Field--Checkbox:not(.Field--Checkbox--Switch)
+  .Checkbox-mark
+    &:after
+      transform: rotate(45deg) scale(1.5)
+
+  input:checked + .Checkbox-mark
+    background-color: $green
+    &:after
+      transform: rotate(45deg) scale(1)
+
+
+.Field--Checkbox--Switch
+  .Checkbox-mark
+    &:after
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15)
+
+  input:checked + .Checkbox-mark
+    background-color: $green
