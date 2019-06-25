@@ -25,10 +25,6 @@
   &.FieldWrapper--disabled
     display: block
 
-    .Field-label, .Field-el
-      cursor: not-allowed
-      opacity: 0.4
-
   &.FieldWrapper--focused
     .Field-el
       border-color: $blue
@@ -41,6 +37,11 @@
 
     .Field-error
       display: block
+
+.FieldWrapper.FieldWrapper--disabled .Field-label,
+.Field.Field--disabled .Field-el
+  cursor: not-allowed
+  opacity: 0.4
 
 .Field
   position: relative
