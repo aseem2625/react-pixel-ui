@@ -37,12 +37,32 @@
 /***********************/
 .ui-bg-white {
   background-color: #fff;
+  border-color: #fff;
+}
+.ui-bg-red {
+  background-color: #e24a34;
+  border-color: #e24a34;
+}
+.ui-bg-green {
+  background-color: #89da1d;
+  border-color: #89da1d;
+}
+.ui-bg-yellow {
+  background-color: #f5be22;
+  border-color: #f5be22;
+}
+.ui-bg-black {
+  background-color: #1d3250;
+  border-color: #1d3250;
 }
 /***********************/
 /* Text colors */
 /***********************/
 .ui-txt-white {
   color: #fff;
+}
+.ui-txt-white svg {
+  fill: #fff;
 }
 /***********************/
 /* Font sizes */
@@ -55,6 +75,18 @@
 }
 .ui-size-sm {
   font-size: 11px;
+}
+/***********************/
+/* SVG sizes */
+/***********************/
+.ui-svg-size-sm svg {
+  width: 14px;
+}
+.ui-svg-size-md svg {
+  width: 16px;
+}
+.ui-svg-size-lg svg {
+  width: 20px;
 }
 /***********************/
 /* Animations */
