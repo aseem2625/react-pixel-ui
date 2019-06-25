@@ -14,7 +14,7 @@ storiesOf('Components/Field/Input', module)
       <Input
         className={text('className', 'Custom')}
         name={text('name', 'field_name')}
-        label={text('label', 'Input Element Label')}
+        label={text('label', 'Input Field Label')}
         placeholder={text('placeholder', 'Enter value')}
         description={object(
           'description',
