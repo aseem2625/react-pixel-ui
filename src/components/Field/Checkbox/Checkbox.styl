@@ -7,19 +7,24 @@
     cursor: pointer
     line-height: 24px
 
+  .Checkbox-label
+    line-height: normal
+
   .Checkbox-label, .Checkbox-mark
     display: inline-block
-    vertical-align: middle
+    vertical-align: top
 
   .Checkbox-mark
-    position: relative
-    margin-right: 8px
+    position: absolute
 
     &:after
       content: ''
       display: block
 
 .Field--Checkbox:not(.Field--Checkbox--Switch)
+  .Checkbox-label
+    padding-left: 28px
+
   .Checkbox-mark
     width: 20px
     height: 20px
@@ -44,12 +49,14 @@
 
 
 .Field--Checkbox--Switch
+  .Checkbox-label
+    padding-left: 46px
+
   .Checkbox-mark
-    width: 36px
+    width: 66px
     height: 16px
     border-radius: 20px
     background-color: #c5c5c5
-
 
     &:after
       position: absolute
