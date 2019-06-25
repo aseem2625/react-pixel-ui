@@ -19,7 +19,7 @@ export openConfirmPopup from './Stack/Popup/ConfirmPopup';
 export BackDrop from './BackDrop/BackDrop';
 
 export Spinner from './Loader/Spinner';
-export GhostLoader from './Loader/GhostLoader';
+export Skeleton from './Loader/Skeleton';
 
 export Dropdown, { DropdownItem } from './Dropdown/Dropdown';
 

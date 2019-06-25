@@ -1,0 +1,21 @@
+.Skeleton
+  position: relative
+
+.Skeleton-shimmer
+  position: absolute
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  background: rgba(255,255,255,0.45) // fallback
+  background: linear-gradient(to right, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.45) 10%, rgba(255,255,255,0.65) 20%)
+  background-size: 800px 100px
+  animation: px-Shimmer 1.2s forwards infinite linear
+  pointer-events: none
+
+@keyframes px-Shimmer
+  0%
+    background-position: -400px 0
+
+  100%
+    background-position: 400px 0
