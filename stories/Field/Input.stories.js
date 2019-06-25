@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text, boolean, object } from '@storybook/addon-knobs';
 
-import { Input, InputElement } from 'components/index';
+import { Input, InputElement, HelpText } from 'components/index';
+import Icon from 'components/Icon/Icon';
 
 
 storiesOf('Components/Field/Input', module)
@@ -11,12 +12,17 @@ storiesOf('Components/Field/Input', module)
     'with FieldWrapper',
     () => (
       <Input
-        name={text('Name', 'field_name')}
-        label={text('Label', 'Input Element')}
-        placeholder={text('Placeholder', 'Enter value')}
-        description={text('Description', 'Some description for this input')}
-        defaultValue={text('Default value', 'hi lol')}
-        disabled={boolean('Disabled', false)}
+        className={text('className', 'Custom')}
+        name={text('name', 'field_name')}
+        label={text('label', 'Input Element Label')}
+        placeholder={text('placeholder', 'Enter value')}
+        description={object(
+          'description',
+          <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
+        )}
+        defaultValue={text('defaultValue', 'hi lol')}
+        disabled={boolean('disabled', false)}
+        required={boolean('required', true)}
       />
     )
   )
@@ -24,10 +30,10 @@ storiesOf('Components/Field/Input', module)
     'without FieldWrapper',
     () => (
       <InputElement
-        name={text('Name', 'field_name')}
-        placeholder={text('Placeholder', 'Enter value')}
-        defaultValue={text('Default value', 'hi lol')}
-        disabled={boolean('Disabled', false)}
+        name={text('name', 'field_name')}
+        placeholder={text('placeholder', 'Enter value')}
+        defaultValue={text('defaultValue', 'hi lol')}
+        disabled={boolean('disabled', false)}
       />
     )
   );
