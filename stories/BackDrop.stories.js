@@ -28,7 +28,7 @@ storiesOf('Components', module)
 
         <RipplePointer
           style={{ left: 50, top: 50 }}
-          isPrimary
+          className="primary"
         />
 
         <HelpText isLarge>
