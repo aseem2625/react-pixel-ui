@@ -6,10 +6,7 @@ export RipplePointer from './RipplePointer/RipplePointer';
 export HelpText from './HelpText/HelpText';
 export Tooltip from './Tooltip/Tooltip';
 export Popover from './Popover/Popover';
-export {
-  ClipboardWithButton,
-  ClipboardWithTooltip,
-} from './Clipboard/Clipboard';
+export Clipboard from './Clipboard/Clipboard';
 
 export TagsList from './Tag/TagsList';
 export Tag from './Tag/Tag';
