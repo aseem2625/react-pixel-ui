@@ -194,32 +194,89 @@
 
 .SmartTipContent {
   position: absolute;
+  border-radius: 3px;
 }
 .SmartTipContent::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
-  width: 30px;
-  height: 12px;
   background-color: inherit;
 }
 .SmartTipContent .arrow {
   position: absolute;
-  bottom: -4px;
   width: 12px;
   height: 12px;
-  left: 50%;
-  -webkit-transform: translate(-50%) rotate(48deg) skew(8deg);
-          transform: translate(-50%) rotate(48deg) skew(8deg);
   border-radius: 2px;
   background-color: inherit;
   -webkit-box-shadow: inherit;
           box-shadow: inherit;
-  -webkit-transform-origin: center;
-          transform-origin: center;
+}
+.SmartTipContent.SmartTipContent--top::after,
+.SmartTipContent.SmartTipContent--bottom::after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 30px;
+  height: 12px;
+}
+.SmartTipContent.SmartTipContent--right::after,
+.SmartTipContent.SmartTipContent--left::after {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 12px;
+  height: 30px;
+}
+.SmartTipContent.SmartTipContent--top {
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+}
+.SmartTipContent.SmartTipContent--top::after {
+  bottom: 0;
+}
+.SmartTipContent.SmartTipContent--top .arrow {
+  bottom: -4px;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(48deg) skew(8deg);
+          transform: translateX(-50%) rotate(48deg) skew(8deg);
+}
+.SmartTipContent.SmartTipContent--bottom {
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
+}
+.SmartTipContent.SmartTipContent--bottom::after {
+  top: 0;
+}
+.SmartTipContent.SmartTipContent--bottom .arrow {
+  top: -4px;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(48deg) skew(8deg);
+          transform: translateX(-50%) rotate(48deg) skew(8deg);
+}
+.SmartTipContent.SmartTipContent--right {
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+.SmartTipContent.SmartTipContent--right::after {
+  left: 0;
+}
+.SmartTipContent.SmartTipContent--right .arrow {
+  left: -4px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(-42deg) skew(8deg);
+          transform: translateY(-50%) rotate(-42deg) skew(8deg);
+}
+.SmartTipContent.SmartTipContent--left {
+  -webkit-transform-origin: center right;
+          transform-origin: center right;
+}
+.SmartTipContent.SmartTipContent--left::after {
+  right: 0;
+}
+.SmartTipContent.SmartTipContent--left .arrow {
+  right: -4px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(-42deg) skew(8deg);
+          transform: translateY(-50%) rotate(-42deg) skew(8deg);
 }
 
 .Tooltip {
@@ -293,31 +350,27 @@
   position: relative;
 }
 .FieldWrapper .Field-label {
-  font-size: 14px;
-  font-weight: bold;
-  display: block;
+  font-size: inherit;
+  margin-bottom: 8px;
 }
 .FieldWrapper .Field-label .Field-label-star {
   color: #e24a34;
+  margin-left: 2px;
 }
 .FieldWrapper .Field-content {
   width: 200px;
-  display: block;
-  font-size: 14px;
+  font-size: inherit;
 }
 .FieldWrapper .Field-description {
+  margin-top: 4px;
   display: block;
 }
 .FieldWrapper .Field-error {
+  margin-top: 4px;
   display: none;
 }
 .FieldWrapper.FieldWrapper--disabled {
   display: block;
-}
-.FieldWrapper.FieldWrapper--disabled .Field-label,
-.FieldWrapper.FieldWrapper--disabled .Field-el {
-  cursor: not-allowed;
-  opacity: 0.4;
 }
 .FieldWrapper.FieldWrapper--focused .Field-el {
   border-color: #528ff0;
@@ -331,17 +384,25 @@
 .FieldWrapper.FieldWrapper--invalid .Field-error {
   display: block;
 }
+.FieldWrapper.FieldWrapper--disabled .Field-label,
+.Field.Field--disabled .Field-el {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
 .Field {
   position: relative;
   display: block;
+  line-height: 34px;
 }
 .Field .Field-el {
   width: 100%;
   height: 34px;
-  border: 1px solid #000;
   padding: 0 8px;
-  line-height: 34px;
+  vertical-align: top;
+  line-height: inherit;
+  font-size: inherit;
   border-radius: 2px;
+  border: 1px solid #c5c5c5;
   outline: none;
 }
 
@@ -350,17 +411,21 @@
 }
 .Field--Textarea .Field-el {
   min-height: 34px;
-  line-height: 30px;
+  width: 100%;
+  resize: vertical;
 }
 .Field--Textarea .Textarea-resizer {
   width: 100%;
   height: 34px;
-  line-height: 30px;
+  resize: none;
+  line-height: inherit;
   padding: 0 12px 0 8px;
   overflow: hidden;
-  left: 6px;
+  left: 0;
   visibility: hidden;
   position: absolute;
+  font-size: inherit;
+  pointer-events: none;
 }
 
 .Clipboard {
@@ -580,65 +645,53 @@
 
 .Dropdown {
   position: relative;
-  font-size: 14px;
-  height: 32px;
-  line-height: 30px;
-  border: 1px solid #000;
+  font-size: inherit;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 3px;
+  border: 1px solid #c5c5c5;
 }
 .Dropdown .Dropdown-trigger {
   position: relative;
   cursor: pointer;
   z-index: 1;
-  padding: 0 12px;
+  padding: 0 24px 0 12px;
+}
+.Dropdown .Dropdown-trigger::before {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #ddd;
+  -webkit-transform-origin: 5px 3px;
+          transform-origin: 5px 3px;
+  -webkit-transition: 0.12s cubic-bezier(0.15, 0.86, 1, 1);
+  transition: 0.12s cubic-bezier(0.15, 0.86, 1, 1);
+  will-change: transform;
 }
 .Dropdown .Dropdown-trigger::after {
   content: '';
   position: absolute;
-  left: 0;
-  height: 12px;
   width: 100%;
+  height: 12px;
+  left: 0;
   z-index: -1;
   display: none;
+}
+.Dropdown--show .Dropdown-trigger::before {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
 }
 .Dropdown--show .Dropdown-trigger::after {
   display: block;
 }
 .DropdownBody {
-  position: fixed;
-  -webkit-transform-origin: top center;
-          transform-origin: top center;
-  top: 100%;
-  left: 0;
-  margin-top: 4px;
-  min-width: 180px;
-  max-width: 360px;
-  border: 1px solid #ccc;
-  will-change: transform;
-  opacity: 0;
-  z-index: 2;
-}
-.DropdownBody::before,
-.DropdownBody::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-.DropdownBody::before {
-  top: -9px;
-  left: 20px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 12px solid #ccc;
-  z-index: -1;
-}
-.DropdownBody::after {
-  top: -8px;
-  left: 24px;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid #fff;
-  z-index: 1;
+  position: relative;
+  border-radius: 3px;
 }
 .DropdownOptions {
   max-height: 320px;
@@ -648,16 +701,31 @@
   display: block;
   width: 100%;
   line-height: 24px;
-  background: #fff;
   border: none;
 }
 .DropdownOptions > div:not(:last-child) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #c5c5c5;
 }
 .DropdownOptions .DropdownItem {
   padding: 4px 12px;
   text-align: left;
   outline: none;
+}
+.SmartTipContent--Dropdown {
+  margin-top: 4px;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  max-width: 360px;
+  z-index: 2;
+  background-color: #fff;
+}
+.SmartTipContent--Dropdown.SmartTipContent::after,
+.SmartTipContent--Dropdown.SmartTipContent .arrow {
+  left: 24px;
+  z-index: -1;
 }
 
 .Card {
@@ -742,81 +810,82 @@
           transform: scale(1);
 }
 
-.FieldWrapper--Checkbox {
-  display: block;
+.Field--Checkbox {
+  line-height: normal;
 }
 .Field--Checkbox label.Field-el {
-  cursor: pointer;
   padding: 0;
   border: none;
+  cursor: pointer;
+  line-height: 24px;
+}
+.Field--Checkbox .Checkbox-label {
+  line-height: normal;
 }
 .Field--Checkbox .Checkbox-label,
 .Field--Checkbox .Checkbox-mark {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .Field--Checkbox .Checkbox-mark {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-right: 4px;
-  background-color: #fff;
+  position: absolute;
 }
 .Field--Checkbox .Checkbox-mark:after {
   content: '';
   display: block;
-  -webkit-transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
-  transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
+}
+.Field--Checkbox:not(.Field--Checkbox--Switch) .Checkbox-label {
+  padding-left: 28px;
+}
+.Field--Checkbox:not(.Field--Checkbox--Switch) .Checkbox-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
 }
 .Field--Checkbox:not(.Field--Checkbox--Switch) .Checkbox-mark:after {
-  width: 6px;
-  height: 11px;
+  width: 7px;
+  height: 13px;
   border: solid #fff;
   border-width: 0 2px 2px 0;
+  margin: 1px 0 0 6px;
   opacity: 0;
-  -webkit-transform: rotate(45deg) scale(1.5);
-          transform: rotate(45deg) scale(1.5);
-  margin: 2px 0 0 6px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 .Field--Checkbox:not(.Field--Checkbox--Switch) input:checked + .Checkbox-mark {
-  background-color: #00f;
+  background-color: #c5c5c5;
 }
 .Field--Checkbox:not(.Field--Checkbox--Switch) input:checked + .Checkbox-mark:after {
-  -webkit-transform: rotate(45deg) scale(1);
-          transform: rotate(45deg) scale(1);
   opacity: 1;
 }
+.Field--Checkbox--Switch .Checkbox-label {
+  padding-left: 46px;
+}
 .Field--Checkbox--Switch .Checkbox-mark {
-  width: 40px;
+  width: 34px;
+  height: 16px;
   border-radius: 20px;
-  border: 1px solid #000;
-  -webkit-transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
-  transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
+  background-color: #c5c5c5;
 }
 .Field--Checkbox--Switch .Checkbox-mark:after {
   position: absolute;
-  width: 18px;
-  height: 18px;
-  left: 1px;
+  width: 20px;
+  height: 20px;
+  top: -2px;
+  left: -2px;
   border-radius: 50%;
   background-color: #fff;
-  border: 1px solid #f1f1f1;
-  -webkit-box-shadow: 1px 0 7px rgba(0,0,0,0.08);
-          box-shadow: 1px 0 7px rgba(0,0,0,0.08);
 }
 .Field--Checkbox--Switch input:checked + .Checkbox-mark {
-  background-color: #00f;
+  background-color: #c5c5c5;
 }
 .Field--Checkbox--Switch input:checked + .Checkbox-mark:after {
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
 }
 
-.Field--Select {
-  display: block;
-}
 .Field--Select .DropdownOptions .Select-Option--highlight {
   background-color: #fffdd0;
 }
@@ -863,6 +932,21 @@
 .Field--Select .DropdownItem:hover {
   background-color: #efefef;
 }
+.SmartTipContent--Select {
+  margin-top: 4px;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: #fff;
+}
+.SmartTipContent--Select.SmartTipContent::after,
+.SmartTipContent--Select.SmartTipContent .arrow {
+  left: 24px;
+  z-index: -1;
+}
 
 .Icon {
   display: inline-block;
@@ -872,7 +956,7 @@
   line-height: initial;
 }
 .Icon svg {
-  fill: #808080;
+  fill: currentColor;
   width: 14px;
   height: auto;
 }
@@ -880,13 +964,17 @@
 /***********************/
 /* Sample stylesheet for defining project specific styles */
 /***********************/
-* {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: Lato;
-  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-size: 14px;
 }
 /*
 * Override styles from base.css
@@ -925,7 +1013,7 @@
   border-color: #b1b1b1;
   border-top-color: transparent;
 }
---primary {
+.Spinner--primary {
   border-color: #ff3f62;
   border-top-color: transparent;
 }
@@ -988,6 +1076,7 @@
 /***********************/
 .SmartTipContent--Custom {
   padding: 12px;
+  line-height: 24px;
   -webkit-animation: 3s moveUp-2 cubic-bezier(0.12, 0.95, 1, 1) infinite;
           animation: 3s moveUp-2 cubic-bezier(0.12, 0.95, 1, 1) infinite;
 }
@@ -1041,6 +1130,80 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+/***********************/
+/* FieldWrapper and Field override */
+/***********************/
+.FieldWrapper {
+  font-size: 14px;
+}
+.FieldWrapper .Field-label {
+  font-weight: bold;
+}
+.FieldWrapper .Field-content {
+  width: 240px;
+}
+.Field {
+  font-size: 14px;
+}
+.FieldWrapper--Custom .Field-label,
+.FieldWrapper--Custom .Field-content {
+  display: inline-block;
+  vertical-align: top;
+}
+.FieldWrapper--Custom .Field-label {
+  width: 132px;
+  line-height: 20px;
+}
+.FieldWrapper--Custom .Field-content {
+  margin-left: 16px;
+}
+::-webkit-input-placeholder {
+  color: #afafaf;
+}
+::-moz-placeholder {
+  color: #afafaf;
+}
+:-ms-input-placeholder {
+  color: #afafaf;
+}
+::-ms-input-placeholder {
+  color: #afafaf;
+}
+::placeholder {
+  color: #afafaf;
+}
+/***********************/
+/* Field-Checkbox override */
+/***********************/
+.Field--Checkbox .Checkbox-mark {
+  -webkit-transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
+  transition: 0.2s cubic-bezier(0.08, 1.07, 1, 1);
+}
+.Field--Checkbox .Checkbox-mark::after {
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+.Field--Checkbox:not(.Field--Checkbox--Switch) .Checkbox-mark::after {
+  -webkit-transform: rotate(45deg) scale(1.5);
+          transform: rotate(45deg) scale(1.5);
+}
+.Field--Checkbox:not(.Field--Checkbox--Switch) input:checked + .Checkbox-mark {
+  background-color: #4285f4;
+}
+.Field--Checkbox:not(.Field--Checkbox--Switch) input:checked + .Checkbox-mark::after {
+  -webkit-transform: rotate(45deg) scale(1);
+          transform: rotate(45deg) scale(1);
+}
+.Field--Checkbox--Switch .Checkbox-mark::after {
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.Field--Checkbox--Switch input:checked + .Checkbox-mark {
+  background-color: rgba(66,133,244,0.5);
+}
+.Field--Checkbox--Switch input:checked + .Checkbox-mark::after {
+  background-color: #4285ff;
 }
 @-webkit-keyframes moveUp-1 {
   0% {
