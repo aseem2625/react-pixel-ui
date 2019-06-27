@@ -1,8 +1,6 @@
 @import $vars
 
 .Field--Select
-  display: block
-
   .DropdownOptions
     .Select-Option--highlight
       background-color: #fffdd0
@@ -45,3 +43,20 @@
 
     &:hover
       background-color: #efefef
+
+
+
+.SmartTipContent--Select
+  margin-top: 4px
+  transform-origin: top center
+  top: 100%
+  left: 0
+  width: 100%
+  z-index: 2
+  background-color: $white
+
+  &.SmartTipContent
+    &::after, .arrow
+      left: 24px
+      z-index: -1
+

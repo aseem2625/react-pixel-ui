@@ -3,6 +3,7 @@ import { getFieldClasses, addWrapperToField } from '../Field';
 import { classList, debounce } from 'js-awesome-utils';
 
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
+import SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
 import Dropdown, { DropdownOptions, DropdownItem } from 'components/Dropdown/Dropdown';
 import { InputElement } from 'components/Field/Input/Input';
 
@@ -15,6 +16,8 @@ import './Select.styl';
 export class SelectElement extends Dropdown {
   constructor(props) {
     super(props);
+
+    this.state = { show : props.show || false };
 
     let selectedOption = this.getOptionFromValue(props.defaultValue); // defaultValue = null / invalid, nothing to be selected
 
@@ -107,10 +110,8 @@ export class SelectElement extends Dropdown {
     });
   }
 
-  setRef = e => (this.optionsBody = e);
-
   render() {
-    const { name, className, disabled, beforeOptions, afterOptions, enableSearch } = this.props;
+    const { name, className, disabled, beforeOptions, afterOptions, enableSearch, uiClassOptions } = this.props;
     const { options, selectedOption, show } = this.state;
 
     return (
@@ -140,18 +141,19 @@ export class SelectElement extends Dropdown {
 
           {
             show && (
-              <DropdownOptions
-                elRef={this.setRef}
-                closeDropdown={this.closeDropdown}
-                beforeOptions={enableSearch ? <InputElement onChange={this.searchInOptions} autoFocus /> : beforeOptions}
-                afterOptions={afterOptions}
-              >
-                <Options
-                  options={options}
-                  highlightOption={selectedOption}
-                  onSelect={disabled ? undefined : this.onSelect}
-                />
-              </DropdownOptions>
+              <SmartTipContent className="Select" tipPos="bottom" uiClass={uiClassOptions}>
+                <DropdownOptions
+                  closeDropdown={this.closeDropdown}
+                  beforeOptions={enableSearch ? <InputElement onChange={this.searchInOptions} autoFocus /> : beforeOptions}
+                  afterOptions={afterOptions}
+                >
+                  <Options
+                    options={options}
+                    highlightOption={selectedOption}
+                    onSelect={disabled ? undefined : this.onSelect}
+                  />
+                </DropdownOptions>
+              </SmartTipContent>
             )
           }
         </div>
