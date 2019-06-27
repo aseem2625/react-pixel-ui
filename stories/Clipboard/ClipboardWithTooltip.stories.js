@@ -34,6 +34,7 @@ storiesOf('Components/Clipboard', module)
           {
             ({ isCopied, onCopyEnd }) => (
               <Tooltip
+                tipPos="top"
                 tooltipContent={isCopied ? 'Copied!' : 'Copy some url'}
                 uiClassContent={`ui-hasShadow ${isCopied ? 'ui-bg-green' : 'ui-bg-black'} ui-txt-white`}
                 onMouseLeave={onMouseLeave(onCopyEnd)}

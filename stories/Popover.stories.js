@@ -21,6 +21,7 @@ storiesOf('Components', module)
           className={className}
           uiClass={uiClass}
           uiClassContent={uiClassContent}
+          tipPos="top"
           popoverContent={close => (
             <React.Fragment>
               Some actionable / Simple content goes here
