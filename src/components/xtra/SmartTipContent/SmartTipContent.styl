@@ -6,22 +6,70 @@
   &::after
     content: ''
     position: absolute
-    bottom: 0
-    left: 50%
-    transform: translate(-50%)
-    width: 30px
-    height: 12px
     background-color: inherit
 
   .arrow
     position: absolute
-    bottom: -4px
     width: 12px
     height: 12px
-    left: 50%
-    transform: translate(-50%) rotate(48deg) skew(8deg)
     border-radius: 2px
     background-color: inherit
     box-shadow: inherit
-    transform-origin: center
 
+  &.SmartTipContent--top, &.SmartTipContent--bottom
+    &::after
+      left: 50%
+      transform: translateX(-50%)
+      width: 30px
+      height: 12px
+
+  &.SmartTipContent--right, &.SmartTipContent--left
+    &::after
+      top: 50%
+      transform: translateY(-50%)
+      width: 12px
+      height: 30px
+
+  &.SmartTipContent--top
+    transform-origin: center bottom
+
+    &::after
+      bottom: 0
+
+    .arrow
+      bottom: -4px
+      left: 50%
+      transform: translateX(-50%) rotate(48deg) skew(8deg)
+
+  &.SmartTipContent--bottom
+    transform-origin: center top
+
+    &::after
+      top: 0
+
+    .arrow
+      top: -4px
+      left: 50%
+      transform: translateX(-50%) rotate(48deg) skew(8deg)
+
+  &.SmartTipContent--right
+    transform-origin: center left
+
+    &::after
+      left: 0
+
+    .arrow
+      left: -4px
+      top: 50%
+      transform: translateY(-50%) rotate(-42deg) skew(8deg)
+
+  &.SmartTipContent--left
+    transform-origin: center right
+
+    &::after
+      right: 0
+
+    .arrow
+      right: -4px
+      top: 50%
+      transform: translateY(-50%) rotate(-42deg) skew(8deg)

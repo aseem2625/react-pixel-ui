@@ -91,6 +91,7 @@ export default class SmartTipContent extends React.PureComponent {
 
   render() {
     const { children, className, uiClass } = this.props;
+    const tipPos = ['top', 'bottom'].indexOf(this.props.tipPos) >= -1 ? this.props.tipPos : 'top';
 
     return (
       <span
@@ -98,6 +99,7 @@ export default class SmartTipContent extends React.PureComponent {
         className={
           classList(
             'SmartTipContent',
+            `SmartTipContent--${tipPos}`,
             prefixToClasses('SmartTipContent--', className),
             uiClass
           )}
