@@ -3,7 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, object } from '@storybook/addon-knobs';
 
-import { Select, SelectElement } from 'components/index';
+import { Select, SelectElement, HelpText } from 'components/index';
+import Icon from 'components/Icon/Icon';
 
 
 export const countries = [
@@ -86,16 +87,21 @@ storiesOf('Components/Field/Select', module)
     'with FieldWrapper',
     () => (
       <Select
-        name={text('Name', 'field_name')}
-        label={text('Label', 'Select Element')}
-        placeholder={text('Placeholder', 'Enter value')}
-        description={text('Description', 'Some description for this input')}
-        defaultValue={text('Default value', 'brazil')}
-        options={object('Options', countries)}
-        disabled={boolean('Disabled', false)}
-        show={boolean('Show', true)}
-        enableSearch={boolean('Enable search', false)}
+        className={text('className', 'Custom')}
+        name={text('name', 'field_name')}
+        label={text('label', 'Select Element')}
+        placeholder={text('placeholder', 'Enter value')}
+        description={object(
+          'description',
+          <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
+        )}
+        defaultValue={text('defaultValue', 'brazil')}
+        options={object('options', countries)}
+        disabled={boolean('disabled', false)}
+        show={boolean('show', false)}
+        enableSearch={boolean('enableSearch', false)}
         searchKeys={['name', 'continent']}
+        uiClassOptions={text('uiClassOptions', 'ui-hasShadow ui-bg-white')}
       />
     )
   )
@@ -103,14 +109,15 @@ storiesOf('Components/Field/Select', module)
     'without FieldWrapper',
     () => (
       <SelectElement
-        name={text('Name', 'field_name')}
-        placeholder={text('Placeholder', 'Enter value')}
-        defaultValue={text('Default value', 'argentina')}
-        options={object('Options', nestedCountries)}
-        disabled={boolean('Disabled', false)}
-        show={boolean('Show', true)}
-        enableSearch={boolean('Enable search', true)}
+        name={text('name', 'field_name')}
+        placeholder={text('placeholder', 'Enter value')}
+        defaultValue={text('defaultValue', 'argentina')}
+        options={object('options', nestedCountries)}
+        disabled={boolean('disabled', false)}
+        show={boolean('show', false)}
+        enableSearch={boolean('enableSearch', true)}
         searchKeys={['name', 'continent']}
+        uiClassOptions={text('uiClassOptions', 'ui-hasShadow ui-bg-white')}
       />
     )
   );
