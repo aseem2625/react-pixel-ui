@@ -12,16 +12,18 @@ storiesOf('Components/Dropdown', module)
     () => {
       return (
         <Dropdown
-          className={text('Classes', 'class1 class2')}
+          className={text('className', 'class1 class2')}
+          uiClass={text('uiClass', '')}
+          uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
           trigger={() => <div>Some trigger element</div>}
-          showOnHover={boolean('Show on hover', false)}
+          showOnHover={boolean('showOnHover', false)}
         >
           {
             (close) => (
               <>
-                <DropdownItem>element</DropdownItem>
-                <DropdownItem onClick={close}> some element (click to close)</DropdownItem>
-                <DropdownItem><button>button element</button></DropdownItem>
+                <DropdownItem>Element</DropdownItem>
+                <DropdownItem onClick={close}> Some element (click to close) </DropdownItem>
+                <DropdownItem><button>Button element</button></DropdownItem>
               </>
             )
           }
@@ -34,9 +36,11 @@ storiesOf('Components/Dropdown', module)
     () => {
       return (
         <Dropdown
-          className={text('Classes', 'class1 class2')}
+          className={text('className', 'class1 class2')}
+          uiClass={text('uiClass', '')}
+          uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
           trigger={() => <div>Some trigger element</div>}
-          showOnHover={boolean('Show on hover', false)}
+          showOnHover={boolean('showOnHover', false)}
           beforeOptions={(close => <b>Before options element</b>)}
         >
           {
@@ -57,9 +61,11 @@ storiesOf('Components/Dropdown', module)
     () => {
       return (
         <Dropdown
-          className={text('Classes', 'class1 class2')}
+          className={text('className', 'class1 class2')}
+          uiClass={text('uiClass', '')}
+          uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
           trigger={() => <div>Some trigger element</div>}
-          showOnHover={boolean('Show on hover', false)}
+          showOnHover={boolean('showOnHover', false)}
           afterOptions={close => <b>After options element</b>}
         >
           {
