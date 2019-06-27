@@ -10,6 +10,8 @@ import postcss from 'rollup-plugin-postcss';
 import svgr from '@svgr/rollup';
 import autoprefixer from 'autoprefixer';
 
+import { terser } from 'rollup-plugin-terser';
+
 import pkg from './package.json';
 
 /* For resolving from base paths */
@@ -59,6 +61,9 @@ export default [
       babel({
         exclude: 'node_modules/**', // only transpile our source code
         runtimeHelpers: true
+      }),
+      terser({
+        sourcemap: true
       }),
       resolve(), // so Rollup can find imported library
       commonjs(), // so Rollup can convert `imported library to an ES module
