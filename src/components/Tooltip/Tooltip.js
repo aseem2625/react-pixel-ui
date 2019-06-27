@@ -27,7 +27,7 @@ export default class Tooltip extends React.Component {
   setRef = e => (this.tooltip = e);
 
   render() {
-    const { className, uiClass, uiClassContent, children, tooltipContent } = this.props;
+    const { className, uiClass, uiClassContent, children, tooltipContent, tipPos } = this.props;
 
     return (
       <div
@@ -48,8 +48,9 @@ export default class Tooltip extends React.Component {
 
         <SmartTipContent
           parentEl={this.tooltip}
-          uiClass={uiClassContent}
           className="Tooltip"
+          uiClass={uiClassContent}
+          tipPos={tipPos}
         >
           {tooltipContent}
         </SmartTipContent>
