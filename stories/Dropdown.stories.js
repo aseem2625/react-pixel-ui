@@ -15,6 +15,7 @@ storiesOf('Components/Dropdown', module)
           className={text('className', 'class1 class2')}
           uiClass={text('uiClass', '')}
           uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
+          show={boolean('show', false)}
           trigger={() => <div>Some trigger element</div>}
           showOnHover={boolean('showOnHover', false)}
         >
@@ -39,6 +40,7 @@ storiesOf('Components/Dropdown', module)
           className={text('className', 'class1 class2')}
           uiClass={text('uiClass', '')}
           uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
+          show={boolean('show', false)}
           trigger={() => <div>Some trigger element</div>}
           showOnHover={boolean('showOnHover', false)}
           beforeOptions={(close => <b>Before options element</b>)}
@@ -64,6 +66,7 @@ storiesOf('Components/Dropdown', module)
           className={text('className', 'class1 class2')}
           uiClass={text('uiClass', '')}
           uiClassOptions={text('uiClassOptions', 'ui-hasShadow')}
+          show={boolean('show', false)}
           trigger={() => <div>Some trigger element</div>}
           showOnHover={boolean('showOnHover', false)}
           afterOptions={close => <b>After options element</b>}
