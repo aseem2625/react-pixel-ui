@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 import { SmartTipContent } from 'components/index';
 
@@ -21,6 +21,7 @@ storiesOf('Utilities', module)
           <SmartTipContent
             className={className}
             uiClass={uiClass}
+            tipPos={select('tipPos', ['top', 'right', 'bottom', 'left'], 'top')}
           >
             {children}
           </SmartTipContent>
