@@ -14,7 +14,7 @@
     z-index: 1
     padding: 0 24px 0 12px
 
-    &::after
+    &::before
       content: ''
       position: absolute
       right: 8px
@@ -29,21 +29,21 @@
       will-change: transform
 
     // Add extra block to give more height to trigger after onMouseOver to avoid onMouseOut between trigger and body
-    &::before
+    &::after
       content: ''
       position: absolute
-      left: 0
-      height: 12px
       width: 100%
+      height: 12px
+      left: 0
       z-index: -1
       display: none
 
   &--show
     .Dropdown-trigger
-      &::after
+      &::before
         transform: rotate(-180deg)
 
-      &::before
+      &::after
         display: block
 
 

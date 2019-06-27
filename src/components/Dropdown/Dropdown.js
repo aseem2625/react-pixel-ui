@@ -1,7 +1,7 @@
 import React from 'react';
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
 import { classList, prefixToClasses } from 'js-awesome-utils';
-import  SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
+import SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
 
 import './Dropdown.styl';
 
@@ -12,6 +12,14 @@ export default class Dropdown extends React.PureComponent {
 
     this.toggleDropdown = this._toggleDropdown.bind(this);
     this.closeDropdown = this._closeDropdown.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.show !== prevProps.show) {
+      this.setState({
+        show: this.props.show
+      });
+    }
   }
 
   _toggleDropdown(forceSet) {
