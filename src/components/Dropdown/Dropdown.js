@@ -1,6 +1,7 @@
 import React from 'react';
 import OutsideClickLayer from 'components/xtra/OutsideClickLayer';
 import { classList, prefixToClasses } from 'js-awesome-utils';
+import  SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
 
 import './Dropdown.styl';
 
@@ -18,38 +19,19 @@ export default class Dropdown extends React.PureComponent {
 
     this.setState({
       show: toShow,
-    }, () => {
-      if (toShow) {
-        this.rePositionBody();
-      }
     });
-  }
-
-  componentDidMount() {
-    if(this.state.show) {
-      this.rePositionBody();
-    }
-  }
-
-  rePositionBody() {
-    const el = this.optionsBody;
-    const renderWidthWithFixed =  el && el.getBoundingClientRect().width;
-
-    el.style.width = renderWidthWithFixed + 'px';
-    el.style.position = 'absolute';
-    el.style.opacity = 1;
   }
 
   _closeDropdown() {
     this.toggleDropdown(false);
   }
 
-  setBodyRef = e => (this.optionsBody = e);
-
   render() {
     const {
-      showOnHover,
       className,
+      uiClass,
+      uiClassOptions,
+      showOnHover,
       trigger,
       beforeOptions,
       afterOptions,
@@ -65,14 +47,14 @@ export default class Dropdown extends React.PureComponent {
         <div
           className={classList(
             'Dropdown',
+            prefixToClasses('Dropdown--', className),
+            uiClass,
             show && 'Dropdown--show',
-            prefixToClasses('Dropdown--', className)
           )}
           onMouseEnter={showOnHover ? this.toggleDropdown : undefined}
           onMouseLeave={showOnHover ? this.closeDropdown : undefined}
         >
           <div
-            ref={this.setTriggerRef}
             className="Dropdown-trigger"
             onClick={showOnHover ? undefined : this.toggleDropdown}
           >
@@ -81,14 +63,15 @@ export default class Dropdown extends React.PureComponent {
 
           {
             this.state.show && (
-              <DropdownOptions
-                elRef={this.setBodyRef}
-                beforeOptions={beforeOptions}
-                afterOptions={afterOptions}
-                closeDropdown={this.closeDropdown}
-              >
-                {children}
-              </DropdownOptions>
+              <SmartTipContent className="Dropdown" tipPos="bottom" uiClass={uiClassOptions}>
+                <DropdownOptions
+                  beforeOptions={beforeOptions}
+                  afterOptions={afterOptions}
+                  closeDropdown={this.closeDropdown}
+                >
+                  {children}
+                </DropdownOptions>
+              </SmartTipContent>
             )
           }
         </div>
@@ -99,10 +82,10 @@ export default class Dropdown extends React.PureComponent {
 
 export class DropdownOptions extends React.PureComponent {
   render() {
-    const { beforeOptions, afterOptions, children, elRef, closeDropdown } = this.props;
+    const { beforeOptions, afterOptions, children, closeDropdown } = this.props;
 
     return (
-      <div ref={elRef} className="DropdownBody">
+      <div className="DropdownBody">
         {
           !!beforeOptions && (
             <div className="DropdownOptions-before">

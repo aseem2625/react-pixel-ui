@@ -2,20 +2,34 @@
 
 .Dropdown
   position: relative
-  font-size: 14px
-
-  height: 32px
-  line-height: 30px
-  border: 1px solid black
+  font-size: inherit
+  height: 34px
+  line-height: 34px
+  border-radius: 3px
+  border: 1px solid $gray
 
   .Dropdown-trigger
     position: relative
     cursor: pointer
     z-index: 1
-    padding: 0 12px
+    padding: 0 24px 0 12px
+
+    &::after
+      content: ''
+      position: absolute
+      right: 8px
+      top: 14px
+      width: 0
+      height: 0
+      border-left: 5px solid transparent
+      border-right: 5px solid transparent
+      border-top: 7px solid #ddd
+      transform-origin: 5px 3px
+      transition: 0.12s cubic-bezier(0.15, 0.86, 1, 1)
+      will-change: transform
 
     // Add extra block to give more height to trigger after onMouseOver to avoid onMouseOut between trigger and body
-    &::after
+    &::before
       content: ''
       position: absolute
       left: 0
@@ -25,43 +39,18 @@
       display: none
 
   &--show
-    .Dropdown-trigger::after
-      display: block
+    .Dropdown-trigger
+      &::after
+        transform: rotate(-180deg)
+
+      &::before
+        display: block
+
 
 .DropdownBody
-  position: fixed
-  transform-origin: top center
-  top: 100%
-  left: 0
-  margin-top: 4px
-  min-width: 180px
-  max-width: 360px
-  border: 1px solid #ccc
-  will-change: transform
-  opacity: 0
-  z-index: 2
+  position: relative
+  border-radius: 3px
 
-  &::before, &::after
-    content: ''
-    position: absolute
-    width: 0
-    height: 0
-
-  &::before
-    top: -9px
-    left: 20px
-    border-left: 10px solid transparent
-    border-right: 10px solid transparent
-    border-bottom: 12px solid #ccc
-    z-index: -1
-
-  &::after
-    top: -8px
-    left: 24px
-    border-left: 6px solid transparent
-    border-right: 6px solid transparent
-    border-bottom: 8px solid #fff
-    z-index: 1
 
 .DropdownOptions
   max-height: 320px
@@ -71,13 +60,28 @@
     display: block
     width: 100%
     line-height: 24px
-    background: $white
     border: none
 
     &:not(:last-child)
-      border-bottom: 1px solid #dddddd
+      border-bottom: 1px solid $gray
 
   .DropdownItem
     padding: 4px 12px
     text-align: left
     outline: none
+
+
+.SmartTipContent--Dropdown
+  margin-top: 4px
+  transform-origin: top center
+  top: 100%
+  left: 0
+  min-width: 180px
+  max-width: 360px
+  z-index: 2
+  background-color: $white
+
+  &.SmartTipContent
+    &::after, .arrow
+      left: 24px
+      z-index: -1
