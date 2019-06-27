@@ -14,6 +14,11 @@ export default class SmartTipContent extends React.PureComponent {
   }
 
   componentDidUpdate() {
+``    /*
+    * TODO: Side effects are of updating size in componentDidUpdate is that
+    * if there is search in the list and the SmartTipContent is opened, then size of dropdown will change which is bad expiernce.
+    * So, a prop: fixWidthIfSet must be passed to instruct whether a width should change in current update or not.
+    * */
     this.calcTrueWidth();
   }
 
@@ -39,7 +44,8 @@ export default class SmartTipContent extends React.PureComponent {
     const widthScale = matrixVal ? matrixVal[0] : 1;
 
     smartTipContent.style.width = ''; // Reset width to re-calcuate
-    smartTipContent.style.position = 'fixed';
+    smartTipContent.style.position = 'relative';
+    smartTipContent.style.visibility = 'collapse'; // position: relative should side-effect in layout change
     smartTipContent.style.transform = 'scale(1)';
 
     // Calculate full width as per position: fixed
@@ -48,6 +54,7 @@ export default class SmartTipContent extends React.PureComponent {
     smartTipContent.style.width = Math.ceil(renderWidthWithFixed / widthScale) + 'px';
 
     // Reset to original styles
+    smartTipContent.style.visibility = '';
     smartTipContent.style.position = '';
     smartTipContent.style.transform = '';
   }
