@@ -16,7 +16,7 @@ storiesOf('Components/Field/Textarea', module)
         name={text('name', 'field_name')}
         label={text('label', 'Textarea Field Label')}
         placeholder={text('placeholder', 'Enter value')}
-        description={object(
+        description={text(
           'description',
           <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
         )}

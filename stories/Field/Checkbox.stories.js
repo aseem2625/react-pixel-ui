@@ -15,7 +15,7 @@ storiesOf('Components/Field/Checkbox', module)
         className={text('className', 'Custom')}
         name={text('name', 'field_name')}
         label={text('label', 'Checkbox Field Label')}
-        description={object(
+        description={text(
           'description',
           <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
         )}

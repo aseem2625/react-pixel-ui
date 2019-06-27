@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import { storiesOf } from '@storybook/react';
 import { text, boolean, object } from '@storybook/addon-knobs';
@@ -16,7 +17,7 @@ storiesOf('Components/Field/Input', module)
         name={text('name', 'field_name')}
         label={text('label', 'Input Field Label')}
         placeholder={text('placeholder', 'Enter value')}
-        description={object(
+        description={text(
           'description',
           <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
         )}
