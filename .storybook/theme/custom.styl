@@ -237,8 +237,10 @@ body
 
 
 /***********************/
-/* FieldWrapper and Field override */
+/* Form, FieldWrapper and Field override */
 /***********************/
+.Form--Custom
+  margin: 32px 0
 
 .FieldWrapper
   font-size: 14px
@@ -248,6 +250,9 @@ body
 
   .Field-content
     width: 240px
+
+.FieldWrapper + .FieldWrapper
+  margin-top: 20px
 
 .Field
   font-size: 14px

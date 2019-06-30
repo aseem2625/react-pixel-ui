@@ -21,29 +21,40 @@ storiesOf('Components', module)
       }
 
       return (
-      <Form onSubmit={handleSubmit}>
+      <Form className="Custom" onSubmit={handleSubmit}>
         {(isPending, isInvalid) => (
           <React.Fragment>
+            Simple field 1
             <input name="field1" defaultValue="dog" disabled={isPending} />
+            <br />
+            <br />
+            Simple field 2
             <input name="field2" defaultValue="cat" disabled={isPending} />
+            <br />
+            <br />
 
             <Input
+              className="Custom"
               name="field3"
               label="Field 3"
-              defaultValue="hi lolol"
               placeholder="Add some value"
+              description="Add some description"
+              defaultValue="hi lolol"
               disabled
             />
 
             <Textarea
+              className="Custom"
               name="field4"
               label="Field 4"
-              defaultValue="check check"
               placeholder="Add some value"
+              defaultValue="check check"
+              description="Add some description"
               disabled={isPending}
             />
 
             <Textarea
+              className="Custom"
               name="field5"
               label="Field 5"
               defaultValue="wow"
@@ -51,23 +62,27 @@ storiesOf('Components', module)
               autoResize
               disabled={isPending}
             />
+
             <RadioGroup
+              className="Custom"
               name="field6"
               label="Field 6"
+              defaultValue="van"
               options={[
                 {
-                  value: 'male',
-                  label: 'Male',
+                  value: 'van',
+                  label: 'Van',
                 },
                 {
-                  value: 'female',
-                  label: () => <>Female</>,
+                  value: 'car',
+                  label: () => <>Car</>,
                 },
               ]}
               disabled={isPending}
             />
 
             <Checkbox
+              className="Custom"
               name="field7"
               label="Field 7"
               defaultChecked
@@ -77,6 +92,7 @@ storiesOf('Components', module)
             </Checkbox>
 
             <Checkbox
+              className="Custom"
               name="field8"
               label="Field 8"
               disabled={isPending}
@@ -85,6 +101,7 @@ storiesOf('Components', module)
             </Checkbox>
 
             <Checkbox
+              className="Custom"
               name="field9"
               label="Field 9"
               isSwitch
@@ -94,11 +111,13 @@ storiesOf('Components', module)
             </Checkbox>
 
             <Select
+              className="Custom"
+              uiClassOptions="ui-hasShadow"
               name="field10"
               label="Field 10"
               placeholder="Select"
               description="Some description"
-              defaultValue={nestedCountries[1].options[0]}
+              defaultValue="india"
               options={nestedCountries}
               disabled={isPending}
               enableSearch={boolean('Enable search', false)}
@@ -107,12 +126,12 @@ storiesOf('Components', module)
 
             <br />
 
-            <Button type="button" isPrimary disabled={isPending}>
+            <Button type="button" disabled={isPending}>
               Normal Button
             </Button>
 
             <AsyncButton
-              isPrimary
+              className="primary"
               pendingText="Submitting.."
               isPending={isPending}
               disabled={isInvalid}
