@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { text, boolean, object } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 
 import { Checkbox, CheckboxElement, HelpText } from 'components/index';
 import Icon from 'components/Icon/Icon';
