@@ -3,7 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean } from '@storybook/addon-knobs';
 
-import { RadioGroup, RadioGroupElement } from 'components/index';
+import { RadioGroup, RadioGroupElement, HelpText } from 'components/index';
+import Icon from 'components/Icon/Icon';
 
 
 storiesOf('Components/Field/RadioGroup', module)
@@ -11,10 +12,15 @@ storiesOf('Components/Field/RadioGroup', module)
     'with FieldWrapper',
     () => (
       <RadioGroup
-        name={text('Name', 'field_name')}
-        label={text('Label', 'RadioGroup Element')}
-        description={text('Description', 'Some description for this input')}
-        disabled={boolean('Disabled', false)}
+        className={text('className', 'Custom')}
+        name={text('name', 'field_name')}
+        label={text('label', 'RadioGroup Element Label')}
+        description={text(
+          'description',
+          <HelpText uiClass="ui-size-md"><Icon name="info" uiClass="ui-svg-size-md" /><span>Some description for this input</span></HelpText>
+        )}
+        defaultValue="female"
+        disabled={boolean('disabled', false)}
         options={[
           {
             value: 'male',
@@ -37,8 +43,8 @@ storiesOf('Components/Field/RadioGroup', module)
     'without FieldWrapper',
     () => (
       <RadioGroup
-        name={text('Name', 'field_name')}
-        disabled={boolean('Disabled', false)}
+        name={text('name', 'field_name')}
+        disabled={boolean('disabled', false)}
         options={[
           {
             value: 'male',
@@ -54,6 +60,7 @@ storiesOf('Components/Field/RadioGroup', module)
             label: () => <>Female</>,
           },
         ]}
+        defaultValue="male"
       />
     )
   );

@@ -300,3 +300,19 @@ body
 
     &::after
       background-color: rgb(66, 133, 133244)
+
+
+/***********************/
+/* Field-RadioGroup override */
+/***********************/
+
+.Field--RadioGroup
+  .Radio-mark::before
+    transform: scale(0.5)
+    transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1)
+
+  input:checked + .Radio-mark
+    background-color: $blue
+
+    &::before
+      transform: scale(1)
