@@ -1,6 +1,6 @@
 import React from 'react';
 import { getFieldClasses, addWrapperToField } from '../Field';
-import { classList, prefixToClasses, debounce } from 'js-awesome-utils';
+import { classList, debounce } from 'js-awesome-utils';
 
 import './RadioGroup.styl';
 
@@ -133,11 +133,13 @@ class Radio extends React.PureComponent {
     const { isChecked, disabled } = this.props;
 
     return (
-      <label className="Field-el" onClick={disabled ? undefined : this.toggleSelect}>
-        <input type="checkbox" checked={isChecked} hidden readOnly disabled={disabled}/>
-        <span className="Radio-mark" />
-        <span className="Radio-label">{this.props.children}</span>
-      </label>
+      <div className="Field-el">
+        <label onClick={disabled ? undefined : this.toggleSelect}>
+          <input type="checkbox" checked={isChecked} hidden readOnly disabled={disabled}/>
+          <span className="Radio-mark" />
+          <span className="Radio-label">{this.props.children}</span>
+        </label>
+      </div>
     );
   }
 }

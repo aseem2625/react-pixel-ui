@@ -1,40 +1,54 @@
+@import $vars
+
+$height = 20px
+
 .FieldWrapper--RadioGroup
   display: block
 
 .Field--RadioGroup
   .Field-el
+    height: auto
     display: block
     padding: 0
     border: none
-    cursor: pointer
     line-height: initial
+
+    label
+      cursor: pointer
+
+  .Field-el:not(:first-of-type)
+    margin-top: 8px
 
   .Radio-label, .Radio-mark
     display: inline-block
-    vertical-align: middle
+    vertical-align: top
 
   .Radio-mark
-    position: relative
+    position: absolute
     width: 20px
     height: 20px
     border-radius: 50%
-    border: 1px solid black
-    margin-right: 4px
+    border: 1px solid $gray
     text-align: center
 
     &::before
       content: ''
       position: relative
-      display: inline-block
-      vertical-align: middle
-      width: 50%
-      height: 50%
+      display: block
+      margin: 0 auto
+      top: 5px
+      width: 8px
+      height: 8px
       border-radius: 50%
-      background: blue
       opacity: 0
-      transform: scale(0.5)
-      transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1)
 
-  input:checked + .Radio-mark::before
-    opacity: 1
-    transform: scale(1)
+  .Radio-label
+    padding-left: 28px
+    line-height: $height
+
+  input:checked + .Radio-mark
+    background: $gray
+
+    &::before
+      background-color: $white
+      opacity: 1
