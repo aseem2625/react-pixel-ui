@@ -1,5 +1,7 @@
 @import $vars
 
+$height = 20px
+
 .Field--Checkbox
   line-height: normal
 
@@ -7,10 +9,10 @@
     padding: 0
     border: none
     cursor: pointer
-    line-height: 24px
+    line-height: $height
 
   .Checkbox-label
-    line-height: normal
+    line-height: $height
 
   .Checkbox-label, .Checkbox-mark
     display: inline-block
@@ -28,8 +30,8 @@
     padding-left: 28px
 
   .Checkbox-mark
-    width: 20px
-    height: 20px
+    width: $height
+    height: $height
     border-radius: 3px
     background-color: $white
     border: 1px solid $gray
