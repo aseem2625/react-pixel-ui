@@ -4,7 +4,7 @@
   line-height: 16px;
   color: #1d3250;
   border-radius: 2px;
-  font-size: 16px;
+  font-size: inherit;
   border: none;
   outline: none;
   -webkit-transition: 0.15s;
@@ -362,11 +362,11 @@
   font-size: inherit;
 }
 .FieldWrapper .Field-description {
-  margin-top: 4px;
+  margin-top: 8px;
   display: block;
 }
 .FieldWrapper .Field-error {
-  margin-top: 4px;
+  margin-top: 8px;
   display: none;
 }
 .FieldWrapper.FieldWrapper--disabled {
@@ -448,7 +448,7 @@
   padding: 8px 12px;
   line-height: 12px;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: inherit;
   color: #1d3250;
 }
 
@@ -768,46 +768,53 @@
   display: block;
 }
 .Field--RadioGroup .Field-el {
+  height: auto;
   display: block;
   padding: 0;
   border: none;
-  cursor: pointer;
   line-height: normal;
   line-height: initial;
+}
+.Field--RadioGroup .Field-el label {
+  cursor: pointer;
+}
+.Field--RadioGroup .Field-el:not(:first-of-type) {
+  margin-top: 8px;
 }
 .Field--RadioGroup .Radio-label,
 .Field--RadioGroup .Radio-mark {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .Field--RadioGroup .Radio-mark {
-  position: relative;
+  position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid #000;
-  margin-right: 4px;
+  border: 1px solid #c5c5c5;
   text-align: center;
 }
 .Field--RadioGroup .Radio-mark::before {
   content: '';
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 50%;
-  height: 50%;
+  display: block;
+  margin: 0 auto;
+  top: 5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #00f;
   opacity: 0;
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
-  -webkit-transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
-  transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
+}
+.Field--RadioGroup .Radio-label {
+  padding-left: 28px;
+  line-height: 20px;
+}
+.Field--RadioGroup input:checked + .Radio-mark {
+  background: #c5c5c5;
 }
 .Field--RadioGroup input:checked + .Radio-mark::before {
+  background-color: #fff;
   opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
 .Field--Checkbox {
@@ -817,10 +824,10 @@
   padding: 0;
   border: none;
   cursor: pointer;
-  line-height: 24px;
+  line-height: 20px;
 }
 .Field--Checkbox .Checkbox-label {
-  line-height: normal;
+  line-height: 20px;
 }
 .Field--Checkbox .Checkbox-label,
 .Field--Checkbox .Checkbox-mark {
@@ -1132,8 +1139,11 @@ body {
   border-radius: 50%;
 }
 /***********************/
-/* FieldWrapper and Field override */
+/* Form, FieldWrapper and Field override */
 /***********************/
+.Form--Custom {
+  margin: 32px 0;
+}
 .FieldWrapper {
   font-size: 14px;
 }
@@ -1142,6 +1152,9 @@ body {
 }
 .FieldWrapper .Field-content {
   width: 240px;
+}
+.FieldWrapper + .FieldWrapper {
+  margin-top: 20px;
 }
 .Field {
   font-size: 14px;
@@ -1204,6 +1217,22 @@ body {
 }
 .Field--Checkbox--Switch input:checked + .Checkbox-mark::after {
   background-color: #4285ff;
+}
+/***********************/
+/* Field-RadioGroup override */
+/***********************/
+.Field--RadioGroup .Radio-mark::before {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
+  transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
+}
+.Field--RadioGroup input:checked + .Radio-mark {
+  background-color: #4285f4;
+}
+.Field--RadioGroup input:checked + .Radio-mark::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 @-webkit-keyframes moveUp-1 {
   0% {
@@ -1317,25 +1346,25 @@ body {
 @-webkit-keyframes fadeInUpAppear {
   0% {
     opacity: 0;
-    -webkit-transform: translate(-50%, 3px);
-            transform: translate(-50%, 3px);
+    -webkit-transform: translateY(6px);
+            transform: translateY(6px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @keyframes fadeInUpAppear {
   0% {
     opacity: 0;
-    -webkit-transform: translate(-50%, 3px);
-            transform: translate(-50%, 3px);
+    -webkit-transform: translateY(6px);
+            transform: translateY(6px);
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 /***********************/
@@ -1408,8 +1437,8 @@ body {
 /* Animations */
 /***********************/
 .ui-fadeInUpAppear {
-  -webkit-animation: fadeInUpAppear 0.24s cubic-bezier(0, 0, 0.22, 0.95) forwards;
-          animation: fadeInUpAppear 0.24s cubic-bezier(0, 0, 0.22, 0.95) forwards;
+  -webkit-animation: fadeInUpAppear 0.24s cubic-bezier(0.18, 0.92, 1, 1) forwards;
+          animation: fadeInUpAppear 0.24s cubic-bezier(0.18, 0.92, 1, 1) forwards;
 }
 
 
