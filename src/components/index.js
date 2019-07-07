@@ -33,13 +33,12 @@ export RadioGroup, { RadioGroupElement } from './Field/RadioGroup/RadioGroup';
 export Checkbox, { CheckboxElement } from './Field/Checkbox/Checkbox';
 export Select, { SelectElement } from './Field/Select/Select';
 
-export SmoothScrollLink from './SmoothScrollLink/SmoothScrollLink';
-
 export OutsideClickLayer from './xtra/OutsideClickLayer';
 export EscPressLayer from './xtra/EscPressLayer';
 export AutoRemoveLayer from './xtra/AutoRemoveLayer';
 export ErrorBoundary from './xtra/ErrorBoundary';
 export SmartTipContent from './xtra/SmartTipContent/SmartTipContent';
+export SmoothScrollLink from './xtra/SmoothScrollLink';
 
 
 
