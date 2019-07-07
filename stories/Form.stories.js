@@ -100,30 +100,28 @@ storiesOf('Components', module)
               Checkbox 2
             </Checkbox>
 
-            <Checkbox
-              className="Custom"
-              name="field9"
-              label="Field 9"
-              isSwitch
-              disabled={isPending}
-            >
-              Switch
-            </Checkbox>
-
             <Select
               className="Custom"
               uiClassOptions="ui-hasShadow"
-              name="field10"
-              label="Field 10"
+              name="field9"
+              label="Field 9"
               placeholder="Select"
               description="Some description"
               defaultValue="india"
               options={nestedCountries}
               disabled={isPending}
-              enableSearch={boolean('Enable search', false)}
+              enableSearch
               searchKeys={['name', 'continent']}
             />
-
+            <Checkbox
+              className="Custom"
+              name="field10"
+              label="Field 10"
+              isSwitch
+              disabled={isPending}
+            >
+              Switch
+            </Checkbox>
             <br />
 
             <Button type="button" disabled={isPending}>
