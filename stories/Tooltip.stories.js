@@ -13,10 +13,9 @@ storiesOf('Components', module)
     () => (
       <Tooltip
         className={text('className', 'class1 class2')}
-        uiClass={text('uiClass', '')}
+        uiClass={text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white')}
         tipPos="top"
         tooltipContent={text('tooltipText', 'Some tooltip content')}
-        uiClassContent={text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white')}
         onMouseLeave={action('onMouseLeave captured!')}
       >
         Hover/Tap Me!
