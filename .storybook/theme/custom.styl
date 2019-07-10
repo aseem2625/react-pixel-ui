@@ -324,11 +324,34 @@ body
 
 
 /***********************/
+/* Stepper custom styles */
+/***********************/
+
+.Stepper--Custom
+  .Stepper-step
+    .Icon svg
+      width: 40px
+
+  .Icon--defaultState
+    opacity: .5
+
+  .Icon--activeState svg
+    fill: $blue
+
+  .Stepper-ProgressBarContainer
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+
+
+/***********************/
 /* Progress custom styles */
 /***********************/
 
 .ProgressBar--Custom
   transition: .4s cubic-bezier(0.11, 0.93, 1, 1)
+
+.ProgressBar--withPattern
   background-image: repeating-linear-gradient(
           -45deg,
           rgba(255,255,255,0.8),
@@ -338,4 +361,3 @@ body
 
   )
   background-size: 24px 24px
-
