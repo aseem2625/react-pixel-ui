@@ -34,6 +34,7 @@ export Checkbox, { CheckboxElement } from './Field/Checkbox/Checkbox';
 export Select, { SelectElement } from './Field/Select/Select';
 
 export ProgressBar from './Progress/ProgressBar/ProgressBar';
+export Stepper from './Stepper/Stepper';
 
 export OutsideClickLayer from './xtra/OutsideClickLayer';
 export EscPressLayer from './xtra/EscPressLayer';
