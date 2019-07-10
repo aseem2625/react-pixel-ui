@@ -4,7 +4,7 @@
   line-height: 16px;
   color: #1d3250;
   border-radius: 2px;
-  font-size: 16px;
+  font-size: inherit;
   border: none;
   outline: none;
   -webkit-transition: 0.15s;
@@ -362,11 +362,11 @@
   font-size: inherit;
 }
 .FieldWrapper .Field-description {
-  margin-top: 4px;
+  margin-top: 8px;
   display: block;
 }
 .FieldWrapper .Field-error {
-  margin-top: 4px;
+  margin-top: 8px;
   display: none;
 }
 .FieldWrapper.FieldWrapper--disabled {
@@ -448,7 +448,7 @@
   padding: 8px 12px;
   line-height: 12px;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: inherit;
   color: #1d3250;
 }
 
@@ -548,7 +548,7 @@
   min-width: 360px;
   min-height: 200px;
   padding: 24px;
-  border-radius: 16px;
+  border-radius: 3px;
   background: #fff;
   -webkit-transition: 0.15s;
   transition: 0.15s;
@@ -768,46 +768,53 @@
   display: block;
 }
 .Field--RadioGroup .Field-el {
+  height: auto;
   display: block;
   padding: 0;
   border: none;
-  cursor: pointer;
   line-height: normal;
   line-height: initial;
+}
+.Field--RadioGroup .Field-el label {
+  cursor: pointer;
+}
+.Field--RadioGroup .Field-el:not(:first-of-type) {
+  margin-top: 8px;
 }
 .Field--RadioGroup .Radio-label,
 .Field--RadioGroup .Radio-mark {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .Field--RadioGroup .Radio-mark {
-  position: relative;
+  position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid #000;
-  margin-right: 4px;
+  border: 1px solid #c5c5c5;
   text-align: center;
 }
 .Field--RadioGroup .Radio-mark::before {
   content: '';
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 50%;
-  height: 50%;
+  display: block;
+  margin: 0 auto;
+  top: 5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #00f;
   opacity: 0;
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
-  -webkit-transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
-  transition: 0.1s cubic-bezier(0.08, 1.07, 1, 1);
+}
+.Field--RadioGroup .Radio-label {
+  padding-left: 28px;
+  line-height: 20px;
+}
+.Field--RadioGroup input:checked + .Radio-mark {
+  background: #c5c5c5;
 }
 .Field--RadioGroup input:checked + .Radio-mark::before {
+  background-color: #fff;
   opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
 .Field--Checkbox {
@@ -817,10 +824,10 @@
   padding: 0;
   border: none;
   cursor: pointer;
-  line-height: 24px;
+  line-height: 20px;
 }
 .Field--Checkbox .Checkbox-label {
-  line-height: normal;
+  line-height: 20px;
 }
 .Field--Checkbox .Checkbox-label,
 .Field--Checkbox .Checkbox-mark {
