@@ -955,4 +955,25 @@
   z-index: -1;
 }
 
+.ProgressBar {
+  position: relative;
+  width: 0;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #c5c5c5;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+
+.Stepper {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+.Stepper .Stepper-step {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+
 /*# sourceMappingURL=base.css.map */
