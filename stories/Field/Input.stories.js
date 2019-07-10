@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { storiesOf } from '@storybook/react';
-import { text, boolean, object } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
 
 import { Input, InputElement, HelpText } from 'components/index';
 import Icon from 'components/Icon/Icon';
