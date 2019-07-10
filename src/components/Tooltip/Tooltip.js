@@ -27,15 +27,14 @@ export default class Tooltip extends React.Component {
   setRef = e => (this.tooltip = e);
 
   render() {
-    const { className, uiClass, uiClassContent, children, tooltipContent, tipPos } = this.props;
+    const { className, uiClass, children, tooltipContent, tipPos } = this.props;
 
     return (
-      <div
+      <span
         ref={this.setRef}
         className={classList(
           'Tooltip',
-          prefixToClasses('Tooltip--', className),
-          uiClass
+          prefixToClasses('Tooltip--', className)
         )}
       >
         <span
@@ -49,12 +48,12 @@ export default class Tooltip extends React.Component {
         <SmartTipContent
           parentEl={this.tooltip}
           className="Tooltip"
-          uiClass={uiClassContent}
+          uiClass={uiClass}
           tipPos={tipPos}
         >
           {tooltipContent}
         </SmartTipContent>
-      </div>
+      </span>
     );
   }
 }
