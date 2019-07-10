@@ -80,7 +80,7 @@ export function addWrapperToField(_FieldComponent, _fieldType) {
     constructor(props) {
       super(props);
 
-      this.class = 'FieldWrapper';
+      this.baseClass = 'FieldWrapper';
 
       this.state = {
         error: '',
@@ -153,11 +153,11 @@ export function addWrapperToField(_FieldComponent, _fieldType) {
       return (
         <div
           className={classList(
-            this.class,
-            className && prefixToClasses(`${this.class}--`, className),
-            _fieldType && prefixToClasses(`${this.class}--`, _fieldType),
+            this.baseClass,
+            className && prefixToClasses(`${this.baseClass}--`, className),
+            _fieldType && prefixToClasses(`${this.baseClass}--`, _fieldType),
             prefixToClasses(
-              `${this.class}--`,
+              `${this.baseClass}--`,
               getFieldWrapperClasses(this.props, this.state)
             )
           )}
