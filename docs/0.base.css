@@ -955,6 +955,27 @@
   z-index: -1;
 }
 
+.ProgressBar {
+  position: relative;
+  width: 0;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #c5c5c5;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+
+.Stepper {
+  position: relative;
+  width: 100%;
+  display: table;
+}
+.Stepper .Stepper-step {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+
 .Icon {
   display: inline-block;
   vertical-align: middle;
@@ -1234,6 +1255,35 @@ body {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
+/***********************/
+/* Stepper custom styles */
+/***********************/
+.Stepper--Custom .Stepper-step .Icon svg {
+  width: 40px;
+}
+.Stepper--Custom .Icon--defaultState {
+  opacity: 0.5;
+}
+.Stepper--Custom .Icon--activeState svg {
+  fill: #4285f4;
+}
+.Stepper--Custom .Stepper-ProgressBarContainer {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+/***********************/
+/* Progress custom styles */
+/***********************/
+.ProgressBar--Custom {
+  -webkit-transition: 0.4s cubic-bezier(0.11, 0.93, 1, 1);
+  transition: 0.4s cubic-bezier(0.11, 0.93, 1, 1);
+}
+.ProgressBar--withPattern {
+  background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 8px, rgba(255,255,255,0.3) 8px, rgba(255,255,255,0.3) 17px /* determines size */);
+  background-size: 24px 24px;
+}
 @-webkit-keyframes moveUp-1 {
   0% {
     opacity: 0;
@@ -1391,6 +1441,10 @@ body {
 .ui-bg-green {
   background-color: #89da1d;
   border-color: #89da1d;
+}
+.ui-bg-blue {
+  background-color: #528ff0;
+  border-color: #528ff0;
 }
 .ui-bg-yellow {
   background-color: #f5be22;
