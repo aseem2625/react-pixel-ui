@@ -33,6 +33,8 @@ export RadioGroup, { RadioGroupElement } from './Field/RadioGroup/RadioGroup';
 export Checkbox, { CheckboxElement } from './Field/Checkbox/Checkbox';
 export Select, { SelectElement } from './Field/Select/Select';
 
+export ProgressBar from './Progress/ProgressBar/ProgressBar';
+
 export OutsideClickLayer from './xtra/OutsideClickLayer';
 export EscPressLayer from './xtra/EscPressLayer';
 export AutoRemoveLayer from './xtra/AutoRemoveLayer';
