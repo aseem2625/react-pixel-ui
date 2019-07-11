@@ -44,8 +44,6 @@ export default class ProgressBar extends React.PureComponent {
       width: `${this.safeProgressPercentage}%`
     };
 
-    console.log(this.lastPercentageProgress, progressPercentage);
-
     if (this.transitionDuration) {
       progresserStyles.transitionDuration = `${(this.transitionDuration * Math.abs(this.lastPercentageProgress - progressPercentage)/100)}s`;
     }

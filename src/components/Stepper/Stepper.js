@@ -10,7 +10,8 @@ export default class Stepper extends React.PureComponent {
     const steps = [];
 
     children.forEach((c, ix) => {
-      const isActive = ix <= activeStep;
+      const isActiveStep = ix <= activeStep,
+        isCurrentStep = ix === activeStep;
 
       steps.push(
         <div
@@ -18,10 +19,11 @@ export default class Stepper extends React.PureComponent {
           className={
             classList(
               'Stepper-step',
-              isActive && 'Stepper-step--active'
+              isActiveStep && 'Stepper-step--active',
+              isCurrentStep && 'Stepper-step--current',
             )}
         >
-          {typeof c === 'function' ? c(isActive) : c}
+          {typeof c === 'function' ? c(isActiveStep) : c}
         </div>
       )
     });
