@@ -50,14 +50,20 @@ export default class ProgressBar extends React.PureComponent {
 
     return (
       <div
-        ref={this.setRef}
-        style={progresserStyles}
         className={classList(
           'ProgressBar',
           prefixToClasses('ProgressBar--', className),
-          uiClass
         )}
-      />
+      >
+        <div
+          ref={this.setRef}
+          style={progresserStyles}
+          className={classList(
+            'ProgressBar-progress',
+            uiClass
+          )}
+        />
+      </div>
     );
   }
 }

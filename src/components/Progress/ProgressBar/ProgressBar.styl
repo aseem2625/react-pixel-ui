@@ -2,8 +2,13 @@
 
 .ProgressBar
   position: relative
-  width: 0 // Default width
+  width: 100%
   height: 6px
   border-radius: 3px
-  background-color: $gray
+  overflow: hidden
+
+.ProgressBar-progress
+  height: 100%
+  width: 0 // Default width
   transform-origin: center left
+  background-color: $gray
