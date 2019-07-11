@@ -13,7 +13,7 @@ storiesOf('Components/Progress', module)
     () => (
       <DummyContainer style={{width: 400}}>
         <ProgressBar
-          className={text('className', 'Custom withPattern')}
+          className={text('className', 'Custom withPattern withAnimation')}
           uiClass={text('uiClass', 'ui-bg-green')}
           progressPercentage={number('progressPercentage', 30)}
        />

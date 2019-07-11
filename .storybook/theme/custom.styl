@@ -349,15 +349,33 @@ body
 /***********************/
 
 .ProgressBar--Custom
+  background-color: #ececec
+
+.ProgressBar-progress
   transition: .4s cubic-bezier(0.11, 0.93, 1, 1)
 
 .ProgressBar--withPattern
-  background-image: repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,0.8),
-          rgba(255,255,255,0.8) 8px,
-          rgba(255,255,255,0.3) 8px,
-          rgba(255,255,255,0.3) 17px /* determines size */
+  .ProgressBar-progress
+    background-image: repeating-linear-gradient(
+            -45deg,
+            rgba(255,255,255,0.8),
+            rgba(255,255,255,0.8) 8px,
+            rgba(255,255,255,0.3) 8px,
+            rgba(255,255,255,0.3) 17px /* determines size */
 
-  )
-  background-size: 24px 24px
+    )
+    background-size: 24px 24px
+
+.ProgressBar--withAnimation
+    .ProgressBar-progress
+      animation: move-right 0.5s linear infinite
+
+
+@keyframes move-right {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 24px 0
+  }
+}
