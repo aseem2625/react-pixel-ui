@@ -63,7 +63,10 @@ export default [
         runtimeHelpers: true
       }),
       terser({
-        sourcemap: true
+        sourcemap: true,
+        compress: {
+          drop_console: true,
+        },
       }),
       resolve(), // so Rollup can find imported library
       commonjs(), // so Rollup can convert `imported library to an ES module
