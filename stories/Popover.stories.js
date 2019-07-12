@@ -11,8 +11,7 @@ storiesOf('Components', module)
     'Popover',
     () => {
       const className = text('className', 'class1 class2'),
-        uiClass = text('uiClass', ''),
-        uiClassContent = text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white'),
+        uiClass = text('uiClass', 'ui-hasShadow ui-bg-black ui-txt-white'),
         triggerOnHover = boolean('triggerOnHover', true ),
         delay = number('delay (Optional / provide only when triggerOnHover = true)', 250); // default value
 
@@ -20,7 +19,6 @@ storiesOf('Components', module)
         <Popover
           className={className}
           uiClass={uiClass}
-          uiClassContent={uiClassContent}
           tipPos="top"
           popoverContent={close => (
             <React.Fragment>

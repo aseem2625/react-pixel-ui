@@ -36,7 +36,7 @@ storiesOf('Components/Clipboard', module)
               <Tooltip
                 tipPos="top"
                 tooltipContent={isCopied ? 'Copied!' : 'Copy some url'}
-                uiClassContent={`ui-hasShadow ${isCopied ? 'ui-bg-green' : 'ui-bg-black'} ui-txt-white`}
+                uiClass={`ui-hasShadow ${isCopied ? 'ui-bg-green' : 'ui-bg-black'} ui-txt-white`}
                 onMouseLeave={onMouseLeave(onCopyEnd)}
               >
                 Copy <Icon name="copy" uiClass="ui-svg-size-md" />

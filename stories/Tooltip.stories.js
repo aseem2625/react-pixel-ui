@@ -13,7 +13,7 @@ storiesOf('Components', module)
     () => (
       <Tooltip
         className={text('className', 'class1 class2')}
-        uiClass={text('uiClassContent', 'ui-hasShadow ui-bg-black ui-txt-white')}
+        uiClass={text('uiClass', 'ui-hasShadow ui-bg-black ui-txt-white')}
         tipPos="top"
         tooltipContent={text('tooltipText', 'Some tooltip content')}
         onMouseLeave={action('onMouseLeave captured!')}
