@@ -46,7 +46,7 @@ export default class Popover extends React.Component {
   setRef = e => (this.popover = e);
 
   render() {
-    const { className, uiClassContent, children, popoverContent, triggerOnHover = false, tipPos } = this.props;
+    const { className, uiClass, children, popoverContent, triggerOnHover = false, tipPos } = this.props;
 
     return (
       <OutsideClickLayer onOutsideClick={this.hidePopover} enabled>
@@ -62,7 +62,7 @@ export default class Popover extends React.Component {
             <SmartTipContent
               parentEl={this.popover}
               className="Popover"
-              uiClass={uiClassContent}
+              uiClass={uiClass}
               tipPos={tipPos}
             >
               {popoverContent(this.hidePopover)}
