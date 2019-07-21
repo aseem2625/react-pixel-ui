@@ -5,7 +5,7 @@ import './Card.styl';
 
 export default class Card extends React.PureComponent {
   render() {
-    const { children, className, uiClass } = this.props;
+    const { children, className, uiClass, ...restProps } = this.props;
     return (
       <div
         className={classList(
@@ -13,6 +13,7 @@ export default class Card extends React.PureComponent {
           prefixToClasses('Card--', className),
           uiClass
         )}
+        {...restProps}
       >
         {children}
       </div>
