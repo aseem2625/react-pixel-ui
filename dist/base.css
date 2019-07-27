@@ -513,9 +513,15 @@
 }
 
 .BackDrop {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  left: 0;
+  top: 0;
 }
 .BackDrop .BackDrop-content {
+  height: 100%;
   position: relative;
   -webkit-transition: 0.1s all cubic-bezier(0.24, 0.94, 1, 1);
   transition: 0.1s all cubic-bezier(0.24, 0.94, 1, 1);
@@ -523,16 +529,12 @@
 .BackDrop--show {
   z-index: 99999;
 }
-.BackDrop--show .BackDrop-content {
-  -webkit-box-shadow: 0 0 0 9999px rgba(0,0,0,0.8);
-          box-shadow: 0 0 0 9999px rgba(0,0,0,0.8);
-}
 .scroll-fix {
   overflow: hidden;
 }
 
 .Popup {
-  position: fixed;
+  position: absolute;
   top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
