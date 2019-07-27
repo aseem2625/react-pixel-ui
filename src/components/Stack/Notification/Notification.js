@@ -12,12 +12,24 @@ let _notificationsStackInstance;
 export class NotificationsContainer extends Stack {
   stackType = 'Notification'; // Override stackType
 
+  constructor(props) {
+    super(props);
+    this.handleClose = this._handleClose.bind(this);
+  }
+
   componentDidMount() {
     _notificationsStackInstance = this;
   }
 
   componentWillUnmount() {
     _notificationsStackInstance = null;
+  }
+
+  _handleClose(notification) {
+    return () => {
+      notification.onClose && notification.onClose();
+      this.removeItemFromStack(notification.id);
+    }
   }
 
   render() {
@@ -33,15 +45,15 @@ export class NotificationsContainer extends Stack {
           return (
             <AutoRemoveLayer
               key={n.id}
-              duration={n.duration}
-              remove={this.removeItemFromStack}
+              duration={n.autoRemoveDuration}
+              remove={this.handleClose(n)}
               enabled={isEnabledAutoRemove}
             >
               <StackItem
                 stackItemType={this.stackType}
                 id={n.id}
                 showCross={n.showCross}
-                removeItemFromStack={this.removeItemFromStack}
+                removeItemFromStack={this.handleClose(n)}
                 className={n.className}
                 uiClass={n.uiClass}
               >
@@ -56,13 +68,14 @@ export class NotificationsContainer extends Stack {
 }
 
 
-export default function openNotification({ className, uiClass, showCross, duration, enableAutoRemove, content }) {
+export default function openNotification({ className, uiClass, showCross, onClose, autoRemoveDuration, enableAutoRemove, content }) {
   _notificationsStackInstance.addItemInStack({
     className,
     uiClass,
     showCross,
-    duration,
+    onClose,
+    autoRemoveDuration,
     enableAutoRemove,
-    content
+    content,
   });
 }

@@ -13,12 +13,24 @@ let _toastsStackInstance;
 export class ToastsContainer extends Stack {
   stackType = 'Toast'; // Override stackType
 
+  constructor(props) {
+    super(props);
+    this.handleClose = this._handleClose.bind(this);
+  }
+
   componentDidMount() {
     _toastsStackInstance = this;
   }
 
   componentWillUnmount() {
     _toastsStackInstance = null;
+  }
+
+  _handleClose(toast) {
+    return () => {
+      toast.onClose && toast.onClose();
+      this.removeItemFromStack(toast.id);
+    }
   }
 
   render() {
@@ -34,17 +46,16 @@ export class ToastsContainer extends Stack {
           return (
             <AutoRemoveLayer
               key={t.id}
-              duration={t.duration}
-              remove={this.removeItemFromStack}
+              duration={t.autoRemoveDuration}
+              remove={this.handleClose(t)}
               enabled={isEnabledAutoRemove}
             >
               <StackItem
                 stackItemType={this.stackType}
-                id={t.id}
                 className={t.className}
                 uiClass={t.uiClass}
                 showCross={t.showCross}
-                removeItemFromStack={this.removeItemFromStack}
+                removeItemFromStack={this.handleClose(t)}
               >
                 {t.content}
               </StackItem>
@@ -56,13 +67,14 @@ export class ToastsContainer extends Stack {
   }
 }
 
-export default function openToast({ className, uiClass, showCross, enableAutoRemove, duration, content }) {
+export default function openToast({ className, uiClass, showCross, onClose, enableAutoRemove, autoRemoveDuration, content }) {
   _toastsStackInstance.addItemInStack({
     className,
     uiClass,
     showCross,
+    onClose,
     enableAutoRemove,
-    duration,
+    autoRemoveDuration,
     content
   });
 }

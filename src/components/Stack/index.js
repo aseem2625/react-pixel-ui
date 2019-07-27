@@ -52,12 +52,6 @@ export default class Stack extends React.Component {
  *
  * */
 export class StackItem extends React.PureComponent {
-  _handleRemove() {
-    this.props.removeItemFromStack(this.props.id);
-  }
-
-  handleRemove = this._handleRemove.bind(this);
-
   render() {
     const {
       className,
@@ -65,6 +59,7 @@ export class StackItem extends React.PureComponent {
       stackItemType = 'StackItem',
       showCross,
       children,
+      removeItemFromStack
     } = this.props;
 
     return (
@@ -78,14 +73,14 @@ export class StackItem extends React.PureComponent {
       >
         <span className={`${stackItemType}-content`}>
           {typeof children === 'function'
-            ? children(this.handleRemove)
+            ? children(removeItemFromStack)
             : children}
         </span>
 
         {!!showCross && (
           <span
             className={`${stackItemType}-cross`}
-            onClick={this.handleRemove}
+            onClick={removeItemFromStack}
           >
             &#215;
           </span>

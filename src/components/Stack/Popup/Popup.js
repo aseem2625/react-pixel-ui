@@ -17,12 +17,24 @@ export let _popupsStackInstance;
 export class PopupsContainer extends Stack {
   stackType = 'Popup'; // Override stackType
 
+  constructor(props) {
+    super(props);
+    this.handleClose = this._handleClose.bind(this);
+  }
+
   componentDidMount() {
     _popupsStackInstance = this;
   }
 
   componentWillUnmount() {
     _popupsStackInstance = null;
+  }
+
+  _handleClose(popup) {
+    return () => {
+      popup.onClose && popup.onClose();
+      this.removeItemFromStack(popup.id);
+    }
   }
 
   render() {
@@ -40,22 +52,21 @@ export class PopupsContainer extends Stack {
           return (
             <OutsideClickLayer
               key={p.id}
-              onOutsideClick={_ => this.removeItemFromStack(p.id)}
+              onOutsideClick={this.handleClose(p)}
               enabled={
                 isEnabledOutsideClick && ix === this.state.stack.length - 1
               } // Only last Popup is allowed to be closed on outside click
             >
               <EscPressLayer
-                onEscPress={_ => this.removeItemFromStack(p.id)}
+                onEscPress={this.handleClose(p)}
                 enabled={
                   isEnabledEscPress && ix === this.state.stack.length - 1
                 } // Only last Popup is allowed to be closed on ecs press
               >
                 <StackItem
                   stackItemType={this.stackType}
-                  id={p.id}
                   showCross={p.showCross}
-                  removeItemFromStack={this.removeItemFromStack}
+                  removeItemFromStack={this.handleClose(p)}
                   className={p.className}
                   uiClass={p.uiClass}
                 >
@@ -66,7 +77,7 @@ export class PopupsContainer extends Stack {
                   )}
                   <div className={classList(`${this.stackType}--body`)}>
                     {typeof p.content === 'function'
-                      ? p.content(_ => this.removeItemFromStack(p.id))
+                      ? p.content(this.handleClose(p))
                       : p.content}
                   </div>
                 </StackItem>
@@ -79,13 +90,14 @@ export class PopupsContainer extends Stack {
   }
 }
 
-export default function openPopup({ className, uiClass, title, content, showCross, enableEscPress, enableOutsideClick }) {
+export default function openPopup({ className, uiClass, title, content, showCross, onClose, enableEscPress, enableOutsideClick }) {
   _popupsStackInstance.addItemInStack({
       className,
       uiClass,
       title,
       content,
       showCross,
+      onClose,
       enableEscPress,
       enableOutsideClick
     },
