@@ -1,17 +1,20 @@
 @import $vars
 
 .BackDrop
-  position: relative
+  position: fixed
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,.8)
+  left: 0
+  top:0
 
   .BackDrop-content
+    height: 100%
     position: relative
     transition: 0.1s all cubic-bezier(0.24, 0.94, 1, 1)
 
   &--show
     z-index: ($highestZIndex - 1) // For Tooltip, Popover, Notification, Toast to appear above BackDrop
-
-    .BackDrop-content
-      box-shadow: 0 0 0 9999px rgba(0,0,0,0.8);
 
 .scroll-fix
   overflow: hidden
