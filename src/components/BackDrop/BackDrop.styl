@@ -4,16 +4,18 @@
   position: fixed
   width: 100%
   height: 100%
-  background: rgba(0,0,0,.8)
   left: 0
   top:0
+  pointer-events: none
 
   .BackDrop-content
     height: 100%
     position: relative
     transition: 0.1s all cubic-bezier(0.24, 0.94, 1, 1)
 
-  &--show
+  &.BackDrop--show
+    pointer-events: all
+    background: rgba(0,0,0,.8)
     z-index: ($highestZIndex - 1) // For Tooltip, Popover, Notification, Toast to appear above BackDrop
 
 .scroll-fix
