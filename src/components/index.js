@@ -13,7 +13,7 @@ export Tag from './Tag/Tag';
 
 export openToast, { ToastsContainer} from './Stack/Toast/Toast';
 export openNotification, { NotificationsContainer } from './Stack/Notification/Notification';
-export openPopup, { PopupsContainer } from './Stack/Popup/Popup';
+export openPopup, { PopupsContainer, _popupsStackInstance } from './Stack/Popup/Popup';
 export openConfirmPopup from './Stack/Popup/ConfirmPopup';
 
 export BackDrop from './BackDrop/BackDrop';

@@ -34,10 +34,11 @@ export default class Stack extends React.Component {
 
     const stackOrder = reverseOrder ? 'push' : 'unshift'; // By default stack will add in the starting
 
+    const id = `${this.stackType}-` + new Date().getTime();
     // Directly mutating the state
     stack[stackOrder]({
       // Adding in starting of the stack
-      id: `${this.stackType}-` + new Date().getTime(),
+      id,
       ...opts,
     });
 
@@ -45,6 +46,8 @@ export default class Stack extends React.Component {
     this.setState({
       stack,
     });
+
+    return id;
   }
 }
 

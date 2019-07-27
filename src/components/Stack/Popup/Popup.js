@@ -91,7 +91,7 @@ export class PopupsContainer extends Stack {
 }
 
 export default function openPopup({ className, uiClass, title, content, showCross, onClose, enableEscPress, enableOutsideClick }) {
-  _popupsStackInstance.addItemInStack({
+  const popupId = _popupsStackInstance.addItemInStack({
       className,
       uiClass,
       title,
@@ -102,4 +102,6 @@ export default function openPopup({ className, uiClass, title, content, showCros
       enableOutsideClick
     },
     true);
+
+  return popupId;
 }
