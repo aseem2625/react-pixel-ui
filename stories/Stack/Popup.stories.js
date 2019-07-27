@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import { freezeRoot, unfreezeRoot } from '../_story-helpers/utils';
 
 import { PopupsContainer, openPopup, Button} from 'components/index';
@@ -36,6 +37,7 @@ storiesOf('Components/Stack', module)
                 content: close => (
                   <Modal1 close={close} data="modal 1 props" />
                 ),
+                onClose: action('Popup closed'),
                 showCross,
                 enableEscPress,
                 enableOutsideClick,

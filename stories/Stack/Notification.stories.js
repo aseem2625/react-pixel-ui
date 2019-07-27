@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { boolean, text, number } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { NotificationsContainer, openNotification, Button} from 'components/index';
 
@@ -13,7 +14,7 @@ storiesOf('Components/Stack', module)
         className = text("className", 'class1 class2'),
         uiClass = text('uiClass', 'ui-hasShadow ui-bg-black ui-txt-white'),
         showCross = boolean("showCross", false), // Pass this prop if enableAutoRemove isn't present
-        duration = number("duration (in ms)", 3000),
+        autoRemoveDuration = number("autoRemoveDuration (in ms)", 3000),
         enableAutoRemove = boolean("enableAutoRemove", true);
 
       return (
@@ -35,9 +36,10 @@ storiesOf('Components/Stack', module)
                     <Button onClick={close}>Close notification</Button>
                   </React.Fragment>
                 ),
+                onClose: action('Notification closed'),
                 showCross,
                 enableAutoRemove,
-                duration
+                autoRemoveDuration
               })
             }
           >

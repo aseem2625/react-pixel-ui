@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { boolean, text, number, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { ToastsContainer, openToast, Button} from 'components/index';
 
@@ -14,7 +15,7 @@ storiesOf('Components/Stack', module)
         uiClass = text("uiClass", 'ui-hasShadow'),
         showCross = boolean("showCross", false), // Pass this prop if enableAutoRemove isn't present
         enableAutoRemove = boolean("enableAutoRemove", true),
-        duration = number("duration (in ms)", 3000), // default
+        autoRemoveDuration = number("autoRemoveDuration (in ms)", 3000), // default
         content = text('content', 'Add toast content'); // Can be a function (close) => (<div>Add toast content</div>)
 
       return (
@@ -29,7 +30,8 @@ storiesOf('Components/Stack', module)
                 content,
                 showCross,
                 enableAutoRemove,
-                duration,
+                onClose: action('Toast closed'),
+                autoRemoveDuration,
                 className,
                 uiClass,
               })
