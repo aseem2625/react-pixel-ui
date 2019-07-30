@@ -30,6 +30,7 @@ function ParentHavingStepper({ defaultActiveStep }) {
       <DummyContainer style={{width: 500}}>
         <Stepper
           className={text('className', 'Custom')}
+          uiClass={text('uiClass', '')}
           activeStep={activeStep}
           progress={percentage => (
             <div className="Stepper-ProgressBarContainer" style={{left: (100/(totalSteps*2) - 5)+'%', right: (100/(totalSteps*2) - 5)+'%'}}>

@@ -11,7 +11,7 @@ storiesOf('Components/Loader', module)
     () => {
       // Pass skeleton structure upon which shimmering will be applied
       return (
-        <Skeleton className={text('className', 'Custom')}>
+        <Skeleton className={text('className', 'Custom')} uiClass={text('uiClass', '')}>
           <div>
             <div className="placeholder circle" style={{display: 'inline-block'}}></div>
             <div className="placeholder" style={{width: 200, display: 'inline-block'}}></div>

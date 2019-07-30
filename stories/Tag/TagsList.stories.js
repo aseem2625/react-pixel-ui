@@ -12,7 +12,7 @@ storiesOf('Components/Tag', module)
     'TagsList',
     () => (
       <DummyContainer>
-        <TagsList className={text('className', 'class1 class2')}>
+        <TagsList className={text('className', 'class1 class2')} uiClass={text('uiClass', '')}>
           <Tag>Simple Tag </Tag>
           <Tag>Simple very big text Tag</Tag>
           <Tag>Simple Tag </Tag>

@@ -21,7 +21,7 @@ storiesOf('Components', module)
       }
 
       return (
-      <Form className="Custom" onSubmit={handleSubmit}>
+      <Form className={text('className', 'Custom')} uiClass={text('uiClass', '')} onSubmit={handleSubmit}>
         {(isPending, isInvalid) => (
           <React.Fragment>
             Simple field 1
