@@ -3,10 +3,11 @@ import { classList, prefixToClasses } from 'js-awesome-utils';
 
 import './TagsList.styl';
 
-export default function TagsList({ className, uiClass, children, ...restProps }) {
+export default function TagsList({ className, uiClass, children, setRef, ...restProps }) {
   return (
     <div
       {...restProps}
+      ref={setRef}
       className={
         classList(
           'TagsList',
