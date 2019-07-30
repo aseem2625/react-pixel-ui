@@ -35,7 +35,7 @@ storiesOf('Components', module)
           Some HelpText
         </HelpText>
 
-        <Card animate hasShadow>
+        <Card uiClass="ui-hasShadow">
           Content line 1
           <br />
           Content line 2
