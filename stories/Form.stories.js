@@ -20,8 +20,18 @@ storiesOf('Components', module)
         return data;
       }
 
+      function handleChange({ target }) {
+        const { name, value, checked } = target;
+        console.log('field...', name, value, checked);
+      }
+
       return (
-      <Form className={text('className', 'Custom')} uiClass={text('uiClass', '')} onSubmit={handleSubmit}>
+      <Form
+        className={text('className', 'Custom')}
+        uiClass={text('uiClass', '')}
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      >
         {(isPending, isInvalid) => (
           <React.Fragment>
             Simple field 1
