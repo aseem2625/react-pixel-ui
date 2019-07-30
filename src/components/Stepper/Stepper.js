@@ -5,7 +5,7 @@ import './Stepper.styl';
 
 export default class Stepper extends React.PureComponent {
   render() {
-    const {className, activeStep, progress, children} = this.props;
+    const {className, uiClass, activeStep, progress, children, ...restProps} = this.props;
 
     const steps = [];
 
@@ -20,7 +20,7 @@ export default class Stepper extends React.PureComponent {
             classList(
               'Stepper-step',
               isActiveStep && 'Stepper-step--active',
-              isCurrentStep && 'Stepper-step--current',
+              isCurrentStep && 'Stepper-step--current'
             )}
         >
           {typeof c === 'function' ? c(isActiveStep) : c}
@@ -29,11 +29,14 @@ export default class Stepper extends React.PureComponent {
     });
 
     return (
-      <div className={
-        classList(
-          'Stepper',
-          prefixToClasses('Stepper--', className)
-        )}
+      <div
+        {...restProps}
+        className={
+          classList(
+            'Stepper',
+            prefixToClasses('Stepper--', className),
+            uiClass
+          )}
       >
         {progress && progress((activeStep) * 100/(steps.length - 1))}
         {steps}

@@ -59,7 +59,7 @@ export default class Form extends React.PureComponent {
   onSubmit = this._onSubmit.bind(this);
 
   render() {
-    let { children, onChange, onSubmit, className, ...restProps } = this.props;
+    let { children, onChange, onSubmit, className, uiClass, ...restProps } = this.props;
 
     return (
       <form
@@ -70,7 +70,8 @@ export default class Form extends React.PureComponent {
           'Form',
           this.state.isPending && 'Form--isPending',
           this.state.isInvalid && 'Form--isInvalid',
-          prefixToClasses('Form--', className)
+          prefixToClasses('Form--', className),
+          uiClass
         )}
         onSubmit={this.onSubmit}
         onChange={this.onChange}
