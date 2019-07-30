@@ -7,6 +7,8 @@ import SmartTipContent from 'components/xtra/SmartTipContent/SmartTipContent';
 import Dropdown, { DropdownOptions, DropdownItem } from 'components/Dropdown/Dropdown';
 import { InputElement } from 'components/Field/Input/Input';
 
+import { setNativeValue } from 'helpers/utils';
+
 import './Select.styl';
 
 
@@ -59,6 +61,9 @@ export class SelectElement extends Dropdown {
       selectedOption: option,
       show: false
     });
+
+    setNativeValue(this.inputEl, option.value || '');
+    this.inputEl.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   _searchInOptions(e) {
@@ -109,6 +114,8 @@ export class SelectElement extends Dropdown {
       options
     });
   }
+  setRef = el => (this.inputEl = el);
+
 
   render() {
     const { name, className, disabled, beforeOptions, afterOptions, enableSearch, uiClassOptions } = this.props;
@@ -126,8 +133,9 @@ export class SelectElement extends Dropdown {
           })}
         >
           <input
+            ref={this.setRef}
             name={name}
-            value={selectedOption ? selectedOption.value : ''}
+            defaultValue={selectedOption ? selectedOption.value : ''}
             hidden
             readOnly
           />

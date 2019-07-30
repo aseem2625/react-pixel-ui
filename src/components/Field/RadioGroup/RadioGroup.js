@@ -3,6 +3,7 @@ import { getFieldClasses, addWrapperToField } from '../Field';
 import { classList, debounce } from 'js-awesome-utils';
 
 import './RadioGroup.styl';
+import { prevent, setNativeValue } from 'helpers/utils';
 
 /*
  *
@@ -23,8 +24,13 @@ export class RadioGroupElement extends React.PureComponent {
       value: newValue,
     });
 
+    setNativeValue(this.inputEl, newValue);
+    this.inputEl.dispatchEvent(new Event('change', { bubbles: true }));
+
     this.props.onChange && this.props.onChange(newValue);
   }
+
+  setRef = el => (this.inputEl = el);
 
   render() {
     const { name, className, options, disabled } = this.props;
@@ -37,7 +43,7 @@ export class RadioGroupElement extends React.PureComponent {
           className: classList('RadioGroup', className),
         })}
       >
-        <input name={name} value={value} hidden readOnly />
+        <input ref={this.setRef} name={name} defaultValue={value} hidden readOnly />
         {options.map((o, i) => (
           <Radio
             key={o.value}
@@ -129,13 +135,18 @@ class Radio extends React.PureComponent {
       });
   }
 
+  preventBubbleOnChange(e) {
+    // Preventing bubbling because this is pseudo element. Actual element would manually trigger onChange in parent component.
+    prevent(e);
+  }
+
   render() {
     const { isChecked, disabled } = this.props;
 
     return (
       <div className="Field-el">
         <label onClick={disabled ? undefined : this.toggleSelect}>
-          <input type="checkbox" checked={isChecked} hidden readOnly disabled={disabled}/>
+          <input type="checkbox" checked={isChecked} hidden readOnly disabled={disabled} onChange={this.preventBubbleOnChange}/>
           <span className="Radio-mark" />
           <span className="Radio-label">{this.props.children}</span>
         </label>
