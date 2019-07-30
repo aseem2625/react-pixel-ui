@@ -76,7 +76,7 @@ export default class Form extends React.PureComponent {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
       >
-        {children(this.state.isPending, this.state.isInvalid)}
+        {typeof children === 'function' ? children(this.state.isPending, this.state.isInvalid) : children}
       </form>
     );
   }
