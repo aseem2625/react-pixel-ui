@@ -8,10 +8,6 @@ export default class Button extends React.PureComponent {
   render() {
     let {
       isLink,
-
-      iconBefore,
-      iconAfter,
-
       children,
       onClick,
       uiClass,
@@ -30,14 +26,9 @@ export default class Button extends React.PureComponent {
           uiClass
         )}
       >
-        {iconBefore && (
-          <i className={'Btn-icon Btn-icon--before i-' + iconBefore} />
-        )}
         {children}
-        {iconAfter && (
-          <i className={'Btn-icon Btn-icon--after i-' + iconAfter} />
-        )}
       </button>
     );
   }
 }
+

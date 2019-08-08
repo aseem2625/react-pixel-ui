@@ -13,6 +13,13 @@
   transform-origin: center
   cursor: pointer
 
+  > span
+    display: inline-block
+    margin-top: -.5em
+
+    & + span
+      margin-left: 4px
+
   &:disabled
     cursor: not-allowed !important
     opacity: 0.5
@@ -32,36 +39,8 @@
         text-decoration: underline
 
 .Btn--AsyncBtn
-  .Btn-text, .Spinner
-    vertical-align: middle
+    transition: .2s width ease-in
 
-  .Btn-text
-    display: inline-block
-
-  .Spinner
-    position: absolute
-    display: none
-
-  .Btn-text
-    transition: 0.2s padding cubic-bezier(0.2, 0.9, 1, 1)
-
-  &.Btn--AsyncBtn--withSpinner
-    .Spinner
-      left: 16px
-
-    span + .Spinner
-      left: unset
-      right: 16px
-
-  &.Btn--AsyncBtn--isPending
-    height: 34px
-
-    .Spinner
-      display: inline-block
-
-    &.Btn--AsyncBtn--withSpinner
-      .Btn-text
-        padding: 0 28px 0 0
-
-      .Spinner + .Btn-text
-        padding: 0 0 0 28px
+  span
+    top: 2px
+    transition: .2s ease-in

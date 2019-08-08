@@ -39,7 +39,6 @@ export default class AsyncButton extends React.PureComponent {
 
   render() {
     const {
-      pendingText,
       onClick,
       children,
       className,
@@ -48,38 +47,7 @@ export default class AsyncButton extends React.PureComponent {
       ...restProps
     } = this.props;
 
-    const { isPending } = this.state;
-    let btnContent = [],
-      withSpinner = false;
-
-    if (children instanceof Array) {
-
-      children.forEach(c => {
-        if (c && typeof c === 'function') {
-          withSpinner = true;
-
-          btnContent.push(
-            <React.Fragment key="Spinner">
-              {c(isPending)}
-            </React.Fragment>
-          );
-        } else {
-          if (!isPending || pendingText)
-          btnContent.push(
-            <span key="text" className="Btn-text">
-              {isPending ? pendingText : c}
-            </span>
-          );
-        }
-      });
-    } else {
-      if (!isPending || pendingText)
-        btnContent = (
-          <span key="text" className="Btn-text">
-            {isPending ? pendingText : children}
-          </span>
-        );
-    }
+    let { isPending } = this.state;
 
     return (
       <Button
@@ -88,12 +56,11 @@ export default class AsyncButton extends React.PureComponent {
           'AsyncBtn',
           className,
           isPending && 'AsyncBtn--isPending',
-          withSpinner && 'AsyncBtn--withSpinner'
         )}
         onClick={onClick && !disabled ? this.onClick : void 0}
         disabled={isPending || disabled}
       >
-        {btnContent}
+        {typeof children === 'function' ? children(isPending) : children}
       </Button>
     );
   }
