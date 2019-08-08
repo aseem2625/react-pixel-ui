@@ -13,6 +13,13 @@
           transform-origin: center;
   cursor: pointer;
 }
+.Btn > span {
+  display: inline-block;
+  margin-top: -0.5em;
+}
+.Btn > span + span {
+  margin-left: 4px;
+}
 .Btn:disabled {
   cursor: not-allowed !important;
   opacity: 0.5;
@@ -31,39 +38,14 @@
   background-color: inherit;
   text-decoration: underline;
 }
-.Btn--AsyncBtn .Btn-text,
-.Btn--AsyncBtn .Spinner {
-  vertical-align: middle;
+.Btn--AsyncBtn {
+  -webkit-transition: 0.2s width ease-in;
+  transition: 0.2s width ease-in;
 }
-.Btn--AsyncBtn .Btn-text {
-  display: inline-block;
-}
-.Btn--AsyncBtn .Spinner {
-  position: absolute;
-  display: none;
-}
-.Btn--AsyncBtn .Btn-text {
-  -webkit-transition: 0.2s padding cubic-bezier(0.2, 0.9, 1, 1);
-  transition: 0.2s padding cubic-bezier(0.2, 0.9, 1, 1);
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--withSpinner .Spinner {
-  left: 16px;
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--withSpinner span + .Spinner {
-  left: unset;
-  right: 16px;
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--isPending {
-  height: 34px;
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--isPending .Spinner {
-  display: inline-block;
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--isPending.Btn--AsyncBtn--withSpinner .Btn-text {
-  padding: 0 28px 0 0;
-}
-.Btn--AsyncBtn.Btn--AsyncBtn--isPending.Btn--AsyncBtn--withSpinner .Spinner + .Btn-text {
-  padding: 0 0 0 28px;
+span {
+  top: 2px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
 }
 
 .RipplePointer {
@@ -573,8 +555,9 @@
 }
 
 .Spinner {
-  height: 20px;
-  width: 20px;
+  position: relative;
+  height: 16px;
+  width: 16px;
   vertical-align: middle;
   display: none;
   border-radius: 50%;
