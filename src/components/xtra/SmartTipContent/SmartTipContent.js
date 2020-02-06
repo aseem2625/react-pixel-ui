@@ -14,9 +14,9 @@ export default class SmartTipContent extends React.PureComponent {
   }
 
   componentDidUpdate() {
-``    /*
+    /*
     * TODO: Side effects are of updating size in componentDidUpdate is that
-    * if there is search in the list and the SmartTipContent is opened, then size of dropdown will change which is bad expiernce.
+    * if there is search in the list and the SmartTipContent is opened, then size of dropdown will change which is bad experience.
     * So, a prop: fixWidthIfSet must be passed to instruct whether a width should change in current update or not.
     * */
     this.calcTrueWidth();
