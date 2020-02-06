@@ -42,7 +42,7 @@
   -webkit-transition: 0.2s width ease-in;
   transition: 0.2s width ease-in;
 }
-span {
+.Btn--AsyncBtn span {
   top: 2px;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
