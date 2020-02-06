@@ -10,7 +10,7 @@ const Icon = ({ name, className, uiClass }) => {
     <span
       className={classList(
         'Icon',
-        'Icon--' + name,
+        'Icon--' + name.split('/').join('_'),
         prefixToClasses('Icon--', className),
         uiClass
       )}
